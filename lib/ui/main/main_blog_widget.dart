@@ -4,6 +4,7 @@ import 'package:medex/theming/colors.dart';
 import 'package:medex/theming/fonts.dart';
 import 'package:medex/ui/blog/blog_item_widget.dart';
 import 'package:medex/ui/home/home_view_model.dart';
+import 'package:medex/utils/constants.dart';
 import 'package:medex/widgets/clickable_text.dart';
 
 class MainBlogWidget extends StatelessWidget {
@@ -12,7 +13,7 @@ class MainBlogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(38.0),
+      padding: const EdgeInsets.symmetric(horizontal: pageContentLeftPadding),
       child: Column(
         children: [
           Row(
@@ -31,14 +32,14 @@ class MainBlogWidget extends StatelessWidget {
               )
             ],
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 24.0),
           SizedBox(
             height: 297.0,
             width: double.maxFinite,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => const BlogItemWidget(),
-              separatorBuilder: (context, index) => const SizedBox(width: 12),
+              separatorBuilder: (context, index) => const SizedBox(width: 24.0),
               itemCount: 30,
             ),
           )

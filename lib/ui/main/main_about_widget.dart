@@ -4,10 +4,11 @@ import 'package:get/get.dart';
 import 'package:medex/theming/colors.dart';
 import 'package:medex/theming/fonts.dart';
 import 'package:medex/ui/home/home_view_model.dart';
+import 'package:medex/utils/constants.dart';
 import 'package:medex/widgets/clickable_text.dart';
 
-const _aboutPicturePath = 'about_picture.png';
-const _aboutBackgroundPath = 'about_background.svg';
+const aboutPicturePath = 'about_picture.png';
+const _aboutBackgroundPath = 'background_1.svg';
 
 class MainAboutWidget extends StatelessWidget {
   const MainAboutWidget({Key? key}) : super(key: key);
@@ -15,8 +16,7 @@ class MainAboutWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(38.0),
-      height: 845.0,
+      padding: const EdgeInsets.fromLTRB(pageContentLeftPadding, 60, 0, 60),
       color: AppColors.primary,
       child: Row(
         children: [
@@ -26,19 +26,19 @@ class MainAboutWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'main_about'.tr,
+                  'about'.tr,
                   style: AppFonts.title.copyWith(
                     color: AppColors.appWhite,
                   ),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 12),
                 Text(
                   'main_about_description'.tr,
                   style: AppFonts.body.copyWith(
                     color: AppColors.appWhite,
                   ),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 20),
                 ClickableText(
                   label: 'read_more'.tr,
                   textStyle: AppFonts.bodyBold,
@@ -49,20 +49,23 @@ class MainAboutWidget extends StatelessWidget {
                     viewModel.changePage(AppPages.about);
                   },
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 24),
                 SizedBox(
-                  width: 889.0,
+                  width: 890.0,
                   height: 477.0,
-                  child: Image.asset(_aboutPicturePath),
+                  child: Image.asset(aboutPicturePath),
                 )
               ],
             ),
           ),
           Expanded(
             flex: 1,
-            child: SvgPicture.asset(
-              _aboutBackgroundPath,
-              semanticsLabel: 'About',
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxHeight: 600),
+              child: SvgPicture.asset(
+                _aboutBackgroundPath,
+                semanticsLabel: 'About',
+              ),
             ),
           ),
         ],

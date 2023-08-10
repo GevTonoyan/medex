@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:medex/theming/fonts.dart';
 import 'package:medex/ui/home/home_view_model.dart';
+import 'package:medex/utils/constants.dart';
 import 'package:medex/widgets/default_button_1.dart';
 
 const _serviceIcon1Path = 'assets/service_icon_1.svg';
@@ -15,20 +16,23 @@ class MainServicesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(38.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Text(
-            'services'.tr,
-            style: AppFonts.title,
-          ),
-          const SizedBox(height: 12),
-          Text('main_services_description'.tr, style: AppFonts.body),
-          const SizedBox(height: 32),
-          Row(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Text(
+          'services'.tr,
+          style: AppFonts.title,
+        ),
+        const SizedBox(height: 12),
+        Padding(
+          padding: const EdgeInsets.only(right: 300),
+          child: Text('main_services_description'.tr, style: AppFonts.body),
+        ),
+        const SizedBox(height: 24),
+        Padding(
+          padding: const EdgeInsets.only(right: pageContentRightPadding),
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _ServiceIconText(assetPath: _serviceIcon1Path, label: 'service1_description'.tr),
@@ -37,13 +41,15 @@ class MainServicesWidget extends StatelessWidget {
               _ServiceIconText(assetPath: _serviceIcon4Path, label: 'service4_description'.tr),
             ],
           ),
-          const SizedBox(height: 32),
-          DefaultButton1(label: 'see_all1'.tr, onPressed: () {
-            final HomeViewModel viewModel  = Get.find();
-            viewModel.changePage(AppPages.services);
-          })
-        ],
-      ),
+        ),
+        const SizedBox(height: 30),
+        DefaultButton1(
+            label: 'see_all1'.tr,
+            onPressed: () {
+              final HomeViewModel viewModel = Get.find();
+              viewModel.changePage(AppPages.services);
+            })
+      ],
     );
   }
 }
@@ -69,7 +75,7 @@ class _ServiceIconText extends StatelessWidget {
           width: 53,
           height: 53,
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 24),
         Text(label, style: AppFonts.body),
       ],
     );

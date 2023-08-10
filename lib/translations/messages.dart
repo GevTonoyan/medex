@@ -7,7 +7,7 @@ class Messages extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': englishTranslations,
-        'ru-RU': russianTranslations,
-        'am-AM': armenianTranslations,
+        'ru_RU': russianTranslations,
+        'hy_AM': armenianTranslations,
       };
 }

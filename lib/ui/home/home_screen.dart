@@ -6,6 +6,7 @@ import 'package:medex/ui/blog/blog_screen.dart';
 import 'package:medex/ui/contact_us/contact_us_screen.dart';
 import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/ui/main/main_screen.dart';
+import 'package:medex/ui/news/news_detail_screen.dart';
 import 'package:medex/ui/news/news_screen.dart';
 import 'package:medex/ui/sales/sales_screen.dart';
 import 'package:medex/ui/services/services_screen.dart';
@@ -43,9 +44,9 @@ class _MyHomePageState extends State<HomeScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                    Obx(() {
-                      return pagesMap[viewModel.currentPage.value] ?? const MainScreen();
-                    }),
+                  Obx(() {
+                    return pagesMap[viewModel.currentPage.value] ?? const MainScreen();
+                  }),
                   const FooterWidget(),
                 ],
               ),

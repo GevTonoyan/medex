@@ -14,6 +14,7 @@ class BlogItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 759.0,
+      height: 297.0,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: AppColors.primary,
@@ -36,7 +37,7 @@ class BlogItemWidget extends StatelessWidget {
           Expanded(
             flex: 4,
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(24.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,14 +50,18 @@ class BlogItemWidget extends StatelessWidget {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  Text(
-                    'Լաբորատորիայում արյան նմուշ հանձնելուց առաջ չի կարելի ընդունել շաքար պարունակող ըմպելիքներ:Խորհուրդ չի տրվում անալիզի հանձնման նախորդ օրերին օգտագործել յուղոտ սնունդ պարունակող ըմպելիքներ:Խորհուրդ չի տրվում անալիզի',
-                    style: AppFonts.body.copyWith(
-                      color: AppColors.appWhite,
+                  const SizedBox(height: 12),
+                  Expanded(
+                    child: Text(
+                      'Լաբորատորիայում արյան նմուշ հանձնելուց առաջ չի կարելի ընդունել շաքար պարունակող ըմպելիքներ:Խորհուրդ չի տրվում անալիզի հանձնման նախորդ օրերին օգտագործել յուղոտ սնունդ պարունակող ըմպելիքներ:Խորհուրդ չի տրվում անալիզի',
+                      style: AppFonts.body.copyWith(
+                        color: AppColors.appWhite,
+                      ),
+                      maxLines: 10,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    maxLines: 10,
-                    overflow: TextOverflow.ellipsis,
                   ),
+                  const SizedBox(height: 20),
                   ClickableText(
                     label: 'read_more'.tr,
                     textStyle: AppFonts.bodyBold.copyWith(

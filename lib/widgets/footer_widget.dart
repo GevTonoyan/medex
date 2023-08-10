@@ -7,7 +7,7 @@ import 'package:medex/widgets/app_icon.dart';
 import 'package:medex/widgets/clickable_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-const _footerIconRightPadding = 32.0;
+const _footerIconRightPadding = 40.0;
 const _footerTextRightPadding = 32.0;
 
 class FooterWidget extends StatelessWidget {
@@ -23,63 +23,29 @@ class FooterWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(height: 22),
+          const SizedBox(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ClickableText(
-                label: 'about_us'.tr,
-                textStyle: AppFonts.body.copyWith(
-                  color: AppColors.appWhite,
-                ),
-                onPressed: () => viewModel.changePage(AppPages.about),
-              ),
-              const SizedBox(width: _footerTextRightPadding),
-              ClickableText(
-                label: 'services'.tr,
-                textStyle: AppFonts.body.copyWith(
-                  color: AppColors.appWhite,
-                ),
-                onPressed: () => viewModel.changePage(AppPages.services),
-              ),
-              const SizedBox(width: _footerTextRightPadding),
-              ClickableText(
-                label: 'sales'.tr,
-                textStyle: AppFonts.body.copyWith(
-                  color: AppColors.appWhite,
-                ),
-                onPressed: () => viewModel.changePage(AppPages.sales),
-              ),
-              const SizedBox(width: _footerTextRightPadding),
-              ClickableText(
-                label: 'blog'.tr,
-                textStyle: AppFonts.body.copyWith(
-                  color: AppColors.appWhite,
-                ),
-                onPressed: () => viewModel.changePage(AppPages.blog),
-              ),
-              const SizedBox(width: _footerTextRightPadding),
-              ClickableText(
-                label: 'news'.tr,
-                textStyle: AppFonts.body.copyWith(
-                  color: AppColors.appWhite,
-                ),
-                onPressed: () => viewModel.changePage(AppPages.news),
-              ),
-              const SizedBox(width: _footerTextRightPadding),
-              ClickableText(
-                label: 'contact'.tr,
-                textStyle: AppFonts.body.copyWith(
-                  color: AppColors.appWhite,
-                ),
-                onPressed: () => viewModel.changePage(AppPages.contact),
-              ),
+              for (final page in AppPages.values) ...[
+                if (page != AppPages.main) ...[
+                  ClickableText(
+                    label: page.toString().tr,
+                    textStyle: AppFonts.body.copyWith(
+                      color: AppColors.appWhite,
+                    ),
+                    onPressed: () => viewModel.changePage(page),
+                  ),
+                ],
+                if (page != AppPages.values.first && page != AppPages.values.last) ...[
+                  const SizedBox(width: _footerTextRightPadding),
+                ]
+              ],
             ],
           ),
-          const SizedBox(height: 22),
+          const SizedBox(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
             children: [
               AppIcon(
                 assetPath: 'assets/facebook_icon.svg',
@@ -112,16 +78,19 @@ class FooterWidget extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 22),
-          const Divider(
+          const SizedBox(height: 24),
+          Divider(
             thickness: 1,
-            color: AppColors.appWhite,
+            color: AppColors.appWhite.withOpacity(0.2),
           ),
-          const SizedBox(height: 18),
-          Text(
-            'footer_all_rights_reserved'.tr,
-            style: AppFonts.body.copyWith(
-              color: AppColors.appWhite,
+          Expanded(
+            child: Center(
+              child: Text(
+                'footer_all_rights_reserved'.tr,
+                style: AppFonts.body.copyWith(
+                  color: AppColors.appWhite,
+                ),
+              ),
             ),
           )
         ],

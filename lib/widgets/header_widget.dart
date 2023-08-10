@@ -4,10 +4,12 @@ import 'package:get/get.dart';
 import 'package:medex/theming/colors.dart';
 import 'package:medex/theming/fonts.dart';
 import 'package:medex/ui/home/home_view_model.dart';
+import 'package:medex/utils/constants.dart';
 import 'package:medex/widgets/clickable_text.dart';
 import 'package:medex/widgets/default_button_1.dart';
 
-const _headerTextRightPadding = 32.0;
+const _headerTextRightPadding = 24.0;
+const _localeTextRightPadding = 24.0;
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({Key? key}) : super(key: key);
@@ -19,17 +21,24 @@ class HeaderWidget extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
         color: AppColors.appWhite,
-        boxShadow: [BoxShadow(blurRadius: 15)],
+        boxShadow: [
+          BoxShadow(blurRadius: 15),
+        ],
       ),
       height: 120.0,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const SizedBox(width: 100),
+          const SizedBox(width: pageContentLeftPadding),
           InkWell(
             child: MouseRegion(
               cursor: SystemMouseCursors.click,
-              child: SvgPicture.asset('assets/medex_name.svg', semanticsLabel: 'Medex'),
+              child: Obx(() {
+                return SvgPicture.asset(
+                  'assets/medex_logo_${homeViewModel.currentLogoAssetPath}.svg',
+                  semanticsLabel: 'Medex',
+                );
+              }),
             ),
             onTap: () {
               if (homeViewModel.currentPage.value != AppPages.main) {
@@ -42,21 +51,36 @@ class HeaderWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Icon(Icons.call),
-                  SizedBox(width: 8),
-                  Text(
+                  Icon(
+                    Icons.phone,
+                    size: 24.0,
+                    color: AppColors.appBlack.withOpacity(0.8),
+                  ),
+                  const SizedBox(width: 8),
+                  const Text(
                     '+374(44) 001 001',
                     style: AppFonts.body,
                   ),
-                  SizedBox(width: 16),
-                  ClickableText(label: 'Հայ', textStyle: AppFonts.bodyBold),
-                  SizedBox(width: 8),
-                  ClickableText(label: 'Рус', textStyle: AppFonts.bodyBold),
-                  SizedBox(width: 8),
-                  ClickableText(label: 'Eng', textStyle: AppFonts.bodyBold),
+                  const SizedBox(width: 24),
+                  for (final locale in AppLocales.values) ...[
+                    Obx(() {
+                      final isSelected = locale == homeViewModel.currentLocale.value;
+                      return ClickableText(
+                        label: locale.toString(),
+                        textStyle: isSelected ? AppFonts.bodyBold : AppFonts.body,
+                        color: isSelected ? AppColors.primary : null,
+                        onPressed: () {
+                          homeViewModel.changeLocale(locale);
+                        },
+                      );
+                    }),
+                    if (locale != AppLocales.values.last) ...[
+                      const SizedBox(width: _localeTextRightPadding),
+                    ]
+                  ],
                 ],
               ),
               const SizedBox(height: 8),
@@ -83,7 +107,7 @@ class HeaderWidget extends StatelessWidget {
             label: 'prices'.tr,
             onPressed: () {},
           ),
-          const SizedBox(width: 100),
+          const SizedBox(width: 200),
         ],
       ),
     );

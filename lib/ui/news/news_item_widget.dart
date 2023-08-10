@@ -15,30 +15,34 @@ class NewsItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 400.0,
+      width: 368.0,
+      height: 434.0,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: AppColors.appWhite,
+        color: Colors.transparent,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(20)),
-              child: Image.asset(
-                _newsItemAssetPath,
-                fit: BoxFit.fitWidth,
-                height: 204.0,
-                width: double.maxFinite,
+              child: AspectRatio(
+                aspectRatio: 1.80,
+                child: Image.asset(
+                  _newsItemAssetPath,
+                  fit: BoxFit.fill,
+                  // height: 204.0,
+                  width: double.maxFinite,
+                ),
               )),
-          const SizedBox(height: 12),
+          const SizedBox(height: 16),
           Text(
             'Լօռեմ իպսում',
             style: AppFonts.bodyBold.copyWith(),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 8),
           Text(
             'Հակառակ ընդհանուր պատկերացմանը` Lorem Ipsum-ը այդքան էլ պատահական հավաք․․․',
             style: AppFonts.body.copyWith(),
@@ -50,7 +54,7 @@ class NewsItemWidget extends StatelessWidget {
             '20.06.2023',
             style: AppFonts.body.copyWith(color: AppColors.appBlack.withOpacity(0.5)),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 20),
           ClickableText(
             label: 'read_more'.tr,
             textStyle: AppFonts.bodyBold.copyWith(

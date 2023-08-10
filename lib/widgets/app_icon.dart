@@ -28,7 +28,6 @@ class _AppIconState extends State<AppIcon> {
         cursor: SystemMouseCursors.click,
         child: SvgPicture.asset(
           widget.assetPath,
-          semanticsLabel: 'facebook',
           width: 24,
           height: 24,
           colorFilter: ColorFilter.mode(
