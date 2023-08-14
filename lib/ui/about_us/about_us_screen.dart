@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
 import 'package:medex/theming/fonts.dart';
 import 'package:medex/ui/main/main_about_widget.dart';
 import 'package:medex/utils/constants.dart';
 
-class AboutUsScreen extends StatelessWidget {
+class AboutUsScreen extends StatefulWidget {
   const AboutUsScreen({Key? key}) : super(key: key);
 
   @override
+  State<AboutUsScreen> createState() => _AboutUsScreenState();
+}
+
+class _AboutUsScreenState extends State<AboutUsScreen> {
+  @override
   Widget build(BuildContext context) {
+    Future.delayed(Duration(seconds: 2), () {
+      setState(() {});
+    });
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(
         pageContentLeftPadding,
@@ -143,10 +153,8 @@ class AboutUsScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(width: contentSeparationPadding),
-              SizedBox(
-                width: 600.0,
-                height: 350.0,
-                child: Image.asset(aboutPicturePath, fit: BoxFit.fill,),
+              HtmlWidget(
+                '<iframe style="width:757px; height:407px;" src="$aboutVideoUrl" frameborder="0"></iframe>',
               ),
             ],
           ),

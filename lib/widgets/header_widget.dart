@@ -37,6 +37,8 @@ class HeaderWidget extends StatelessWidget {
                 return SvgPicture.asset(
                   'assets/medex_logo_${homeViewModel.currentLogoAssetPath}.svg',
                   semanticsLabel: 'Medex',
+                  height: 62.0,
+                  width: 191.0,
                 );
               }),
             ),

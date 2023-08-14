@@ -8,7 +8,12 @@ import 'package:medex/widgets/clickable_text.dart';
 const _blotItemAssetPath = 'assets/blog_item.png';
 
 class BlogItemWidget extends StatelessWidget {
-  const BlogItemWidget({Key? key}) : super(key: key);
+  final Map<String, dynamic>? map;
+
+  const BlogItemWidget({
+    Key? key,
+    this.map,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +29,16 @@ class BlogItemWidget extends StatelessWidget {
           Expanded(
             flex: 3,
             child: ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  bottomLeft: Radius.circular(20),
-                ),
-                child: Image.asset(
-                  _blotItemAssetPath,
-                  fit: BoxFit.fitHeight,
-                  height: double.maxFinite,
-                )),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                bottomLeft: Radius.circular(20),
+              ),
+              child: Image.network(
+                map?['assetUrl'].toString() ?? '',
+                fit: BoxFit.fitHeight,
+                height: double.maxFinite,
+              ),
+            ),
           ),
           Expanded(
             flex: 4,
@@ -43,7 +49,8 @@ class BlogItemWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Ի՞նչ ՉՊԵՏՔ է անել արյան անալիզ հանձելուց առաջ',
+                    //'Ի՞նչ ՉՊԵՏՔ է անել արյան անալիզ հանձելուց առաջ',
+                    map?['header'].toString() ?? 'error',
                     style: AppFonts.bodyBold.copyWith(
                       color: AppColors.appWhite,
                     ),
@@ -53,7 +60,8 @@ class BlogItemWidget extends StatelessWidget {
                   const SizedBox(height: 12),
                   Expanded(
                     child: Text(
-                      'Լաբորատորիայում արյան նմուշ հանձնելուց առաջ չի կարելի ընդունել շաքար պարունակող ըմպելիքներ:Խորհուրդ չի տրվում անալիզի հանձնման նախորդ օրերին օգտագործել յուղոտ սնունդ պարունակող ըմպելիքներ:Խորհուրդ չի տրվում անալիզի',
+                      //'Լաբորատորիայում արյան նմուշ հանձնելուց առաջ չի կարելի ընդունել շաքար պարունակող ըմպելիքներ:Խորհուրդ չի տրվում անալիզի հանձնման նախորդ օրերին օգտագործել յուղոտ սնունդ պարունակող ըմպելիքներ:Խորհուրդ չի տրվում անալիզի',
+                      map?['shortDescription'].toString() ?? 'error',
                       style: AppFonts.body.copyWith(
                         color: AppColors.appWhite,
                       ),

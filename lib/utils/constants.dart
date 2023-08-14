@@ -3,3 +3,5 @@ const pageContentTopPadding = 40.0;
 const pageContentRightPadding = 190.0;
 
 const contentSeparationPadding = 120.0;
+
+const aboutVideoUrl = 'https://www.youtube.com/embed/KdXxH_BobJY';

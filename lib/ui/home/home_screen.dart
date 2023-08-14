@@ -23,8 +23,8 @@ class HomeScreen extends StatefulWidget {
 class _MyHomePageState extends State<HomeScreen> {
   final viewModel = Get.put(HomeViewModel());
 
-  static const Map<AppPages, Widget> pagesMap = {
-    AppPages.main: MainScreen(),
+  static  Map<AppPages, Widget> pagesMap = { //todo add consts
+    AppPages.main: const MainScreen(),
     AppPages.about: AboutUsScreen(),
     AppPages.services: ServicesScreen(),
     AppPages.sales: SalesScreen(),

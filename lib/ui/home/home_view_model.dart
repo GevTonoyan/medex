@@ -47,7 +47,7 @@ enum AppLocales {
 }
 
 class HomeViewModel extends GetxController {
-  var currentPage = AppPages.main.obs;
+  var currentPage = AppPages.news.obs;
 
   var currentLocale = AppLocales.arm.obs;
 

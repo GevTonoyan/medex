@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "122237698215",
+    "project_id": "medex-9ae38",
+    "storage_bucket": "medex-9ae38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:122237698215:android:2a3fe1c0659789a0901b82",
+        "android_client_info": {
+          "package_name": "com.example.medex.clinic.medex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "122237698215-f1tem9g1njj9spvfi6dh49gmhpr9ht47.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3_qEtp1eeUFwyeF-9LPNpXMeG_WEsEP4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "122237698215-f1tem9g1njj9spvfi6dh49gmhpr9ht47.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "122237698215-s1dr8rgj6n89jcr2bafeutfq4ddhd204.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.medex.clinic.medex"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

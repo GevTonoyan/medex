@@ -28,10 +28,10 @@ class NewsScreen extends StatelessWidget {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
+              crossAxisCount: 4,
               crossAxisSpacing: 24,
               mainAxisSpacing: 24,
-              childAspectRatio: 1.1,
+              childAspectRatio: 0.92,
             ),
             itemCount: 26,
             itemBuilder: (BuildContext context, int index) {
