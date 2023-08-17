@@ -9,6 +9,14 @@ analyzer:
     strict-casts: true
     strict-inference: true
     strict-raw-types: true
+  errors:
+    unused_import: error
+    prefer_single_quotes: error
+    avoid_print: error
+    prefer_const_constructors: error
+    prefer_final_locals: error
+    unnecessary_null_comparison: error
+
 linter:
   rules:
     - avoid_slow_async_io

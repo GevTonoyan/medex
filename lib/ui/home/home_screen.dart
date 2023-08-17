@@ -6,7 +6,6 @@ import 'package:medex/ui/blog/blog_screen.dart';
 import 'package:medex/ui/contact_us/contact_us_screen.dart';
 import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/ui/main/main_screen.dart';
-import 'package:medex/ui/news/news_detail_screen.dart';
 import 'package:medex/ui/news/news_screen.dart';
 import 'package:medex/ui/sales/sales_screen.dart';
 import 'package:medex/ui/services/services_screen.dart';
@@ -23,7 +22,8 @@ class HomeScreen extends StatefulWidget {
 class _MyHomePageState extends State<HomeScreen> {
   final viewModel = Get.put(HomeViewModel());
 
-  static  Map<AppPages, Widget> pagesMap = { //todo add consts
+  static Map<AppPages, Widget> pagesMap = {
+    //todo add consts
     AppPages.main: const MainScreen(),
     AppPages.about: AboutUsScreen(),
     AppPages.services: ServicesScreen(),
@@ -43,10 +43,16 @@ class _MyHomePageState extends State<HomeScreen> {
           Expanded(
             child: SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Obx(() {
-                    return pagesMap[viewModel.currentPage.value] ?? const MainScreen();
-                  }),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: MediaQuery.of(context).size.height - 120 - 192,
+                    ), //TODO think better way
+                    child: Obx(() {
+                      return pagesMap[viewModel.currentPage.value] ?? const MainScreen();
+                    }),
+                  ),
                   const FooterWidget(),
                 ],
               ),

@@ -49,13 +49,18 @@ class FooterWidget extends StatelessWidget {
             children: [
               AppIcon(
                 assetPath: 'assets/facebook_icon.svg',
-                onPressed: () {},
+                onPressed: () async {
+                  final Uri url = Uri.parse('https://www.facebook.com/medex.lab.clinic');
+                  if (!await launchUrl(url)) {
+                    throw Exception('Could not launch $url');
+                  }
+                },
               ),
               const SizedBox(width: _footerIconRightPadding),
               AppIcon(
                 assetPath: 'assets/instagram_icon.svg',
                 onPressed: () async {
-                  final Uri url = Uri.parse('https://instagram.com');
+                  final Uri url = Uri.parse('https://www.instagram.com/medex.clinic');
                   if (!await launchUrl(url)) {
                     throw Exception('Could not launch $url');
                   }
@@ -64,17 +69,32 @@ class FooterWidget extends StatelessWidget {
               const SizedBox(width: _footerIconRightPadding),
               AppIcon(
                 assetPath: 'assets/telegram_icon.svg',
-                onPressed: () {},
+                onPressed: () async {
+                  final Uri url = Uri.parse('https://t.me/medex_clinic');
+                  if (!await launchUrl(url)) {
+                    throw Exception('Could not launch $url');
+                  }
+                },
               ),
               const SizedBox(width: _footerIconRightPadding),
               AppIcon(
                 assetPath: 'assets/viber_icon.svg',
-                onPressed: () {},
+                onPressed: () async {
+                  final Uri url = Uri.parse('viber://add?number=37496203301');
+                  if (!await launchUrl(url)) {
+                    throw Exception('Could not launch $url');
+                  }
+                },
               ),
               const SizedBox(width: _footerIconRightPadding),
               AppIcon(
                 assetPath: 'assets/whats_app_icon.svg',
-                onPressed: () {},
+                onPressed: () async {
+                  final Uri url = Uri.parse('https://wa.me/message/L3K4FNOF2F4GH1');
+                  if (!await launchUrl(url)) {
+                    throw Exception('Could not launch $url');
+                  }
+                },
               ),
             ],
           ),

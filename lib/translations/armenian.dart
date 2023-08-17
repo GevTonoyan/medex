@@ -4,6 +4,7 @@ const armenianTranslations = <String, String>{
   'read_more': 'Կարդալ ավելին',
   'see_all1': 'Տեսնել ամբողջը',
   'see_all2': 'Տեսնել բոլորը',
+  'loading': 'Բեռնվում է...',
 
   //Tabs
   'main': 'Գլխավոր',
@@ -38,5 +39,11 @@ const armenianTranslations = <String, String>{
   'address': 'Հասցե',
   'working_hours': 'Աշխատանքային ժամեր',
   'phone_number': 'Հեռախոսահամար',
-  'email': 'Էլեկտրոնային հասցե'
+  'email': 'Էլեկտրոնային հասցե',
+
+  //Sales Screen
+  'no_sales': 'Այս պահին չկան հասանելի զեղչեր',
+
+  //Blogs Screen
+  'no_blog': 'Այս պահին չկան հասանելի բլոգներ'
 };

@@ -5,21 +5,13 @@ import 'package:get/get.dart';
 import 'package:medex/theming/fonts.dart';
 import 'package:medex/ui/main/main_about_widget.dart';
 import 'package:medex/utils/constants.dart';
+import 'package:medex/widgets/contact_info_widget.dart';
 
-class AboutUsScreen extends StatefulWidget {
+class AboutUsScreen extends StatelessWidget {
   const AboutUsScreen({Key? key}) : super(key: key);
 
   @override
-  State<AboutUsScreen> createState() => _AboutUsScreenState();
-}
-
-class _AboutUsScreenState extends State<AboutUsScreen> {
-  @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 2), () {
-      setState(() {});
-    });
-
     return Padding(
       padding: const EdgeInsets.fromLTRB(
         pageContentLeftPadding,
@@ -105,51 +97,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'how_find_us'.tr,
-                    style: AppFonts.subTitle,
-                  ),
-                  const SizedBox(height: 12.0),
-                  Text(
-                    'address'.tr,
-                    style: AppFonts.bodyBold,
-                  ),
-                  const SizedBox(height: 8.0),
-                  const Text(
-                    '0035, Ազատության 49/1, Երևան, Հայաստան',
-                    style: AppFonts.body,
-                  ),
-                  const SizedBox(height: 32.0),
-                  Text(
-                    'working_hours'.tr,
-                    style: AppFonts.bodyBold,
-                  ),
-                  const SizedBox(height: 8.0),
-                  const Text(
-                    'Երկուշաբթի-ուրբաթ՝ 9։00-18։00\nՇաբաթ-կիրակի՝ 12։00-16։00',
-                    style: AppFonts.body,
-                  ),
-                  const SizedBox(height: 32.0),
-                  Text(
-                    'phone_number'.tr,
-                    style: AppFonts.bodyBold,
-                  ),
-                  const SizedBox(height: 8.0),
-                  const Text(
-                    '077 000 001',
-                    style: AppFonts.body,
-                    maxLines: 2,
-                  ),
-                  const SizedBox(height: 32.0),
-                  Text(
-                    'email'.tr,
-                    style: AppFonts.bodyBold,
-                  ),
-                  const SizedBox(height: 8.0),
-                  const Text(
-                    'medex@clinic',
-                    style: AppFonts.body,
-                  )
+                  const ContactInfoWidget(),
                 ],
               ),
               const SizedBox(width: contentSeparationPadding),

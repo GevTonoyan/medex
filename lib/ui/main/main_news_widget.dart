@@ -34,8 +34,8 @@ class MainNewsWidget extends StatelessWidget {
           ),
           const SizedBox(height: 24.0),
           SizedBox(
-            height: 434,
-            width: double.maxFinite,
+            height: 385,
+            //width: double.maxFinite,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => const NewsItemWidget(),

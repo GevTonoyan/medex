@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medex/theming/colors.dart';
 import 'package:medex/theming/fonts.dart';
+import 'package:medex/ui/blog/blot_item_model.dart';
 import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/widgets/clickable_text.dart';
 
 const _blotItemAssetPath = 'assets/blog_item.png';
 
 class BlogItemWidget extends StatelessWidget {
-  final Map<String, dynamic>? map;
+  final BlogItemModel blogItemModel;
 
   const BlogItemWidget({
+    required this.blogItemModel,
     Key? key,
-    this.map,
   }) : super(key: key);
 
   @override
@@ -34,7 +35,7 @@ class BlogItemWidget extends StatelessWidget {
                 bottomLeft: Radius.circular(20),
               ),
               child: Image.network(
-                map?['assetUrl'].toString() ?? '',
+                blogItemModel.imageUrl,
                 fit: BoxFit.fitHeight,
                 height: double.maxFinite,
               ),
@@ -50,7 +51,7 @@ class BlogItemWidget extends StatelessWidget {
                 children: [
                   Text(
                     //'Ի՞նչ ՉՊԵՏՔ է անել արյան անալիզ հանձելուց առաջ',
-                    map?['header'].toString() ?? 'error',
+                    blogItemModel.title,
                     style: AppFonts.bodyBold.copyWith(
                       color: AppColors.appWhite,
                     ),
@@ -60,8 +61,7 @@ class BlogItemWidget extends StatelessWidget {
                   const SizedBox(height: 12),
                   Expanded(
                     child: Text(
-                      //'Լաբորատորիայում արյան նմուշ հանձնելուց առաջ չի կարելի ընդունել շաքար պարունակող ըմպելիքներ:Խորհուրդ չի տրվում անալիզի հանձնման նախորդ օրերին օգտագործել յուղոտ սնունդ պարունակող ըմպելիքներ:Խորհուրդ չի տրվում անալիզի',
-                      map?['shortDescription'].toString() ?? 'error',
+                      blogItemModel.shortDescription,
                       style: AppFonts.body.copyWith(
                         color: AppColors.appWhite,
                       ),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:medex/theming/fonts.dart';
-import 'package:medex/widgets/app_text_field.dart';
+import 'package:medex/widgets/contact_info_widget.dart';
 
 const _backgroundAssetPath = 'assets/contact_us_picture.png';
 
@@ -24,8 +23,8 @@ class ContactUsScreen extends StatelessWidget {
                   'contact'.tr,
                   style: AppFonts.title,
                 ),
-                const SizedBox(height: 12),
-                AppTextField()
+                const SizedBox(height: 24.0),
+                const ContactInfoWidget(),
               ],
             ),
           ),
