@@ -57,7 +57,7 @@ class MainScreen extends StatelessWidget {
             ],
           ),
         ),
-        const Column(
+        Column(
           children: [
             MainAboutWidget(),
             SizedBox(height: contentSeparationPadding),

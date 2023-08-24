@@ -4,10 +4,11 @@ import 'package:get/get.dart';
 import 'package:medex/theming/colors.dart';
 import 'package:medex/theming/fonts.dart';
 import 'package:medex/ui/blog/blog_item_widget.dart';
-import 'package:medex/ui/blog/blot_item_model.dart';
+import 'package:medex/ui/blog/blog_item_model.dart';
 import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/utils/constants.dart';
 import 'package:medex/widgets/clickable_text.dart';
+import 'package:medex/widgets/list_scroll_buttons.dart';
 
 class MainBlogWidget extends StatefulWidget {
   const MainBlogWidget({Key? key}) : super(key: key);
@@ -18,6 +19,7 @@ class MainBlogWidget extends StatefulWidget {
 
 class _MainBlogWidgetState extends State<MainBlogWidget> {
   final Stream<QuerySnapshot> _blogsStream = FirebaseFirestore.instance.collection('blogs').snapshots();
+  final _controller = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +46,11 @@ class _MainBlogWidgetState extends State<MainBlogWidget> {
             child: Column(
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('blog'.tr, style: AppFonts.title),
+                    const SizedBox(width: 24),
+                    ListScrollButtons(controller: _controller),
+                    const Spacer(),
                     ClickableText(
                       label: 'see_all2'.tr,
                       textStyle: AppFonts.bodyBold,
@@ -65,6 +69,7 @@ class _MainBlogWidgetState extends State<MainBlogWidget> {
                   width: double.maxFinite,
                   child: ListView.separated(
                     scrollDirection: Axis.horizontal,
+                    controller: _controller,
                     itemBuilder: (context, index) {
                       final blogMap = docs[index].data() as Map<String, dynamic>;
                       final blogItem = BlogItemModel.fromJson(blogMap);

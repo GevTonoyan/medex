@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:medex/theming/colors.dart';
 import 'package:medex/theming/fonts.dart';
 import 'package:medex/ui/blog/blog_item_widget.dart';
-import 'package:medex/ui/blog/blot_item_model.dart';
+import 'package:medex/ui/blog/blog_item_model.dart';
 import 'package:medex/utils/constants.dart';
 import 'package:medex/widgets/empty_list_loading_widget.dart';
 

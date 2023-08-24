@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medex/theming/colors.dart';
 import 'package:medex/theming/fonts.dart';
-import 'package:medex/ui/blog/blot_item_model.dart';
+import 'package:medex/ui/blog/blog_detail_screen.dart';
+import 'package:medex/ui/blog/blog_item_model.dart';
 import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/widgets/clickable_text.dart';
 
-const _blotItemAssetPath = 'assets/blog_item.png';
-
 class BlogItemWidget extends StatelessWidget {
   final BlogItemModel blogItemModel;
+  final VoidCallback? onPressed;
 
   const BlogItemWidget({
-    required this.blogItemModel,
     Key? key,
+    required this.blogItemModel,
+    this.onPressed,
   }) : super(key: key);
 
   @override
@@ -50,7 +51,6 @@ class BlogItemWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    //'Ի՞նչ ՉՊԵՏՔ է անել արյան անալիզ հանձելուց առաջ',
                     blogItemModel.title,
                     style: AppFonts.bodyBold.copyWith(
                       color: AppColors.appWhite,
@@ -78,8 +78,13 @@ class BlogItemWidget extends StatelessWidget {
                     color: AppColors.appWhite,
                     isUnderline: true,
                     onPressed: () {
+                      //Change Tab selection to Blog
                       final HomeViewModel homeViewModel = Get.find();
                       homeViewModel.changePage(AppPages.blog);
+
+                      Get.dialog(
+                        BlogDetailScreen(blog: blogItemModel),
+                      );
                     },
                   ),
                 ],
