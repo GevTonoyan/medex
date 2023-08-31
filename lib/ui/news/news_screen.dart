@@ -1,12 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/colors.dart';
-import 'package:medex/theming/fonts.dart';
+import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/news/news_item_model.dart';
 import 'package:medex/ui/news/news_item_widget.dart';
 import 'package:medex/utils/constants.dart';
+import 'package:medex/widgets/app_loading.dart';
 import 'package:medex/widgets/empty_list_loading_widget.dart';
 
 class NewsScreen extends StatefulWidget {
@@ -46,13 +45,7 @@ class _NewsScreenState extends State<NewsScreen> {
               Positioned(
                 left: 135,
                 top: 76,
-                child: SizedBox(
-                    height: 81,
-                    width: 81,
-                    child: SpinKitCircle(
-                      color: AppColors.primary,
-                      size: 81.0,
-                    )),
+                child: const AppLoading(),
               )
             ]),
           );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/fonts.dart';
+import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/widgets/contact_info_widget.dart';
 
 const _backgroundAssetPath = 'assets/contact_us_picture.png';

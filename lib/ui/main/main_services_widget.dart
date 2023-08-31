@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/fonts.dart';
+import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/utils/constants.dart';
 import 'package:medex/widgets/default_button_1.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 const _serviceIcon1Path = 'assets/service_icon_1.svg';
 const _serviceIcon2Path = 'assets/service_icon_2.svg';
@@ -45,9 +46,12 @@ class MainServicesWidget extends StatelessWidget {
         const SizedBox(height: 30),
         DefaultButton1(
             label: 'see_all1'.tr,
-            onPressed: () {
+            onPressed: () async {
               final HomeViewModel viewModel = Get.find();
-              viewModel.changePage(AppPages.services);
+              final Uri url = Uri.parse(viewModel.currentLocale.value.servicesUrlPath());
+              if (!await launchUrl(url)) {
+                throw Exception('Could not launch $url');
+              }
             })
       ],
     );

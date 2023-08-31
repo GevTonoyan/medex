@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/colors.dart';
-import 'package:medex/theming/fonts.dart';
+import 'package:medex/theming/app_colors.dart';
+import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/blog/blog_item_widget.dart';
 import 'package:medex/ui/blog/blog_item_model.dart';
 import 'package:medex/ui/home/home_view_model.dart';

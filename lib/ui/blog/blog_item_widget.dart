@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/colors.dart';
-import 'package:medex/theming/fonts.dart';
+import 'package:medex/theming/app_colors.dart';
+import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/blog/blog_detail_screen.dart';
 import 'package:medex/ui/blog/blog_item_model.dart';
 import 'package:medex/ui/home/home_view_model.dart';
+import 'package:medex/widgets/app_network_image.dart';
 import 'package:medex/widgets/clickable_text.dart';
 
 class BlogItemWidget extends StatelessWidget {
@@ -35,10 +36,10 @@ class BlogItemWidget extends StatelessWidget {
                 topLeft: Radius.circular(20),
                 bottomLeft: Radius.circular(20),
               ),
-              child: Image.network(
-                blogItemModel.imageUrl,
-                fit: BoxFit.fitHeight,
+              child: AppNetworkImage(
+                imageUrl: blogItemModel.imageUrl,
                 height: double.maxFinite,
+                width: double.maxFinite,
               ),
             ),
           ),
@@ -61,7 +62,7 @@ class BlogItemWidget extends StatelessWidget {
                   const SizedBox(height: 12),
                   Expanded(
                     child: Text(
-                      blogItemModel.shortDescription,
+                      blogItemModel.description,
                       style: AppFonts.body.copyWith(
                         color: AppColors.appWhite,
                       ),

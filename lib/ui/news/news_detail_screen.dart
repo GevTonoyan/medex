@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/fonts.dart';
+import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/news/news_item_model.dart';
 import 'package:medex/utils/constants.dart';
 import 'package:medex/widgets/app_network_image.dart';

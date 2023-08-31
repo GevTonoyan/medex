@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medex/theming/colors.dart';
+import 'package:medex/theming/app_colors.dart';
 
 class ClickableText extends StatefulWidget {
   final String label;

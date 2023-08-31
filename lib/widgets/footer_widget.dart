@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/colors.dart';
-import 'package:medex/theming/fonts.dart';
+import 'package:medex/theming/app_colors.dart';
+import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/widgets/app_icon.dart';
 import 'package:medex/widgets/clickable_text.dart';

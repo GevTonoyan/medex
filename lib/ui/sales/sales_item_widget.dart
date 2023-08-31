@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:medex/theming/colors.dart';
-import 'package:medex/theming/fonts.dart';
+import 'package:medex/theming/app_colors.dart';
+import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/sales/sale_item_model.dart';
+import 'package:medex/widgets/app_network_image.dart';
 
 class SalesItemWidget extends StatelessWidget {
   final SaleItemModel saleItemModel;
@@ -33,19 +34,10 @@ class SalesItemWidget extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 24, top: 24),
                 child: ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(16)),
-                  child: Image.network(
-                    saleItemModel.imageUrl,
+                  child: AppNetworkImage(
+                    imageUrl: saleItemModel.imageUrl,
                     height: 338,
                     width: 474,
-                    fit: BoxFit.fill,
-                    errorBuilder: (_, __, ___) {
-                      return Image.asset(
-                        'assets/item_not_found.png',
-                        height: 338,
-                        width: 474,
-                        fit: BoxFit.fill,
-                      );
-                    },
                   ),
                 ),
               ),

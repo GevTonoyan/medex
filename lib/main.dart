@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medex/translations/messages.dart';
+import 'package:medex/ui/admin/admin_screen.dart';
 import 'package:medex/ui/home/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -18,6 +19,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialRoute: '/',
+      routes: <String, Widget Function(BuildContext context)>{
+        //'/': (_) => MainScreen(),
+        '/admin': (_) => AdminScreen(),
+      },
       translations: Messages(),
       locale: const Locale('hy', 'AM'),
       fallbackLocale: const Locale('ru', 'Ru'),

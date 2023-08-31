@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/colors.dart';
-import 'package:medex/theming/fonts.dart';
+import 'package:medex/theming/app_colors.dart';
+import 'package:medex/theming/app_fonts.dart';
+import 'package:medex/ui/admin/admin_screen.dart';
 import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/utils/constants.dart';
+import 'package:medex/widgets/app_text_field/app_text_field.dart';
+import 'package:medex/widgets/app_text_field/text_field_params.dart';
 import 'package:medex/widgets/clickable_text.dart';
 import 'package:medex/widgets/default_button_1.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -18,6 +21,7 @@ class HeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final HomeViewModel homeViewModel = Get.find();
+    final TextEditingController controller = TextEditingController();
 
     return Container(
       decoration: const BoxDecoration(
@@ -101,7 +105,16 @@ class HeaderWidget extends StatelessWidget {
                           label: page.toString().tr,
                           textStyle: AppFonts.bodyBold,
                           color: page == homeViewModel.currentPage.value ? AppColors.primary : null,
-                          onPressed: () => homeViewModel.changePage(page),
+                          onPressed: () async {
+                            if (page == AppPages.services) {
+                              final Uri url = Uri.parse(homeViewModel.currentLocale.value.servicesUrlPath());
+                              if (!await launchUrl(url)) {
+                                throw Exception('Could not launch $url');
+                              }
+                            } else {
+                              homeViewModel.changePage(page);
+                            }
+                          },
                         )),
                     if (page != AppPages.values.last) ...[
                       const SizedBox(width: _headerTextRightPadding),
@@ -122,7 +135,40 @@ class HeaderWidget extends StatelessWidget {
               }
             },
           ),
-          const SizedBox(width: 200),
+          SizedBox(
+            width: 200,
+            child: GestureDetector(
+              onTap: () {
+                Get.dialog(
+                  Dialog(
+                    insetPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 400),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'enter_admin_code'.tr,
+                            style: AppFonts.subTitle,
+                          ),
+                          SizedBox(height: 10),
+                          AppTextField(params: TextFieldParams(controller: controller)),
+                          SizedBox(height: 10),
+                          DefaultButton1(
+                              label: 'continue'.tr,
+                              onPressed: () {
+                                if (controller.text == '123123') {
+                                  Get.to(() => const AdminScreen());
+                                }
+                              }),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );

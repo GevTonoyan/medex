@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/colors.dart';
+import 'package:medex/theming/app_colors.dart';
 import 'package:medex/ui/about_us/about_us_screen.dart';
 import 'package:medex/ui/blog/blog_screen.dart';
 import 'package:medex/ui/contact_us/contact_us_screen.dart';

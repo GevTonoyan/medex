@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:medex/theming/colors.dart';
+import 'package:medex/widgets/app_loading.dart';
 
 class AppNetworkImage extends StatelessWidget {
   final String imageUrl;
@@ -29,13 +28,7 @@ class AppNetworkImage extends StatelessWidget {
           }
 
           return Center(
-            child: SizedBox(
-                height: 81,
-                width: 81,
-                child: SpinKitCircle(
-                  color: AppColors.primary,
-                  size: 81.0,
-                )),
+            child: const AppLoading(),
           );
         },
         errorBuilder: (_, __, ___) {

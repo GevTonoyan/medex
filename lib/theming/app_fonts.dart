@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medex/theming/colors.dart';
+import 'package:medex/theming/app_colors.dart';
 
 class AppFonts {
   static const TextStyle title = TextStyle(

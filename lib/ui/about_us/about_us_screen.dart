@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/fonts.dart';
+import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/main/main_about_widget.dart';
 import 'package:medex/utils/constants.dart';
 import 'package:medex/widgets/contact_info_widget.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/fonts.dart';
+import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/blog/blog_item_model.dart';
 import 'package:medex/utils/constants.dart';
 import 'package:medex/widgets/app_network_image.dart';
@@ -41,14 +41,14 @@ class BlogDetailScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 12),
                         Text(
-                          blog.shortDescription,
+                          blog.description,
                           style: AppFonts.body,
                         ),
                         const SizedBox(height: 24),
                         AppNetworkImage(imageUrl: blog.imageUrl, height: 404, width: 750),
                         const SizedBox(height: 24),
                         Text(
-                          blog.fullDescription,
+                          blog.description,
                           style: AppFonts.body,
                         )
                       ],

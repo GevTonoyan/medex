@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/fonts.dart';
+import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/sales/sale_item_model.dart';
 import 'package:medex/ui/sales/sales_item_widget.dart';
 import 'package:medex/utils/constants.dart';
