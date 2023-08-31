@@ -6,11 +6,11 @@ import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/admin/admin_screen.dart';
 import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/utils/constants.dart';
+import 'package:medex/utils/url_helper.dart';
 import 'package:medex/widgets/app_text_field/app_text_field.dart';
 import 'package:medex/widgets/app_text_field/text_field_params.dart';
 import 'package:medex/widgets/clickable_text.dart';
 import 'package:medex/widgets/default_button_1.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 const _headerTextRightPadding = 24.0;
 const _localeTextRightPadding = 24.0;
@@ -70,11 +70,8 @@ class HeaderWidget extends StatelessWidget {
                   ClickableText(
                     label: '+374(96) 203 301',
                     textStyle: AppFonts.body,
-                    onPressed: () async {
-                      final Uri url = Uri.parse('tel://+37496203301');
-                      if (!await launchUrl(url)) {
-                        throw Exception('Could not launch $url');
-                      }
+                    onPressed: () {
+                      UrlHelper.openUrl(url: 'tel://+37496203301');
                     },
                   ),
                   const SizedBox(width: 24),
@@ -105,12 +102,11 @@ class HeaderWidget extends StatelessWidget {
                           label: page.toString().tr,
                           textStyle: AppFonts.bodyBold,
                           color: page == homeViewModel.currentPage.value ? AppColors.primary : null,
-                          onPressed: () async {
+                          onPressed: () {
                             if (page == AppPages.services) {
-                              final Uri url = Uri.parse(homeViewModel.currentLocale.value.servicesUrlPath());
-                              if (!await launchUrl(url)) {
-                                throw Exception('Could not launch $url');
-                              }
+                              UrlHelper.openUrl(
+                                url: homeViewModel.currentLocale.value.servicesUrlPath(),
+                              );
                             } else {
                               homeViewModel.changePage(page);
                             }
@@ -127,12 +123,10 @@ class HeaderWidget extends StatelessWidget {
           const Spacer(),
           DefaultButton1(
             label: 'prices'.tr,
-            onPressed: () async {
-              final Uri url = Uri.parse(
-                  'https://firebasestorage.googleapis.com/v0/b/medex-9ae38.appspot.com/o/prices.pdf?alt=media&token=6b05a836-4f72-4003-a145-896bf3d51a61');
-              if (!await launchUrl(url)) {
-                throw Exception('Could not launch $url');
-              }
+            onPressed: () {
+              UrlHelper.openUrl(
+                  url:
+                      'https://firebasestorage.googleapis.com/v0/b/medex-9ae38.appspot.com/o/prices.pdf?alt=media&token=6b05a836-4f72-4003-a145-896bf3d51a61');
             },
           ),
           SizedBox(

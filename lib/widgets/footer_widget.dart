@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:medex/theming/app_colors.dart';
 import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/home/home_view_model.dart';
+import 'package:medex/utils/url_helper.dart';
 import 'package:medex/widgets/app_icon.dart';
 import 'package:medex/widgets/clickable_text.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 const _footerIconRightPadding = 40.0;
 const _footerTextRightPadding = 32.0;
@@ -47,55 +47,15 @@ class FooterWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AppIcon(
-                assetPath: 'assets/facebook_icon.svg',
-                onPressed: () async {
-                  final Uri url = Uri.parse('https://www.facebook.com/medex.lab.clinic');
-                  if (!await launchUrl(url)) {
-                    throw Exception('Could not launch $url');
-                  }
-                },
-              ),
-              const SizedBox(width: _footerIconRightPadding),
-              AppIcon(
-                assetPath: 'assets/instagram_icon.svg',
-                onPressed: () async {
-                  final Uri url = Uri.parse('https://www.instagram.com/medex.clinic');
-                  if (!await launchUrl(url)) {
-                    throw Exception('Could not launch $url');
-                  }
-                },
-              ),
-              const SizedBox(width: _footerIconRightPadding),
-              AppIcon(
-                assetPath: 'assets/telegram_icon.svg',
-                onPressed: () async {
-                  final Uri url = Uri.parse('https://t.me/medex_clinic');
-                  if (!await launchUrl(url)) {
-                    throw Exception('Could not launch $url');
-                  }
-                },
-              ),
-              const SizedBox(width: _footerIconRightPadding),
-              AppIcon(
-                assetPath: 'assets/viber_icon.svg',
-                onPressed: () async {
-                  final Uri url = Uri.parse('viber://add?number=37496203301');
-                  if (!await launchUrl(url)) {
-                    throw Exception('Could not launch $url');
-                  }
-                },
-              ),
-              const SizedBox(width: _footerIconRightPadding),
-              AppIcon(
-                assetPath: 'assets/whats_app_icon.svg',
-                onPressed: () async {
-                  final Uri url = Uri.parse('https://wa.me/message/L3K4FNOF2F4GH1');
-                  if (!await launchUrl(url)) {
-                    throw Exception('Could not launch $url');
-                  }
-                },
-              ),
+              for (final icon in FooterIcons.values) ...[
+                AppIcon(
+                  assetPath: icon.assetPath(),
+                  onPressed: () => UrlHelper.openUrl(url: icon.urlPath()),
+                ),
+                if (icon != FooterIcons.values.last) ...[
+                  const SizedBox(width: _footerIconRightPadding),
+                ]
+              ],
             ],
           ),
           const SizedBox(height: 24),

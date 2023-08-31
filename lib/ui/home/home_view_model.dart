@@ -20,6 +20,44 @@ enum AppPages {
   }
 }
 
+enum FooterIcons {
+  instagram,
+  facebook,
+  telegram,
+  viber,
+  whatsApp;
+
+  String assetPath() {
+    switch (this) {
+      case FooterIcons.instagram:
+        return 'assets/instagram_icon.svg';
+      case FooterIcons.facebook:
+        return 'assets/facebook_icon.svg';
+      case FooterIcons.telegram:
+        return 'assets/telegram_icon.svg';
+      case FooterIcons.viber:
+        return 'assets/viber_icon.svg';
+      case FooterIcons.whatsApp:
+        return 'assets/whats_app_icon.svg';
+    }
+  }
+
+  String urlPath() {
+    switch (this) {
+      case FooterIcons.instagram:
+        return 'https://www.facebook.com/medex.lab.clinic';
+      case FooterIcons.facebook:
+        return 'https://www.instagram.com/medex.clinic';
+      case FooterIcons.telegram:
+        return 'https://t.me/medex_clinic';
+      case FooterIcons.viber:
+        return 'viber://add?number=37496203301';
+      case FooterIcons.whatsApp:
+        return 'https://wa.me/message/L3K4FNOF2F4GH1';
+    }
+  }
+}
+
 enum AppLocales {
   arm('հայ'),
   rus('Рус'),
