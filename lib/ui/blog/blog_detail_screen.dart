@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/blog/blog_item_model.dart';
 import 'package:medex/utils/constants.dart';
+import 'package:medex/utils/extensions/string_extensions.dart';
 import 'package:medex/widgets/app_network_image.dart';
 
 class BlogDetailScreen extends StatelessWidget {
@@ -16,6 +17,9 @@ class BlogDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final descriptionFirstPart = blog.description.splitDescription().first;
+    final descriptionSecondPart = blog.description.splitDescription().last;
+
     return Material(
       child: Padding(
         padding: const EdgeInsets.fromLTRB(pageContentLeftPadding, pageContentTopPadding, 0, contentSeparationPadding),
@@ -41,14 +45,14 @@ class BlogDetailScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 12),
                         Text(
-                          blog.description,
+                          descriptionFirstPart,
                           style: AppFonts.body,
                         ),
                         const SizedBox(height: 24),
                         AppNetworkImage(imageUrl: blog.imageUrl, height: 404, width: 750),
                         const SizedBox(height: 24),
                         Text(
-                          blog.description,
+                          descriptionSecondPart,
                           style: AppFonts.body,
                         )
                       ],
