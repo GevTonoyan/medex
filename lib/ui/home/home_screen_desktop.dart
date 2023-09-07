@@ -3,28 +3,33 @@ import 'package:get/get.dart';
 import 'package:medex/theming/app_colors.dart';
 import 'package:medex/ui/about_us/about_us_screen.dart';
 import 'package:medex/ui/blog/blog_screen.dart';
+import 'package:medex/ui/blog/blog_view_model.dart';
 import 'package:medex/ui/contact_us/contact_us_screen.dart';
+import 'package:medex/ui/home/app_pages.dart';
 import 'package:medex/ui/home/home_view_model.dart';
-import 'package:medex/ui/main/main_screen.dart';
+import 'package:medex/ui/main/main_screen_desktop.dart';
 import 'package:medex/ui/news/news_screen.dart';
+import 'package:medex/ui/news/news_view_model.dart';
 import 'package:medex/ui/sales/sales_screen.dart';
 import 'package:medex/ui/services/services_screen.dart';
-import 'package:medex/widgets/footer_widget.dart';
-import 'package:medex/widgets/header_widget.dart';
+import 'package:medex/widgets/footer_widget_desktop.dart';
+import 'package:medex/widgets/header_widget_desktop.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreenDesktop extends StatefulWidget {
+  const HomeScreenDesktop({super.key});
 
   @override
-  State<HomeScreen> createState() => _MyHomePageState();
+  State<HomeScreenDesktop> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<HomeScreen> {
+class _MyHomePageState extends State<HomeScreenDesktop> {
   final viewModel = Get.put(HomeViewModel());
+  var a = Get.put(BlogViewModel());
+  var aa = Get.put(NewsViewModel());
 
   static Map<AppPages, Widget> pagesMap = {
     //todo add consts
-    AppPages.main: const MainScreen(),
+    AppPages.main: const MainScreenDesktop(),
     AppPages.about: AboutUsScreen(),
     AppPages.services: ServicesScreen(),
     AppPages.sales: SalesScreen(),
@@ -39,7 +44,7 @@ class _MyHomePageState extends State<HomeScreen> {
       backgroundColor: AppColors.appWhite,
       body: Column(
         children: [
-          const HeaderWidget(),
+          const HeaderWidgetDesktop(),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
@@ -50,10 +55,10 @@ class _MyHomePageState extends State<HomeScreen> {
                       minHeight: MediaQuery.of(context).size.height - 120 - 192,
                     ), //TODO think better way
                     child: Obx(() {
-                      return pagesMap[viewModel.currentPage.value] ?? const MainScreen();
+                      return pagesMap[viewModel.currentPage] ?? const MainScreenDesktop();
                     }),
                   ),
-                  const FooterWidget(),
+                  const FooterWidgetDesktop(),
                 ],
               ),
             ),

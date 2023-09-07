@@ -1,29 +1,28 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:medex/ui/admin/admin_pages.dart';
 import 'package:medex/ui/blog/blog_item_model.dart';
+import 'package:medex/ui/blog/blog_service.dart';
 import 'package:medex/ui/news/news_item_model.dart';
+import 'package:medex/ui/news/news_service.dart';
 import 'package:medex/ui/sales/sale_item_model.dart';
-
-enum AdminPages {
-  addNews,
-  addBlog,
-  addSales;
-
-  String get addText {
-    switch (this) {
-      case addNews:
-        return 'add_news'.tr;
-      case addBlog:
-        return 'add_blog'.tr;
-      case addSales:
-        return 'add_sale'.tr;
-    }
-  }
-}
+import 'package:medex/ui/sales/sales_service.dart';
 
 enum SalesPageState { list, add }
 
 class AdminViewModel extends GetxController {
+  AdminViewModel({
+    NewsService? newsService,
+    BlogService? blogService,
+    SalesService? salesService,
+  })  : _newsService = newsService ?? NewsServiceImpl(),
+        _blogService = blogService ?? BlogServiceImpl(),
+        _salesService = salesService ?? SalesServiceImpl();
+
+  final NewsService _newsService;
+  final BlogService _blogService;
+  final SalesService _salesService;
+
   final _selectedPage = AdminPages.addNews.obs;
 
   AdminPages get selectedPage => _selectedPage.value;
@@ -48,6 +47,10 @@ class AdminViewModel extends GetxController {
     _isSavingItem.value = value;
   }
 
+  Stream<QuerySnapshot> getSalesStream() {
+    return _salesService.getSalesStream();
+  }
+
   void addItemToFirestore({
     required String title,
     required String imageUrl,
@@ -55,50 +58,40 @@ class AdminViewModel extends GetxController {
   }) async {
     _isSavingItem.value = true;
 
-    late String collectionName;
-    late final Map<String, dynamic> mapJson;
-
-    switch (selectedPage) {
-      case AdminPages.addNews:
-        collectionName = 'news';
-        DateTime today = DateTime.now();
-        String dateStr = "${today.day}-${today.month}-${today.year}";
-
-        final model = NewsItemModel(
-          title: title,
-          description: description,
-          imageUrl: imageUrl,
-          date: dateStr,
-        );
-        mapJson = model.toJson();
-        break;
-      case AdminPages.addBlog:
-        final model = BlogItemModel(
-          title: title,
-          description: description,
-          imageUrl: imageUrl,
-        );
-        mapJson = model.toJson();
-        collectionName = 'blogs';
-        break;
-      case AdminPages.addSales:
-        final model = SaleItemModel(
-          title: title,
-          description: description,
-          imageUrl: imageUrl,
-        );
-        mapJson = model.toJson();
-        collectionName = 'sales';
-        break;
-    }
-    CollectionReference collectionReference = FirebaseFirestore.instance.collection(collectionName);
-
     try {
-      final documentReference = await collectionReference.add(mapJson);
-      if (selectedPage == AdminPages.addSales) {
-        salesPageState = SalesPageState.list;
+      switch (selectedPage) {
+        case AdminPages.addNews:
+          DateTime today = DateTime.now();
+          String dateStr = "${today.day}-${today.month}-${today.year}";
+
+          final model = NewsItemModel(
+            title: title,
+            description: description,
+            imageUrl: imageUrl,
+            date: dateStr,
+          );
+          await _newsService.addNews(model);
+          break;
+        case AdminPages.addBlog:
+          final model = BlogItemModel(
+            title: title,
+            description: description,
+            imageUrl: imageUrl,
+          );
+          await _blogService.addBlog(model);
+          break;
+        case AdminPages.addSales:
+          final model = SaleItemModel(
+            title: title,
+            description: description,
+            imageUrl: imageUrl,
+          );
+          await _salesService.addSale(model);
+          salesPageState = SalesPageState.list;
+          break;
       }
-      print("Document added with ID: ${documentReference.id}");
+
+      //TODO add added snack bar
     } catch (error) {
       print("Error adding document: $error");
     } finally {
@@ -107,7 +100,6 @@ class AdminViewModel extends GetxController {
   }
 
   void deleteSale(String id) {
-    final documentReference = FirebaseFirestore.instance.collection('sales').doc(id);
-    documentReference.delete();
+    _salesService.deleteSale(id);
   }
 }

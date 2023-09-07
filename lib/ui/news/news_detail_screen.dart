@@ -25,7 +25,7 @@ class NewsDetailScreen extends StatelessWidget {
             children: [
               Text(
                 'news'.tr,
-                style: AppFonts.title,
+                style: AppFonts.titleDesktop,
               ),
               const SizedBox(height: 24),
               Row(

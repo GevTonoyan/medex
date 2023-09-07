@@ -4,10 +4,12 @@ import 'package:medex/widgets/app_icon.dart';
 
 class ListScrollButtons extends StatelessWidget {
   final ScrollController controller;
+  final double offset;
 
   const ListScrollButtons({
     Key? key,
     required this.controller,
+    required this.offset,
   }) : super(key: key);
 
   @override
@@ -20,9 +22,9 @@ class ListScrollButtons extends StatelessWidget {
           hoverColor: AppColors.primary,
           onPressed: () {
             controller.animateTo(
-              controller.offset - (368 * 2) - 24,
+              controller.offset - (2 * offset),
               curve: Curves.easeInOut,
-              duration: const Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 600),
             );
           },
         ),
@@ -33,7 +35,7 @@ class ListScrollButtons extends StatelessWidget {
           hoverColor: AppColors.primary,
           onPressed: () {
             controller.animateTo(
-              controller.offset + (368 * 3) + 24,
+              controller.offset + (2 * offset),
               curve: Curves.easeInOut,
               duration: const Duration(milliseconds: 600),
             );

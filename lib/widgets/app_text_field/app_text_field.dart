@@ -39,6 +39,7 @@ class AppTextField extends StatelessWidget {
       ),
       cursorColor: AppColors.appBlack,
       validator: params.validator,
+      maxLines: params.maxLines,
     );
   }
 }

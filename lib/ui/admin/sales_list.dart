@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:medex/ui/admin/admin_pages.dart';
 import 'package:medex/ui/admin/admin_view_model.dart';
 import 'package:medex/ui/sales/sale_item_model.dart';
 import 'package:medex/widgets/app_icon.dart';
@@ -17,12 +18,12 @@ class SalesList extends StatefulWidget {
 }
 
 class _SalesListState extends State<SalesList> {
-  final Stream<QuerySnapshot> _salesStream = FirebaseFirestore.instance.collection('sales').snapshots();
+  final AdminViewModel model = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-        stream: _salesStream,
+        stream: model.getSalesStream(),
         builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
           final isWaiting = snapshot.connectionState == ConnectionState.waiting;
           final snapshotErrorWaitingEmptyState = snapshot.hasError || isWaiting || (snapshot.data?.docs.isEmpty ?? true);
@@ -32,7 +33,7 @@ class _SalesListState extends State<SalesList> {
             children: [
               Text(
                 'sales'.tr,
-                style: AppFonts.title,
+                style: AppFonts.titleDesktop,
               ),
               const SizedBox(height: 40),
               Builder(builder: (_) {
@@ -53,7 +54,11 @@ class _SalesListState extends State<SalesList> {
                             final docs = snapshot.data!.docs;
                             final saleItemMap = docs[index].data() as Map<String, dynamic>;
                             final saleItem = SaleItemModel.fromJson(saleItemMap);
-                            return _SaleItemWidget(saleItemModel: saleItem, id: docs[index].id);
+                            return _SaleItemWidget(
+                              saleItemModel: saleItem,
+                              id: docs[index].id,
+                              index: index,
+                            );
                           },
                           separatorBuilder: (context, index) => const SizedBox(height: 24.0),
                           itemCount: snapshot.data!.docs.length,
@@ -82,11 +87,13 @@ class _SalesListState extends State<SalesList> {
 class _SaleItemWidget extends StatelessWidget {
   final SaleItemModel saleItemModel;
   final String id;
+  final int index;
 
   const _SaleItemWidget({
     Key? key,
     required this.saleItemModel,
     required this.id,
+    required this.index,
   }) : super(key: key);
 
   @override
@@ -99,7 +106,7 @@ class _SaleItemWidget extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Text('1. Sale', style: AppFonts.subTitle),
+          Text(index.toString(), style: AppFonts.subTitle),
           const SizedBox(width: 16),
           Expanded(
             child: Text(

@@ -21,7 +21,7 @@ class ContactUsScreen extends StatelessWidget {
               children: [
                 Text(
                   'contact'.tr,
-                  style: AppFonts.title,
+                  style: AppFonts.titleDesktop,
                 ),
                 const SizedBox(height: 24.0),
                 const ContactInfoWidget(),

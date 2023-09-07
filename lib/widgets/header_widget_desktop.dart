@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:medex/theming/app_colors.dart';
 import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/admin/admin_screen.dart';
+import 'package:medex/ui/home/app_locales.dart';
+import 'package:medex/ui/home/app_pages.dart';
 import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/utils/constants.dart';
 import 'package:medex/utils/url_helper.dart';
@@ -11,12 +13,13 @@ import 'package:medex/widgets/app_text_field/app_text_field.dart';
 import 'package:medex/widgets/app_text_field/text_field_params.dart';
 import 'package:medex/widgets/clickable_text.dart';
 import 'package:medex/widgets/default_button_1.dart';
+import 'package:medex/widgets/phone_number_row_widget.dart';
 
 const _headerTextRightPadding = 24.0;
 const _localeTextRightPadding = 24.0;
 
-class HeaderWidget extends StatelessWidget {
-  const HeaderWidget({Key? key}) : super(key: key);
+class HeaderWidgetDesktop extends StatelessWidget {
+  const HeaderWidgetDesktop({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +51,8 @@ class HeaderWidget extends StatelessWidget {
               }),
             ),
             onTap: () {
-              if (homeViewModel.currentPage.value != AppPages.main) {
-                homeViewModel.changePage(AppPages.main);
+              if (homeViewModel.currentPage != AppPages.main) {
+                homeViewModel.currentPage = AppPages.main;
               }
             },
           ),
@@ -61,23 +64,11 @@ class HeaderWidget extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Icon(
-                    Icons.phone,
-                    size: 24.0,
-                    color: AppColors.appBlack.withOpacity(0.8),
-                  ),
-                  const SizedBox(width: 8),
-                  ClickableText(
-                    label: '+374(96) 203 301',
-                    textStyle: AppFonts.body,
-                    onPressed: () {
-                      UrlHelper.openUrl(url: 'tel://+37496203301');
-                    },
-                  ),
+                  const PhoneNumberRowWidget(),
                   const SizedBox(width: 24),
                   for (final locale in AppLocales.values) ...[
                     Obx(() {
-                      final isSelected = locale == homeViewModel.currentLocale.value;
+                      final isSelected = locale == homeViewModel.currentLocale;
                       return ClickableText(
                         label: locale.toString(),
                         textStyle: isSelected ? AppFonts.bodyBold : AppFonts.body,
@@ -101,14 +92,14 @@ class HeaderWidget extends StatelessWidget {
                     Obx(() => ClickableText(
                           label: page.toString().tr,
                           textStyle: AppFonts.bodyBold,
-                          color: page == homeViewModel.currentPage.value ? AppColors.primary : null,
+                          color: page == homeViewModel.currentPage ? AppColors.primary : null,
                           onPressed: () {
                             if (page == AppPages.services) {
                               UrlHelper.openUrl(
-                                url: homeViewModel.currentLocale.value.servicesUrlPath(),
+                                url: homeViewModel.currentLocale.servicesUrlPath(),
                               );
                             } else {
-                              homeViewModel.changePage(page);
+                              homeViewModel.currentPage = page;
                             }
                           },
                         )),
@@ -132,7 +123,7 @@ class HeaderWidget extends StatelessWidget {
           SizedBox(
             width: 200,
             child: GestureDetector(
-              onTap: () {
+              onLongPress: () {
                 Get.dialog(
                   Dialog(
                     insetPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 400),

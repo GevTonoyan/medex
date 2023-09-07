@@ -36,4 +36,9 @@ class BlogItemModel {
       _imageUrlKey: imageUrl,
     };
   }
+
+  @override
+  String toString() {
+    return 'BlogItemModel { title: $title, description: $description, imageUrl: $imageUrl }';
+  }
 }

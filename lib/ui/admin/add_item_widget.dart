@@ -33,7 +33,7 @@ class _AddItemWidgetState extends State<AddItemWidget> {
         children: [
           Text(
             viewModel.selectedPage.addText,
-            style: AppFonts.title,
+            style: AppFonts.titleDesktop,
           ),
           const SizedBox(height: 40),
           TextFieldContainer(
@@ -63,14 +63,16 @@ class _AddItemWidgetState extends State<AddItemWidget> {
           const SizedBox(height: 40),
           TextFieldContainer(
             params: TextFieldParams(
-                controller: _descriptionController,
-                validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return 'description_error'.tr;
-                  }
-                  return null;
-                },
-                label: 'add_description'.tr),
+              controller: _descriptionController,
+              label: 'add_description'.tr,
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return 'description_error'.tr;
+                }
+                return null;
+              },
+              maxLines: 4,
+            ),
           ),
           const SizedBox(height: 40),
           Obx(

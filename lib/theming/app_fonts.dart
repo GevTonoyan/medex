@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:medex/theming/app_colors.dart';
 
 class AppFonts {
-  static const TextStyle title = TextStyle(
+  static const TextStyle titleDesktop = TextStyle(
     fontSize: 32,
     fontWeight: FontWeight.bold,
     height: 48 / 32,
+    color: AppColors.appBlack,
+  );
+
+  static const TextStyle titleMobile = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.bold,
+    height: 33 / 22,
     color: AppColors.appBlack,
   );
 

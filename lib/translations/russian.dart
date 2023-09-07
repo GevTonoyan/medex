@@ -4,6 +4,10 @@ const russianTranslations = <String, String>{
   'read_more': 'Читать больше',
   'see_all1': 'Показать все',
   'see_all2': 'Показать больше',
+  'loading': 'Загружается...',
+  'save': 'Сохранитъ',
+  'delete': 'Удалитъ',
+  'continue': 'Продолжить',
 
   //Tabs
   'main': 'Главная',
@@ -15,7 +19,7 @@ const russianTranslations = <String, String>{
   'contact': 'Связаться с нами',
   'prices': 'Цены',
 
-  //Footer widget texts
+  //Footer widget
   'footer_all_rights_reserved': 'Медекс © 2023 Все права защищены.',
 
   //Main Screen texts
@@ -30,4 +34,33 @@ const russianTranslations = <String, String>{
   'main_about': 'Մեր մասին',
   'main_about_description':
       'Հակառակ ընդհանուր պատկերացմանը` Lorem Ipsum-ը այդքան էլ պատահական հավաքված տեքստ չէ: Այս տեքստի արմատները հասնում են Ք.ա. 45թ. դասական լատինական գրականություն. այն 2000 տարեկան է: Ռիչարդ ՄքՔլինտոքը` Վիրջինիայի Համպդեն-Սիդնեյ քոլեջում լատիներենի մի դասախոս` ուսումնասիրելով Lorem Ipsum տեքստի ամենատարօրինակ բառերից մեկը` consectetur-ը, և այն որոնելով դասական գրականության մեջ` բացահայտեց դրա իսկական աղբյուրը:',
+
+  //About Us Screen texts
+  'established': 'Հիմնադրումը',
+  'our_strengths': 'Մեր առավելությունները',
+  'how_find_us': 'Ինչպես գտնել մեզ',
+  'address': 'Հասցե',
+  'working_hours': 'Աշխատանքային ժամեր',
+  'phone_number': 'Հեռախոսահամար',
+  'email': 'Էլեկտրոնային հասցե',
+
+  //Sales Screen
+  'no_sales': 'Այս պահին չկան հասանելի զեղչեր',
+
+  //Blogs Screen
+  'no_blog': 'Այս պահին չկան հասանելի բլոգներ',
+
+  //Admin Screen
+  'add_news': 'Добавить новость',
+  'add_blog': 'Добавить блог',
+  'add_sale': 'Добавить акцию',
+  'add_title': 'Добавить заголовок',
+  'add_image': 'Добавить ссылку картинки',
+  'add_description': 'Добавить описание',
+  'on': 'Включено',
+  'off': 'Отключено',
+  'title_error': 'Վերնագիրը չի կարող լինել դատարկ',
+  'image_url_error': 'Սխալ հղում',
+  'description_error': 'Նկարագրությունը չի կարող լինել դատարկ',
+  'enter_admin_code': 'Մուտքագրեք ադմինի ծածկագիրը',
 };

@@ -4,16 +4,18 @@ import 'package:medex/theming/app_colors.dart';
 
 class AppLoading extends StatelessWidget {
   final double size;
+  final Color color;
 
   const AppLoading({
     Key? key,
     this.size = 81,
+    this.color = AppColors.primary,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SpinKitCircle(
-      color: AppColors.primary,
+      color: color,
       size: size,
     );
   }

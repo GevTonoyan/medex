@@ -31,7 +31,7 @@ class AboutUsScreen extends StatelessWidget {
                     children: [
                       Text(
                         'about'.tr,
-                        style: AppFonts.title,
+                        style: AppFonts.titleDesktop,
                       ),
                       const SizedBox(height: 24),
                       Text(

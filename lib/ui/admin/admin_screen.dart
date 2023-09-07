@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:medex/theming/app_colors.dart';
 import 'package:medex/ui/admin/add_item_widget.dart';
 import 'package:medex/ui/admin/admin_page_selector_button.dart';
+import 'package:medex/ui/admin/admin_pages.dart';
 import 'package:medex/ui/admin/admin_view_model.dart';
 import 'package:medex/ui/admin/sales_list.dart';
 import 'package:medex/utils/constants.dart';

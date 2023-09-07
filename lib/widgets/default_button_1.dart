@@ -5,6 +5,7 @@ import 'package:medex/theming/app_fonts.dart';
 class DefaultButton1 extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
+  final Size size;
   final bool isDisabled;
 
   const DefaultButton1({
@@ -12,6 +13,7 @@ class DefaultButton1 extends StatelessWidget {
     required this.onPressed,
     this.isDisabled = false,
     Key? key,
+    this.size = const Size(187, 47),
   }) : super(key: key);
 
   @override
@@ -44,8 +46,8 @@ class DefaultButton1 extends StatelessWidget {
       ),
       onPressed: onPressed,
       child: Container(
-        height: 47.0,
-        width: 187,
+        height: size.height,
+        width: size.width,
         child: Center(
             child: Text(
           label,

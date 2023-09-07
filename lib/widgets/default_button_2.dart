@@ -5,6 +5,7 @@ import 'package:medex/theming/app_fonts.dart';
 class DefaultButton2 extends StatefulWidget {
   final String label;
   final VoidCallback? onPressed;
+  final Size size;
   final bool isDisabled;
 
   const DefaultButton2({
@@ -12,6 +13,7 @@ class DefaultButton2 extends StatefulWidget {
     this.onPressed,
     this.isDisabled = false,
     Key? key,
+    this.size = const Size(187, 52),
   }) : super(key: key);
 
   @override
@@ -29,8 +31,8 @@ class _DefaultButton2State extends State<DefaultButton2> {
         onExit: (event) => setState(() => _isHovering = false),
         cursor: SystemMouseCursors.click,
         child: Container(
-          height: 47.0,
-          width: 187,
+          height: widget.size.height,
+          width: widget.size.width,
           decoration: BoxDecoration(
             border: Border.all(
               width: 2,

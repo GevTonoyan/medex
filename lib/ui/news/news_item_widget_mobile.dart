@@ -5,16 +5,20 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:medex/theming/app_colors.dart';
 import 'package:medex/theming/app_fonts.dart';
+import 'package:medex/ui/home/app_pages.dart';
 import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/ui/news/news_detail_screen.dart';
 import 'package:medex/ui/news/news_item_model.dart';
 import 'package:medex/widgets/app_network_image.dart';
 import 'package:medex/widgets/clickable_text.dart';
 
-class NewsItemWidget extends StatelessWidget {
+class NewsItemWidgetMobile extends StatelessWidget {
+  static const newsWidth = 255.0;
+  static const newsHeight = 368.0;
+
   final NewsItemModel newsModel;
 
-  const NewsItemWidget({
+  const NewsItemWidgetMobile({
     Key? key,
     required this.newsModel,
   }) : super(key: key);
@@ -22,24 +26,22 @@ class NewsItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 368.0,
-      height: 382.0,
+      width: newsWidth,
+      height: newsHeight,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: Colors.red,
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(20)),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
               child: AspectRatio(
                 aspectRatio: 1.80,
                 child: AppNetworkImage(
                   imageUrl: newsModel.imageUrl,
-                  height: 204,
-                  width: 368,
+                  height: 141,
+                  width: 255,
                 ),
               )),
           const SizedBox(height: 16),
@@ -50,11 +52,13 @@ class NewsItemWidget extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 12),
-          Text(
-            newsModel.description,
-            style: AppFonts.body.copyWith(),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
+          Expanded(
+            child: Text(
+              newsModel.description,
+              style: AppFonts.body.copyWith(),
+              maxLines: 8,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
           const SizedBox(height: 8),
           Text(
@@ -72,9 +76,9 @@ class NewsItemWidget extends StatelessWidget {
             onPressed: () {
               //Change Tab selection to News
               final HomeViewModel homeViewModel = Get.find();
-              homeViewModel.changePage(AppPages.news);
+              homeViewModel.currentPage = AppPages.news;
 
-              Get.dialog<Object>(NewsDetailScreen(newsItemModel: newsModel));
+              Get.dialog(NewsDetailScreen(newsItemModel: newsModel));
             },
           )
         ],

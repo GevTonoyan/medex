@@ -3,8 +3,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:medex/theming/app_colors.dart';
 import 'package:medex/theming/app_fonts.dart';
+import 'package:medex/ui/home/app_pages.dart';
 import 'package:medex/ui/home/home_view_model.dart';
+import 'package:medex/utils/configuration.dart';
 import 'package:medex/utils/constants.dart';
+import 'package:medex/utils/utils.dart';
 import 'package:medex/widgets/clickable_text.dart';
 
 const aboutPicturePath = 'about_picture.png';
@@ -16,7 +19,10 @@ class MainAboutWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(pageContentLeftPadding, 60, 0, 60),
+      padding: uiOrientedSwitch(
+        const EdgeInsets.symmetric(vertical: 30, horizontal: 16),
+        const EdgeInsets.fromLTRB(pageContentLeftPadding, 60, 0, 60),
+      ),
       color: AppColors.primary,
       child: Row(
         children: [
@@ -27,7 +33,7 @@ class MainAboutWidget extends StatelessWidget {
               children: [
                 Text(
                   'about'.tr,
-                  style: AppFonts.title.copyWith(
+                  style: AppFonts.titleDesktop.copyWith(
                     color: AppColors.appWhite,
                   ),
                 ),
@@ -46,28 +52,31 @@ class MainAboutWidget extends StatelessWidget {
                   isUnderline: true,
                   onPressed: () {
                     final HomeViewModel viewModel = Get.find();
-                    viewModel.changePage(AppPages.about);
+                    viewModel.currentPage = AppPages.about;
                   },
                 ),
                 const SizedBox(height: 24),
-                SizedBox(
-                  width: 890.0,
-                  height: 477.0,
-                  child: Image.asset(aboutPicturePath),
+                Image.asset(
+                  aboutPicturePath,
+                  width: uiOrientedSwitch(double.maxFinite, 890.0),
+                  height: uiOrientedSwitch(184, 477.0),
+                  fit: BoxFit.fill,
                 )
               ],
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxHeight: 600),
-              child: SvgPicture.asset(
-                _aboutBackgroundPath,
-                semanticsLabel: 'About',
+          if (Configuration().isDesktop) ...[
+            Expanded(
+              flex: 1,
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxHeight: 600),
+                child: SvgPicture.asset(
+                  _aboutBackgroundPath,
+                  semanticsLabel: 'About',
+                ),
               ),
             ),
-          ),
+          ]
         ],
       ),
     );

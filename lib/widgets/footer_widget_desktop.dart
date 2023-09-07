@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medex/theming/app_colors.dart';
 import 'package:medex/theming/app_fonts.dart';
+import 'package:medex/ui/home/app_pages.dart';
+import 'package:medex/ui/home/footer_icons.dart';
 import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/utils/url_helper.dart';
 import 'package:medex/widgets/app_icon.dart';
@@ -10,8 +12,8 @@ import 'package:medex/widgets/clickable_text.dart';
 const _footerIconRightPadding = 40.0;
 const _footerTextRightPadding = 32.0;
 
-class FooterWidget extends StatelessWidget {
-  const FooterWidget({Key? key}) : super(key: key);
+class FooterWidgetDesktop extends StatelessWidget {
+  const FooterWidgetDesktop({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,15 @@ class FooterWidget extends StatelessWidget {
                     textStyle: AppFonts.body.copyWith(
                       color: AppColors.appWhite,
                     ),
-                    onPressed: () => viewModel.changePage(page),
+                    onPressed: () {
+                      if (page == AppPages.services) {
+                        UrlHelper.openUrl(
+                          url: viewModel.currentLocale.servicesUrlPath(),
+                        );
+                      } else {
+                        viewModel.currentPage = page;
+                      }
+                    },
                   ),
                 ],
                 if (page != AppPages.values.first && page != AppPages.values.last) ...[

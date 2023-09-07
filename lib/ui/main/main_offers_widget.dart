@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medex/theming/app_colors.dart';
 import 'package:medex/theming/app_fonts.dart';
-import 'package:medex/ui/admin/admin_screen.dart';
+import 'package:medex/ui/main/main_offers_view_model.dart';
+import 'package:medex/utils/configuration.dart';
+import 'package:medex/utils/utils.dart';
 import 'package:medex/widgets/default_button_2.dart';
 
+///Main offers widget(from Server) used both for desktop and mobile
 class MainOffersWidget extends StatefulWidget {
   const MainOffersWidget({Key? key}) : super(key: key);
 
@@ -13,8 +16,8 @@ class MainOffersWidget extends StatefulWidget {
 }
 
 class _MainOffersWidgetState extends State<MainOffersWidget> {
+  final MainOffersViewModel offersModel = Get.find();
   var selectedIndex = 0;
-  var numberOfCircles = 3;
   final pageController = PageController();
 
   @override
@@ -23,7 +26,8 @@ class _MainOffersWidgetState extends State<MainOffersWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          height: 144,
+          //TODO make page view with expanded sizes
+          height: uiOrientedSwitch(110, 144),
           width: double.maxFinite,
           child: PageView(
             controller: pageController,
@@ -33,40 +37,29 @@ class _MainOffersWidgetState extends State<MainOffersWidget> {
               });
             },
             children: [
-              Text(
-                'main_title_text'.tr,
-                style: AppFonts.title,
-                maxLines: 3,
-              ),
-              Text(
-                '22222 long text for the second title   aaaaaaa 2222222222',
-                style: AppFonts.title,
-                maxLines: 3,
-              ),
-              Text(
-                '3333333 long text for the second title   aaaaaaa  33333333333333',
-                style: AppFonts.title,
-                maxLines: 3,
-              ),
+              for (final offer in offersModel.offers) ...[
+                Text(
+                  offer.tr,
+                  style: Configuration().isMobile ? AppFonts.titleMobile : AppFonts.titleDesktop,
+                  maxLines: 3,
+                ),
+              ],
             ],
           ),
         ),
-        const SizedBox(height: 24),
+        SizedBox(height: uiOrientedSwitch(30, 24)),
         DefaultButton2(
           label: 'main_see_more'.tr,
-          onPressed: () {
-            // final HomeViewModel viewModel = Get.find();
-            // viewModel.changePage(AppPages.sales);
-              Get.to(() => AdminScreen());
-          },
+          size: Size(uiOrientedSwitch(double.maxFinite, 187), 52),
+          onPressed: () {},
         ),
-        const SizedBox(height: 80),
+        SizedBox(height: uiOrientedSwitch(30, 80)),
         Container(
           padding: EdgeInsets.only(left: 8),
-          height: 16,
+          height: uiOrientedSwitch(10, 16),
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: numberOfCircles,
+            itemCount: offersModel.offers.length,
             itemBuilder: (BuildContext context, int index) {
               return Row(
                 children: [
@@ -74,8 +67,8 @@ class _MainOffersWidgetState extends State<MainOffersWidget> {
                     color: Colors.transparent,
                     child: InkWell(
                       child: Container(
-                        height: 16,
-                        width: 16,
+                        height: uiOrientedSwitch(10, 16),
+                        width: uiOrientedSwitch(10, 16),
                         decoration: BoxDecoration(
                           border: Border.all(width: 1, color: AppColors.primary),
                           color: selectedIndex == index ? AppColors.primary : AppColors.primary.withOpacity(0.2),
@@ -91,7 +84,7 @@ class _MainOffersWidgetState extends State<MainOffersWidget> {
                       },
                     ),
                   ),
-                  const SizedBox(width: 12),
+                  SizedBox(width: uiOrientedSwitch(6, 10)),
                 ],
               );
             },

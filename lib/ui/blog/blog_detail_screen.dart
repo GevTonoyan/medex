@@ -29,7 +29,7 @@ class BlogDetailScreen extends StatelessWidget {
             children: [
               Text(
                 'blog'.tr,
-                style: AppFonts.title,
+                style: AppFonts.titleDesktop,
               ),
               const SizedBox(height: 24),
               Row(

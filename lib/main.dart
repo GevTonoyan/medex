@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medex/translations/messages.dart';
 import 'package:medex/ui/admin/admin_screen.dart';
-import 'package:medex/ui/home/home_screen.dart';
+import 'package:medex/ui/home/home_screen_desktop.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:medex/ui/home/home_screen_mobile.dart';
+import 'package:medex/ui/main/main_offers_view_model.dart';
+import 'package:medex/utils/configuration.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -18,21 +21,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Configuration().screenSize = MediaQuery.sizeOf(context);
+    print('---------- screenSize = ${Configuration().screenSize}  isMobile = ${Configuration().isMobile}');
+    var aa = Get.put(MainOffersViewModel()); //TODO change the init place
+
     return GetMaterialApp(
       initialRoute: '/',
       routes: <String, Widget Function(BuildContext context)>{
-        //'/': (_) => MainScreen(),
-        '/admin': (_) => AdminScreen(),
+        '/admin': (_) => const AdminScreen(),
       },
+      debugShowCheckedModeBanner: false,
       translations: Messages(),
       locale: const Locale('hy', 'AM'),
       fallbackLocale: const Locale('ru', 'Ru'),
       home: MaterialApp(
         title: 'title'.tr,
-        theme: ThemeData(
-          useMaterial3: true,
-        ),
-        home: const HomeScreen(),
+        theme: ThemeData(useMaterial3: true),
+        home: Configuration().isMobile ? const HomeScreenMobile() : const HomeScreenDesktop(),
       ),
     );
   }

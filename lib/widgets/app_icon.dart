@@ -9,6 +9,7 @@ class AppIcon extends StatefulWidget {
   final Color iconColor;
   final Color hoverColor;
   final bool disabled;
+  final Size size;
 
   const AppIcon({
     this.assetPath,
@@ -18,6 +19,7 @@ class AppIcon extends StatefulWidget {
     this.iconColor = AppColors.appWhite,
     this.hoverColor = AppColors.darkGreen,
     this.disabled = false,
+    this.size = const Size(24, 24),
   })  : assert(iconData != null || assetPath != null),
         super(key: key);
 
@@ -36,8 +38,8 @@ class _AppIconState extends State<AppIcon> {
         onExit: (event) => setState(() => _isHovering = false),
         cursor: SystemMouseCursors.click,
         child: SizedBox(
-          height: 24,
-          width: 24,
+          height: widget.size.height,
+          width: widget.size.width,
           child: widget.assetPath != null
               ? SvgPicture.asset(
                   widget.assetPath!,
