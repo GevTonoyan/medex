@@ -37,12 +37,19 @@ class AppDrawer extends StatelessWidget {
                 iconData: Icons.clear,
                 iconColor: AppColors.primary,
                 size: Size(30, 30),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
               ),
               const SizedBox(height: 30),
               DefaultButton1(
                 label: 'prices'.tr,
                 size: Size(double.maxFinite, 44),
-                onPressed: () {},
+                onPressed: () {
+                  UrlHelper.openUrl(
+                      url:
+                          'https://firebasestorage.googleapis.com/v0/b/medex-9ae38.appspot.com/o/prices.pdf?alt=media&token=6b05a836-4f72-4003-a145-896bf3d51a61');
+                },
               ),
               const SizedBox(height: 24),
               for (final page in AppPages.values) ...[
@@ -51,6 +58,7 @@ class AppDrawer extends StatelessWidget {
                       textStyle: AppFonts.bodyBold,
                       color: page == homeViewModel.currentPage ? AppColors.primary : null,
                       onPressed: () {
+                        Navigator.of(context).pop();
                         if (page == AppPages.services) {
                           UrlHelper.openUrl(
                             url: homeViewModel.currentLocale.servicesUrlPath(),

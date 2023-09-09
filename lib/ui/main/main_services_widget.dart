@@ -21,7 +21,7 @@ class MainServicesWidget extends StatelessWidget {
     return Padding(
       padding: uiOrientedSwitch(
         EdgeInsets.zero,
-        const EdgeInsets.only(right: pageContentRightPadding),
+        const EdgeInsets.only(right: pageHorizontalPaddingDesktop),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

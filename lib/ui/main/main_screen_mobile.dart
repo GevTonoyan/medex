@@ -4,8 +4,7 @@ import 'package:medex/ui/main/main_blog_widget.dart';
 import 'package:medex/ui/main/main_news_widget.dart';
 import 'package:medex/ui/main/main_offers_widget.dart';
 import 'package:medex/ui/main/main_services_widget.dart';
-import 'package:medex/widgets/footer_widget_desktop.dart';
-import 'package:medex/widgets/footer_widget_mobile.dart';
+import 'package:medex/utils/constants.dart';
 
 class MainScreenMobile extends StatelessWidget {
   const MainScreenMobile({Key? key}) : super(key: key);
@@ -16,7 +15,7 @@ class MainScreenMobile extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: EdgeInsets.symmetric(horizontal: pageHorizontalPaddingMobile),
             child: Column(
               children: [
                 Center(
@@ -29,18 +28,16 @@ class MainScreenMobile extends StatelessWidget {
                 ),
                 const SizedBox(height: 24),
                 const MainOffersWidget(),
-                const SizedBox(height: 50),
+                const SizedBox(height: contentSeparationPaddingMobile),
                 const MainServicesWidget(),
-                const SizedBox(height: 50),
+                const SizedBox(height: contentSeparationPaddingMobile),
               ],
             )),
         const MainAboutWidget(),
-        const SizedBox(height: 50),
+        const SizedBox(height: contentSeparationPaddingMobile),
         const MainBlogWidget(),
-        const SizedBox(height: 50),
+        const SizedBox(height: contentSeparationPaddingMobile),
         const MainNewsWidget(),
-        const SizedBox(height: 50),
-        const FooterWidgetMobile(),
       ],
     );
   }

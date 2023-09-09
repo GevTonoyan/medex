@@ -20,8 +20,8 @@ class MainAboutWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: uiOrientedSwitch(
-        const EdgeInsets.symmetric(vertical: 30, horizontal: 16),
-        const EdgeInsets.fromLTRB(pageContentLeftPadding, 60, 0, 60),
+        const EdgeInsets.symmetric(vertical: 30, horizontal: pageHorizontalPaddingMobile),
+        const EdgeInsets.fromLTRB(pageHorizontalPaddingDesktop, 60, 0, 60),
       ),
       color: AppColors.primary,
       child: Row(

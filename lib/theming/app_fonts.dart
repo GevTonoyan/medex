@@ -16,11 +16,18 @@ class AppFonts {
     color: AppColors.appBlack,
   );
 
-  static const TextStyle subTitle = TextStyle(
+  static const TextStyle subTitleDesktop = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.bold,
     color: AppColors.appBlack,
     height: 36 / 24,
+  );
+
+  static const TextStyle subTitleMobile = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+    color: AppColors.appBlack,
+    height: 27 / 18,
   );
 
   static const TextStyle body = TextStyle(

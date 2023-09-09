@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medex/theming/app_fonts.dart';
+import 'package:medex/utils/configuration.dart';
+import 'package:medex/utils/constants.dart';
+import 'package:medex/utils/utils.dart';
 import 'package:medex/widgets/contact_info_widget.dart';
 
 const _backgroundAssetPath = 'assets/contact_us_picture.png';
@@ -11,7 +14,12 @@ class ContactUsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 120, vertical: 32),
+      padding: EdgeInsets.only(
+        left: uiOrientedSwitch(pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
+        right: uiOrientedSwitch(pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
+        top: uiOrientedSwitch(pageTopPaddingMobile, pageTopPaddingDesktop),
+        bottom: 0,
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -21,16 +29,16 @@ class ContactUsScreen extends StatelessWidget {
               children: [
                 Text(
                   'contact'.tr,
-                  style: AppFonts.titleDesktop,
+                  style: uiOrientedSwitch(AppFonts.titleMobile, AppFonts.titleDesktop),
                 ),
-                const SizedBox(height: 24.0),
+                SizedBox(height: uiOrientedSwitch(16, 24)),
                 const ContactInfoWidget(),
               ],
             ),
           ),
-          Expanded(
-            child: Image.asset(_backgroundAssetPath),
-          ),
+          if (Configuration().isDesktop) ...[
+            Expanded(child: Image.asset(_backgroundAssetPath)),
+          ],
         ],
       ),
     );

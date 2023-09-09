@@ -17,7 +17,7 @@ class AdminScreen extends StatefulWidget {
 }
 
 class _AdminScreenState extends State<AdminScreen> {
-  final viewModel = Get.put(AdminViewModel());
+  final AdminViewModel model = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class _AdminScreenState extends State<AdminScreen> {
           Container(
             height: 110,
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.only(left: contentSeparationPadding),
+            padding: EdgeInsets.only(left: contentSeparationPaddingDesktop),
             color: AppColors.appWhite,
             child: SvgPicture.asset(
               'assets/medex_logo_arm.svg',
@@ -42,9 +42,9 @@ class _AdminScreenState extends State<AdminScreen> {
               child: Padding(
                 padding: const EdgeInsets.only(
                   top: 40,
-                  left: contentSeparationPadding,
+                  left: contentSeparationPaddingDesktop,
                   right: 404,
-                  bottom: contentSeparationPadding,
+                  bottom: contentSeparationPaddingDesktop,
                 ),
                 child: SizedBox(
                   width: double.maxFinite,
@@ -68,7 +68,7 @@ class _AdminScreenState extends State<AdminScreen> {
                       ),
                       const SizedBox(width: 160),
                       Obx(() {
-                        if (viewModel.selectedPage == AdminPages.addSales && viewModel.salesPageState == SalesPageState.list) {
+                        if (model.selectedPage == AdminPages.addSales && model.salesPageState == SalesPageState.list) {
                           return Expanded(child: SalesList());
                         } else {
                           return Expanded(child: AddItemWidget());

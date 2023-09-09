@@ -5,10 +5,10 @@ import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/sales/sale_item_model.dart';
 import 'package:medex/widgets/app_network_image.dart';
 
-class SalesItemWidget extends StatelessWidget {
+class SaleItemWidgetDesktop extends StatelessWidget {
   final SaleItemModel saleItemModel;
 
-  const SalesItemWidget({
+  const SaleItemWidgetDesktop({
     required this.saleItemModel,
     Key? key,
   }) : super(key: key);
@@ -57,7 +57,7 @@ class SalesItemWidget extends StatelessWidget {
                 children: [
                   Text(
                     saleItemModel.title,
-                    style: AppFonts.subTitle.copyWith(color: AppColors.appWhite),
+                    style: AppFonts.subTitleDesktop.copyWith(color: AppColors.appWhite),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),

@@ -37,7 +37,7 @@ class HeaderWidgetDesktop extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const SizedBox(width: pageContentLeftPadding),
+          const SizedBox(width: pageHorizontalPaddingDesktop),
           InkWell(
             child: MouseRegion(
               cursor: SystemMouseCursors.click,
@@ -134,7 +134,7 @@ class HeaderWidgetDesktop extends StatelessWidget {
                         children: [
                           Text(
                             'enter_admin_code'.tr,
-                            style: AppFonts.subTitle,
+                            style: AppFonts.subTitleDesktop,
                           ),
                           SizedBox(height: 10),
                           AppTextField(params: TextFieldParams(controller: controller)),

@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:medex/theming/app_colors.dart';
-import 'package:medex/ui/about_us/about_us_screen.dart';
+import 'package:medex/ui/about_us/about_us_screen_mobile.dart';
 import 'package:medex/ui/blog/blog_screen.dart';
-import 'package:medex/ui/blog/blog_view_model.dart';
 import 'package:medex/ui/contact_us/contact_us_screen.dart';
 import 'package:medex/ui/home/app_pages.dart';
 import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/ui/home/app_drawer.dart';
 import 'package:medex/ui/main/main_screen_mobile.dart';
 import 'package:medex/ui/news/news_screen.dart';
-import 'package:medex/ui/news/news_view_model.dart';
-import 'package:medex/ui/sales/sales_screen.dart';
+import 'package:medex/ui/sales/sales_screen_mobile.dart';
 import 'package:medex/ui/services/services_screen.dart';
+import 'package:medex/utils/configuration.dart';
+import 'package:medex/utils/constants.dart';
+import 'package:medex/widgets/footer_widget_mobile.dart';
 
 class HomeScreenMobile extends StatefulWidget {
   const HomeScreenMobile({super.key});
@@ -23,16 +24,14 @@ class HomeScreenMobile extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<HomeScreenMobile> {
-  final viewModel = Get.put(HomeViewModel());
-  var a = Get.put(BlogViewModel());
-  var aa = Get.put(NewsViewModel());
+  final HomeViewModel model = Get.find();
 
   static final Map<AppPages, Widget> _pagesMapMobile = {
     //todo add consts
     AppPages.main: const MainScreenMobile(),
-    AppPages.about: AboutUsScreen(),
+    AppPages.about: AboutUsScreenMobile(),
     AppPages.services: ServicesScreen(),
-    AppPages.sales: SalesScreen(),
+    AppPages.sales: SalesScreenMobile(),
     AppPages.blog: BlogScreen(),
     AppPages.news: NewsScreen(),
     AppPages.contact: ContactUsScreen(),
@@ -57,12 +56,22 @@ class _MyHomePageState extends State<HomeScreenMobile> {
             iconTheme: IconThemeData(color: AppColors.primary),
             actions: [
               Padding(
-                padding: const EdgeInsets.only(right: 16),
-                child: SvgPicture.asset(
-                  'assets/medex_logo_${homeViewModel.currentLogoAssetPath}.svg',
-                  semanticsLabel: 'Medex',
-                  height: 34.0,
-                  width: 106.0,
+                padding: const EdgeInsets.only(right: pageHorizontalPaddingMobile),
+                child: InkWell(
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: SvgPicture.asset(
+                      'assets/medex_logo_${homeViewModel.currentLogoAssetPath}.svg',
+                      semanticsLabel: 'Medex',
+                      height: 34.0,
+                      width: 106.0,
+                    ),
+                  ),
+                  onTap: () {
+                    if (homeViewModel.currentPage != AppPages.main) {
+                      homeViewModel.currentPage = AppPages.main;
+                    }
+                  },
                 ),
               )
             ],
@@ -70,9 +79,20 @@ class _MyHomePageState extends State<HomeScreenMobile> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Obx(() {
-          return _pagesMapMobile[viewModel.currentPage] ?? const MainScreenMobile();
-        }),
+        child: Column(
+          children: [
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: Configuration().screenSize.height - kToolbarHeight - footerHeightMobile - contentSeparationPaddingMobile,
+              ), //TODO
+              child: Obx(() {
+                return _pagesMapMobile[model.currentPage] ?? const MainScreenMobile();
+              }),
+            ),
+            const SizedBox(height: contentSeparationPaddingMobile),
+            const FooterWidgetMobile(),
+          ],
+        ),
       ),
     );
   }

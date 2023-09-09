@@ -106,7 +106,7 @@ class _SaleItemWidget extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Text(index.toString(), style: AppFonts.subTitle),
+          Text(index.toString(), style: AppFonts.subTitleDesktop),
           const SizedBox(width: 16),
           Expanded(
             child: Text(

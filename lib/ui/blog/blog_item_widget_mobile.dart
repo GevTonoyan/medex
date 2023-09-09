@@ -10,16 +10,17 @@ import 'package:medex/widgets/app_network_image.dart';
 import 'package:medex/widgets/clickable_text.dart';
 
 class BlogItemWidgetMobile extends StatelessWidget {
-  static const blogWidth = 253.0;
-  static const blogHeight = 469.0;
-
   final BlogItemModel blogItemModel;
+  final double blogWidth;
+  final double blogHeight;
   final VoidCallback? onPressed;
 
   const BlogItemWidgetMobile({
     Key? key,
     required this.blogItemModel,
     this.onPressed,
+    required this.blogWidth,
+    required this.blogHeight,
   }) : super(key: key);
 
   @override
@@ -32,6 +33,7 @@ class BlogItemWidgetMobile extends StatelessWidget {
         color: AppColors.primary,
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             flex: 3,

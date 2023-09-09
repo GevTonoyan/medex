@@ -13,14 +13,16 @@ import 'package:medex/widgets/app_network_image.dart';
 import 'package:medex/widgets/clickable_text.dart';
 
 class NewsItemWidgetMobile extends StatelessWidget {
-  static const newsWidth = 255.0;
-  static const newsHeight = 368.0;
+  final double newsWidth;
+  final double newsHeight;
 
   final NewsItemModel newsModel;
 
   const NewsItemWidgetMobile({
     Key? key,
     required this.newsModel,
+    required this.newsWidth,
+    required this.newsHeight,
   }) : super(key: key);
 
   @override
@@ -36,13 +38,10 @@ class NewsItemWidgetMobile extends StatelessWidget {
         children: [
           ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(10)),
-              child: AspectRatio(
-                aspectRatio: 1.80,
-                child: AppNetworkImage(
-                  imageUrl: newsModel.imageUrl,
-                  height: 141,
-                  width: 255,
-                ),
+              child: AppNetworkImage(
+                imageUrl: newsModel.imageUrl,
+                height: 141,
+                width: 255,
               )),
           const SizedBox(height: 16),
           Text(

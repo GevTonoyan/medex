@@ -23,7 +23,7 @@ class TextFieldContainer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(params.label ?? '', style: AppFonts.subTitle),
+          Text(params.label ?? '', style: AppFonts.subTitleDesktop),
           const SizedBox(height: 16),
           AppTextField(params: params),
         ],

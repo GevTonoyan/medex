@@ -36,14 +36,17 @@ class _MainNewsWidgetState extends State<MainNewsWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: uiOrientedSwitch(16, pageContentLeftPadding)),
+      padding: EdgeInsets.only(left: uiOrientedSwitch(pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop)),
       child: Column(
         children: [
           Row(
             children: [
               Row(
                 children: [
-                  Text('news'.tr, style: AppFonts.titleDesktop),
+                  Text(
+                    'news'.tr,
+                    style: Configuration().isMobile ? AppFonts.titleMobile : AppFonts.titleDesktop,
+                  ),
                   const SizedBox(width: 24),
                   if (Configuration().isDesktop) ...[
                     ListScrollButtons(
@@ -64,7 +67,7 @@ class _MainNewsWidgetState extends State<MainNewsWidget> {
                   viewModel.currentPage = AppPages.news;
                 },
               ),
-              SizedBox(width: uiOrientedSwitch(30, pageContentRightPadding))
+              SizedBox(width: uiOrientedSwitch(30, pageHorizontalPaddingDesktop))
             ],
           ),
           const SizedBox(height: 24.0),
@@ -85,7 +88,11 @@ class _MainNewsWidgetState extends State<MainNewsWidget> {
                         final news = model.news.elementAt(index);
 
                         return uiOrientedSwitch(
-                          NewsItemWidgetMobile(newsModel: news),
+                          NewsItemWidgetMobile(
+                            newsModel: news,
+                            newsWidth: 255.0,
+                            newsHeight: 368.0,
+                          ),
                           NewsItemWidgetDesktop(newsModel: news),
                         );
                       },

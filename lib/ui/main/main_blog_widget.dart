@@ -30,12 +30,15 @@ class _MainBlogWidgetState extends State<MainBlogWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: uiOrientedSwitch(16, pageContentLeftPadding)),
+      padding: EdgeInsets.only(left: uiOrientedSwitch(pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop)),
       child: Column(
         children: [
           Row(
             children: [
-              Text('blog'.tr, style: uiOrientedSwitch(AppFonts.titleMobile, AppFonts.titleDesktop)),
+              Text(
+                'blog'.tr,
+                style: uiOrientedSwitch(AppFonts.titleMobile, AppFonts.titleDesktop),
+              ),
               const SizedBox(width: 24),
               if (Configuration().isDesktop) ...[
                 ListScrollButtons(
@@ -76,7 +79,11 @@ class _MainBlogWidgetState extends State<MainBlogWidget> {
                       itemBuilder: (context, index) {
                         final blog = model.blogs.elementAt(index);
                         return uiOrientedSwitch(
-                          BlogItemWidgetMobile(blogItemModel: blog),
+                          BlogItemWidgetMobile(
+                            blogItemModel: blog,
+                            blogWidth: 253,
+                            blogHeight: 469,
+                          ),
                           BlogItemWidgetDesktop(blogItemModel: blog),
                         );
                       },

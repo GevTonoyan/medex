@@ -7,16 +7,16 @@ import 'package:medex/ui/main/main_about_widget.dart';
 import 'package:medex/utils/constants.dart';
 import 'package:medex/widgets/contact_info_widget.dart';
 
-class AboutUsScreen extends StatelessWidget {
-  const AboutUsScreen({Key? key}) : super(key: key);
+class AboutUsScreenDesktop extends StatelessWidget {
+  const AboutUsScreenDesktop({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(
-        pageContentLeftPadding,
-        pageContentTopPadding,
-        pageContentRightPadding,
+        pageHorizontalPaddingDesktop,
+        pageTopPaddingDesktop,
+        pageHorizontalPaddingDesktop,
         0,
       ),
       child: Column(
@@ -36,7 +36,7 @@ class AboutUsScreen extends StatelessWidget {
                       const SizedBox(height: 24),
                       Text(
                         'established'.tr,
-                        style: AppFonts.subTitle,
+                        style: AppFonts.subTitleDesktop,
                       ),
                       const SizedBox(height: 12),
                       const Text(
@@ -68,10 +68,10 @@ class AboutUsScreen extends StatelessWidget {
               )
             ],
           ),
-          const SizedBox(height: contentSeparationPadding),
+          const SizedBox(height: contentSeparationPaddingDesktop),
           Text(
             'our_strengths'.tr,
-            style: AppFonts.subTitle,
+            style: AppFonts.subTitleDesktop,
           ),
           const SizedBox(height: 12),
           const Text(
@@ -89,7 +89,7 @@ class AboutUsScreen extends StatelessWidget {
               itemCount: 30,
             ),
           ),
-          const SizedBox(height: contentSeparationPadding),
+          const SizedBox(height: contentSeparationPaddingDesktop),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,13 +100,12 @@ class AboutUsScreen extends StatelessWidget {
                   const ContactInfoWidget(),
                 ],
               ),
-              const SizedBox(width: contentSeparationPadding),
+              const SizedBox(width: contentSeparationPaddingDesktop),
               HtmlWidget(
                 '<iframe style="width:757px; height:407px;" src="$aboutVideoUrl" frameborder="0"></iframe>',
               ),
             ],
           ),
-          const SizedBox(height: contentSeparationPadding),
         ],
       ),
     );

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:medex/di/dependency_injection.dart';
 import 'package:medex/translations/messages.dart';
 import 'package:medex/ui/admin/admin_screen.dart';
 import 'package:medex/ui/home/home_screen_desktop.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:medex/ui/home/home_screen_mobile.dart';
-import 'package:medex/ui/main/main_offers_view_model.dart';
 import 'package:medex/utils/configuration.dart';
 import 'firebase_options.dart';
 
@@ -13,6 +13,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  setupDependencies();
   runApp(const MyApp());
 }
 
@@ -22,8 +23,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Configuration().screenSize = MediaQuery.sizeOf(context);
-    print('---------- screenSize = ${Configuration().screenSize}  isMobile = ${Configuration().isMobile}');
-    var aa = Get.put(MainOffersViewModel()); //TODO change the init place
 
     return GetMaterialApp(
       initialRoute: '/',

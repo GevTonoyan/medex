@@ -17,8 +17,8 @@ class MainScreenDesktop extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(
-            left: pageContentLeftPadding,
-            top: pageContentTopPadding,
+            left: pageHorizontalPaddingDesktop,
+            top: pageTopPaddingDesktop,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,20 +30,19 @@ class MainScreenDesktop extends StatelessWidget {
                   Expanded(child: Image.asset('main_picture.png'))
                 ],
               ),
-              const SizedBox(height: contentSeparationPadding),
+              const SizedBox(height: contentSeparationPaddingDesktop),
               const MainServicesWidget(),
-              const SizedBox(height: contentSeparationPadding),
+              const SizedBox(height: contentSeparationPaddingDesktop),
             ],
           ),
         ),
         Column(
           children: [
             MainAboutWidget(),
-            SizedBox(height: contentSeparationPadding),
+            SizedBox(height: contentSeparationPaddingDesktop),
             MainBlogWidget(),
             SizedBox(height: 166),
             MainNewsWidget(),
-            SizedBox(height: contentSeparationPadding),
           ],
         )
       ],

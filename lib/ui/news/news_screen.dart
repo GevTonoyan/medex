@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/news/news_item_widget_desktop.dart';
+import 'package:medex/ui/news/news_item_widget_mobile.dart';
 import 'package:medex/ui/news/news_view_model.dart';
 import 'package:medex/utils/constants.dart';
 import 'package:medex/utils/utils.dart';
@@ -15,25 +16,25 @@ class NewsScreen extends StatefulWidget {
 }
 
 class _NewsScreenState extends State<NewsScreen> {
-  final NewsViewModel model = Get.find();
-
   @override
   Widget build(BuildContext context) {
+    final NewsViewModel model = Get.find();
+
     return Padding(
-      padding: const EdgeInsets.fromLTRB(
-        pageContentLeftPadding,
-        pageContentTopPadding,
-        pageContentRightPadding,
-        contentSeparationPadding,
+      padding: EdgeInsets.fromLTRB(
+        uiOrientedSwitch(pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
+        uiOrientedSwitch(pageTopPaddingMobile, pageTopPaddingDesktop),
+        uiOrientedSwitch(pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
+        0,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'news'.tr,
-            style: AppFonts.titleDesktop,
+            style: uiOrientedSwitch(AppFonts.titleMobile, AppFonts.titleDesktop),
           ),
-          const SizedBox(height: 24),
+          SizedBox(height: uiOrientedSwitch(16, 24)),
           Obx(
             () => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,31 +44,72 @@ class _NewsScreenState extends State<NewsScreen> {
                   const SizedBox(height: 40),
                   EmptyListLoadingWidget(isLoading: model.isLoading),
                 ] else ...[
-                  LayoutBuilder(builder: (context, constraints) {
-                    return GridView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: getGridViewCrossAxisCount(
-                          constraints.maxWidth,
-                          NewsItemWidgetDesktop.newsWidth,
-                        ),
-                        crossAxisSpacing: 24,
-                        mainAxisSpacing: 24,
-                        childAspectRatio: NewsItemWidgetDesktop.newsWidth / NewsItemWidgetDesktop.newsHeight,
-                      ),
-                      itemCount: model.news.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return NewsItemWidgetDesktop(newsModel: model.news.elementAt(index));
-                      },
-                    );
-                  })
+                  uiOrientedSwitch(_NewsGridMobile(), _NewsGridDesktop()),
                 ]
               ],
             ),
           )
         ],
       ),
+    );
+  }
+}
+
+class _NewsGridDesktop extends StatelessWidget {
+  const _NewsGridDesktop({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final NewsViewModel model = Get.find();
+
+    return LayoutBuilder(builder: (context, constraints) {
+      return GridView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: getGridViewCrossAxisCount(
+            constraints.maxWidth,
+            NewsItemWidgetDesktop.newsWidth,
+          ),
+          crossAxisSpacing: 24,
+          mainAxisSpacing: 24,
+          childAspectRatio: NewsItemWidgetDesktop.newsWidth / NewsItemWidgetDesktop.newsHeight,
+        ),
+        itemCount: model.news.length,
+        itemBuilder: (BuildContext context, int index) {
+          return NewsItemWidgetDesktop(newsModel: model.news.elementAt(index));
+        },
+      );
+    });
+  }
+}
+
+class _NewsGridMobile extends StatelessWidget {
+  const _NewsGridMobile({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final NewsViewModel model = Get.find();
+
+    return ListView.separated(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: model.news.length,
+      itemBuilder: (context, index) {
+        final news = model.news.elementAt(index);
+
+        return NewsItemWidgetMobile(
+          newsModel: news,
+          newsWidth: double.maxFinite,
+          newsHeight: 393,
+        );
+      },
+      separatorBuilder: (BuildContext context, int index) {
+        if (index != model.news.length) {
+          return const SizedBox(height: 24);
+        }
+        return SizedBox.shrink();
+      },
     );
   }
 }
