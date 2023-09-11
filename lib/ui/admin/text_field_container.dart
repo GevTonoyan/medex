@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:medex/theming/app_colors.dart';
 import 'package:medex/theming/app_fonts.dart';
-import 'package:medex/widgets/app_text_field/app_text_field.dart';
-import 'package:medex/widgets/app_text_field/text_field_params.dart';
+import 'package:medex/widgets/ui_components/app_text_field/app_text_field.dart';
+import 'package:medex/widgets/ui_components/app_text_field/text_field_params.dart';
 
 class TextFieldContainer extends StatelessWidget {
   final TextFieldParams params;

@@ -6,8 +6,8 @@ import 'package:medex/ui/home/app_pages.dart';
 import 'package:medex/ui/home/footer_icons.dart';
 import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/utils/url_helper.dart';
-import 'package:medex/widgets/app_icon.dart';
-import 'package:medex/widgets/clickable_text.dart';
+import 'package:medex/widgets/ui_components/app_icon.dart';
+import 'package:medex/widgets/ui_components/clickable_text.dart';
 
 const _footerIconRightPadding = 40.0;
 const _footerTextRightPadding = 32.0;

@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/admin/admin_view_model.dart';
 import 'package:medex/utils/extensions/string_extensions.dart';
-import 'package:medex/widgets/app_loading.dart';
-import 'package:medex/widgets/app_text_field/text_field_params.dart';
-import 'package:medex/widgets/default_button_1.dart';
+import 'package:medex/widgets/ui_components/app_loading.dart';
+import 'package:medex/widgets/ui_components/app_text_field/text_field_params.dart';
+import 'package:medex/widgets/ui_components/default_button_1.dart';
 import 'text_field_container.dart';
 
 class AddItemWidget extends StatefulWidget {

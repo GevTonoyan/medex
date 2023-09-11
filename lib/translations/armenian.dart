@@ -63,4 +63,5 @@ const armenianTranslations = <String, String>{
   'image_url_error': 'Սխալ հղում',
   'description_error': 'Նկարագրությունը չի կարող լինել դատարկ',
   'enter_admin_code': 'Մուտքագրեք ադմինի ծածկագիրը',
+  'wrong_password': 'Սխալ ծածկագիր',
 };

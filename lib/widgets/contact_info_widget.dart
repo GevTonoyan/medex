@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/utils/url_helper.dart';
 import 'package:medex/utils/utils.dart';
-import 'package:medex/widgets/clickable_text.dart';
+import 'package:medex/widgets/ui_components/clickable_text.dart';
 
 class ContactInfoWidget extends StatelessWidget {
   const ContactInfoWidget({Key? key}) : super(key: key);

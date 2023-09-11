@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medex/theming/app_colors.dart';
 import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/sales/sale_item_model.dart';
-import 'package:medex/widgets/app_network_image.dart';
+import 'package:medex/widgets/ui_components/app_network_image.dart';
 
 class SaleItemWidgetDesktop extends StatelessWidget {
   final SaleItemModel saleItemModel;

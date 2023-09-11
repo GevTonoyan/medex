@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medex/widgets/app_loading.dart';
+import 'package:medex/widgets/ui_components/app_loading.dart';
 
 class EmptyListLoadingWidget extends StatelessWidget {
   final bool isLoading;

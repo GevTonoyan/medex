@@ -9,8 +9,8 @@ import 'package:medex/ui/home/app_pages.dart';
 import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/ui/news/news_detail_screen.dart';
 import 'package:medex/ui/news/news_item_model.dart';
-import 'package:medex/widgets/app_network_image.dart';
-import 'package:medex/widgets/clickable_text.dart';
+import 'package:medex/widgets/ui_components/app_network_image.dart';
+import 'package:medex/widgets/ui_components/clickable_text.dart';
 
 class NewsItemWidgetMobile extends StatelessWidget {
   final double newsWidth;

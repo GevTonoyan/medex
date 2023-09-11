@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medex/theming/app_colors.dart';
-import 'package:medex/widgets/app_text_field/text_field_params.dart';
+import 'package:medex/widgets/ui_components/app_text_field/text_field_params.dart';
 
 class AppTextField extends StatelessWidget {
   final TextFieldParams params;

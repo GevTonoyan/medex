@@ -7,7 +7,7 @@ import 'package:medex/utils/configuration.dart';
 import 'package:medex/utils/constants.dart';
 import 'package:medex/utils/extensions/string_extensions.dart';
 import 'package:medex/utils/utils.dart';
-import 'package:medex/widgets/app_network_image.dart';
+import 'package:medex/widgets/ui_components/app_network_image.dart';
 
 class BlogDetailScreen extends StatelessWidget {
   final BlogItemModel blog;

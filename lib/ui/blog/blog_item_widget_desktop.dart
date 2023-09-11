@@ -6,8 +6,8 @@ import 'package:medex/ui/blog/blog_detail_screen.dart';
 import 'package:medex/ui/blog/blog_item_model.dart';
 import 'package:medex/ui/home/app_pages.dart';
 import 'package:medex/ui/home/home_view_model.dart';
-import 'package:medex/widgets/app_network_image.dart';
-import 'package:medex/widgets/clickable_text.dart';
+import 'package:medex/widgets/ui_components/app_network_image.dart';
+import 'package:medex/widgets/ui_components/clickable_text.dart';
 
 class BlogItemWidgetDesktop extends StatelessWidget {
   static const blogWidth = 759.0;

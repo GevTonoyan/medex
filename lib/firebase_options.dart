@@ -52,6 +52,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '122237698215',
     projectId: 'medex-9ae38',
     authDomain: 'medex-9ae38.firebaseapp.com',
+    databaseURL: 'https://medex-9ae38-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'medex-9ae38.appspot.com',
     measurementId: 'G-8WJVZL3716',
   );
@@ -61,6 +62,7 @@ class DefaultFirebaseOptions {
     appId: '1:122237698215:android:2a3fe1c0659789a0901b82',
     messagingSenderId: '122237698215',
     projectId: 'medex-9ae38',
+    databaseURL: 'https://medex-9ae38-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'medex-9ae38.appspot.com',
   );
 
@@ -69,6 +71,7 @@ class DefaultFirebaseOptions {
     appId: '1:122237698215:ios:3c8128d885a230df901b82',
     messagingSenderId: '122237698215',
     projectId: 'medex-9ae38',
+    databaseURL: 'https://medex-9ae38-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'medex-9ae38.appspot.com',
     iosClientId: '122237698215-s1dr8rgj6n89jcr2bafeutfq4ddhd204.apps.googleusercontent.com',
     iosBundleId: 'com.example.medex.clinic.medex',

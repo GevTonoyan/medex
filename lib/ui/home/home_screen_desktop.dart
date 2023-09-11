@@ -11,8 +11,8 @@ import 'package:medex/ui/news/news_screen.dart';
 import 'package:medex/ui/sales/sales_screen_desktop.dart';
 import 'package:medex/ui/services/services_screen.dart';
 import 'package:medex/utils/constants.dart';
-import 'package:medex/widgets/footer_widget_desktop.dart';
 import 'package:medex/widgets/header_widget_desktop.dart';
+import 'package:medex/widgets/ui_components/footer_widget/footer_widget_desktop.dart';
 
 class HomeScreenDesktop extends StatefulWidget {
   const HomeScreenDesktop({super.key});

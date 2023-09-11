@@ -6,7 +6,7 @@ import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/utils/constants.dart';
 import 'package:medex/utils/url_helper.dart';
 import 'package:medex/utils/utils.dart';
-import 'package:medex/widgets/default_button_1.dart';
+import 'package:medex/widgets/ui_components/default_button_1.dart';
 
 const _serviceIcon1Path = 'assets/service_icon_1.svg';
 const _serviceIcon2Path = 'assets/service_icon_2.svg';

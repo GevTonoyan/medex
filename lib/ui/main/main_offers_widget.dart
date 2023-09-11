@@ -5,7 +5,7 @@ import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/main/main_offers_view_model.dart';
 import 'package:medex/utils/configuration.dart';
 import 'package:medex/utils/utils.dart';
-import 'package:medex/widgets/default_button_2.dart';
+import 'package:medex/widgets/ui_components/default_button_2.dart';
 
 ///Main offers widget(from Server) used both for desktop and mobile
 class MainOffersWidget extends StatefulWidget {

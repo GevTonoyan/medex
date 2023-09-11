@@ -6,7 +6,7 @@ import 'package:medex/ui/news/news_item_model.dart';
 import 'package:medex/utils/configuration.dart';
 import 'package:medex/utils/constants.dart';
 import 'package:medex/utils/utils.dart';
-import 'package:medex/widgets/app_network_image.dart';
+import 'package:medex/widgets/ui_components/app_network_image.dart';
 
 class NewsDetailScreen extends StatelessWidget {
   final NewsItemModel newsItemModel;

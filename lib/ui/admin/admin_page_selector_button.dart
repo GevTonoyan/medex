@@ -4,7 +4,7 @@ import 'package:medex/theming/app_colors.dart';
 import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/admin/admin_pages.dart';
 import 'package:medex/ui/admin/admin_view_model.dart';
-import 'package:medex/widgets/clickable_text.dart';
+import 'package:medex/widgets/ui_components/clickable_text.dart';
 
 class AdminPageSelectorButton extends StatelessWidget {
   final AdminPages page;

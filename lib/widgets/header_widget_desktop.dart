@@ -3,28 +3,33 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:medex/theming/app_colors.dart';
 import 'package:medex/theming/app_fonts.dart';
-import 'package:medex/ui/admin/admin_screen.dart';
+import 'package:medex/ui/admin/admin_password_dialog_widget.dart';
 import 'package:medex/ui/home/app_locales.dart';
 import 'package:medex/ui/home/app_pages.dart';
 import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/utils/constants.dart';
+import 'package:medex/utils/n_tap_check.dart';
 import 'package:medex/utils/url_helper.dart';
-import 'package:medex/widgets/app_text_field/app_text_field.dart';
-import 'package:medex/widgets/app_text_field/text_field_params.dart';
-import 'package:medex/widgets/clickable_text.dart';
-import 'package:medex/widgets/default_button_1.dart';
+import 'package:medex/widgets/ui_components/clickable_text.dart';
+import 'package:medex/widgets/ui_components/default_button_1.dart';
 import 'package:medex/widgets/phone_number_row_widget.dart';
 
 const _headerTextRightPadding = 24.0;
 const _localeTextRightPadding = 24.0;
 
-class HeaderWidgetDesktop extends StatelessWidget {
+class HeaderWidgetDesktop extends StatefulWidget {
   const HeaderWidgetDesktop({Key? key}) : super(key: key);
+
+  @override
+  State<HeaderWidgetDesktop> createState() => _HeaderWidgetDesktopState();
+}
+
+class _HeaderWidgetDesktopState extends State<HeaderWidgetDesktop> {
+  final NTapCheck tapCheck = NTapCheck(n: 5);
 
   @override
   Widget build(BuildContext context) {
     final HomeViewModel homeViewModel = Get.find();
-    final TextEditingController controller = TextEditingController();
 
     return Container(
       decoration: const BoxDecoration(
@@ -123,34 +128,11 @@ class HeaderWidgetDesktop extends StatelessWidget {
           SizedBox(
             width: 200,
             child: GestureDetector(
-              onLongPress: () {
-                Get.dialog(
-                  Dialog(
-                    insetPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 400),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'enter_admin_code'.tr,
-                            style: AppFonts.subTitleDesktop,
-                          ),
-                          SizedBox(height: 10),
-                          AppTextField(params: TextFieldParams(controller: controller)),
-                          SizedBox(height: 10),
-                          DefaultButton1(
-                              label: 'continue'.tr,
-                              onPressed: () {
-                                if (controller.text == '123123') {
-                                  Get.to(() => const AdminScreen());
-                                }
-                              }),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
+              onTap: () {
+                if (!tapCheck.isNTap()) {
+                  return;
+                }
+                Get.dialog(const AdminPasswordDialogWidget());
               },
             ),
           ),

@@ -5,6 +5,7 @@ import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/ui/main/main_offers_view_model.dart';
 import 'package:medex/ui/news/news_view_model.dart';
 import 'package:medex/ui/sales/sales_view_model.dart';
+import 'package:medex/ui/admin/admin_password_view_model.dart';
 
 void setupDependencies() {
   Get.lazyPut(() => HomeViewModel());
@@ -13,4 +14,5 @@ void setupDependencies() {
   Get.lazyPut(() => SalesViewModel());
   Get.lazyPut(() => MainOffersViewModel());
   Get.lazyPut(() => AdminViewModel());
+  Get.lazyPut(() => AdminPasswordViewModel());
 }

@@ -10,9 +10,9 @@ import 'package:medex/ui/news/news_view_model.dart';
 import 'package:medex/utils/configuration.dart';
 import 'package:medex/utils/constants.dart';
 import 'package:medex/utils/utils.dart';
-import 'package:medex/widgets/clickable_text.dart';
 import 'package:medex/widgets/empty_list_loading_widget.dart';
 import 'package:medex/widgets/list_scroll_buttons.dart';
+import 'package:medex/widgets/ui_components/clickable_text.dart';
 
 const _newsWidgetPadding = 24.0;
 
