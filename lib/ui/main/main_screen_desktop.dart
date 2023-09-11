@@ -27,7 +27,7 @@ class MainScreenDesktop extends StatelessWidget {
                 children: [
                   Expanded(child: const MainOffersWidget()),
                   const SizedBox(width: 24),
-                  Expanded(child: Image.asset('main_picture.png'))
+                  Expanded(child: Image.asset('assets/main_picture.png'))
                 ],
               ),
               const SizedBox(height: contentSeparationPaddingDesktop),

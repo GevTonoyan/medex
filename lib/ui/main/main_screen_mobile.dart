@@ -20,7 +20,7 @@ class MainScreenMobile extends StatelessWidget {
               children: [
                 Center(
                   child: Image.asset(
-                    'main_picture.png',
+                    'assets/main_picture.png',
                     fit: BoxFit.fill,
                     height: 416,
                     width: double.maxFinite,

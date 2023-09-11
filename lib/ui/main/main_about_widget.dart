@@ -10,8 +10,8 @@ import 'package:medex/utils/constants.dart';
 import 'package:medex/utils/utils.dart';
 import 'package:medex/widgets/ui_components/clickable_text.dart';
 
-const aboutPicturePath = 'about_picture.png';
-const _aboutBackgroundPath = 'background_1.svg';
+const aboutPicturePath = 'assets/about_picture.png';
+const _aboutBackgroundPath = 'assets/background_1.svg';
 
 class MainAboutWidget extends StatelessWidget {
   const MainAboutWidget({Key? key}) : super(key: key);
