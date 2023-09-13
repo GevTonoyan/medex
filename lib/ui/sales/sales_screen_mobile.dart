@@ -33,6 +33,7 @@ class SalesScreenMobile extends StatelessWidget {
             'assets/main_picture.png',
             height: 262,
             width: double.maxFinite,
+            fit: BoxFit.contain,
           ),
           const SizedBox(height: 16),
           Obx(

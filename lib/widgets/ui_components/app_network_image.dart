@@ -39,7 +39,7 @@ class AppNetworkImage extends StatelessWidget {
             'assets/item_not_found.png',
             height: height,
             width: width,
-            fit: BoxFit.fill,
+            fit: BoxFit.contain,
           );
         },
       ),

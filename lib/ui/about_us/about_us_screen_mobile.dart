@@ -50,6 +50,7 @@ class AboutUsScreenMobile extends StatelessWidget {
             semanticsLabel: 'Medex',
             width: double.maxFinite,
             height: 274,
+            fit: BoxFit.contain,
           ),
           const SizedBox(height: contentSeparationPaddingMobile),
           Text('our_strengths'.tr, style: AppFonts.subTitleMobile),

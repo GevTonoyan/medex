@@ -60,7 +60,7 @@ class MainAboutWidget extends StatelessWidget {
                   aboutPicturePath,
                   width: uiOrientedSwitch(double.maxFinite, 890.0),
                   height: uiOrientedSwitch(184, 477.0),
-                  fit: BoxFit.fill,
+                  fit: BoxFit.contain,
                 )
               ],
             ),
