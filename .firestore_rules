@@ -1,0 +1,21 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if true;
+    }
+    
+    // Allow everyone to read from 'blogs' collection but restrict writes
+    match /blogs/Okw9O9VRbO0WtrBmCqHp {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Allow everyone to read from 'news' collection but restrict writes
+    match /news/sFHPkbfFPqYcHtjNW18x {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}
