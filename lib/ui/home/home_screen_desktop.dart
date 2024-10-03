@@ -24,6 +24,8 @@ class HomeScreenDesktop extends StatefulWidget {
 class _MyHomePageState extends State<HomeScreenDesktop> {
   final HomeViewModel viewModel = Get.find();
 
+  final ScrollController scrollController = ScrollController();
+
   static Map<AppPages, Widget> pagesMap = {
     //todo add consts
     AppPages.main: const MainScreenDesktop(),
@@ -41,18 +43,27 @@ class _MyHomePageState extends State<HomeScreenDesktop> {
       backgroundColor: AppColors.appWhite,
       body: Column(
         children: [
-          const HeaderWidgetDesktop(),
+          HeaderWidgetDesktop(
+            onPageChanged: () {
+              scrollController.jumpTo(0);
+            },
+          ),
           Expanded(
             child: SingleChildScrollView(
+              controller: scrollController,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ConstrainedBox(
                     constraints: BoxConstraints(
-                      minHeight: MediaQuery.of(context).size.height - 120 - 192 - contentSeparationPaddingDesktop,
+                      minHeight: MediaQuery.of(context).size.height -
+                          120 -
+                          192 -
+                          contentSeparationPaddingDesktop,
                     ), //TODO think better way
                     child: Obx(() {
-                      return pagesMap[viewModel.currentPage] ?? const MainScreenDesktop();
+                      return pagesMap[viewModel.currentPage] ??
+                          const MainScreenDesktop();
                     }),
                   ),
                   const SizedBox(height: contentSeparationPaddingDesktop),
@@ -64,5 +75,11 @@ class _MyHomePageState extends State<HomeScreenDesktop> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
   }
 }

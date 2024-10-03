@@ -12,7 +12,12 @@ import 'package:medex/widgets/phone_number_row_widget.dart';
 import 'package:medex/widgets/ui_components/default_button_1.dart';
 
 class AppDrawer extends StatelessWidget {
-  const AppDrawer({Key? key}) : super(key: key);
+  final VoidCallback? onPageChanged;
+
+  const AppDrawer({
+    Key? key,
+    this.onPageChanged,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +61,9 @@ class AppDrawer extends StatelessWidget {
                 Obx(() => ClickableText(
                       label: page.toString().tr,
                       textStyle: AppFonts.bodyBold,
-                      color: page == homeViewModel.currentPage ? AppColors.primary : null,
+                      color: page == homeViewModel.currentPage
+                          ? AppColors.primary
+                          : null,
                       onPressed: () {
                         Navigator.of(context).pop();
                         if (page == AppPages.services) {
@@ -65,6 +72,7 @@ class AppDrawer extends StatelessWidget {
                           );
                         } else {
                           homeViewModel.currentPage = page;
+                          onPageChanged?.call();
                         }
                       },
                     )),
@@ -82,7 +90,8 @@ class AppDrawer extends StatelessWidget {
                       final isSelected = locale == homeViewModel.currentLocale;
                       return ClickableText(
                         label: locale.toString(),
-                        textStyle: isSelected ? AppFonts.bodyBold : AppFonts.body,
+                        textStyle:
+                            isSelected ? AppFonts.bodyBold : AppFonts.body,
                         color: isSelected ? AppColors.primary : null,
                         onPressed: () {
                           homeViewModel.changeLocale(locale);

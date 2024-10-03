@@ -25,6 +25,7 @@ class HomeScreenMobile extends StatefulWidget {
 
 class _MyHomePageState extends State<HomeScreenMobile> {
   final HomeViewModel model = Get.find();
+  final ScrollController scrollController = ScrollController();
 
   static final Map<AppPages, Widget> _pagesMapMobile = {
     //todo add consts
@@ -43,7 +44,11 @@ class _MyHomePageState extends State<HomeScreenMobile> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.appWhite,
-      drawer: const AppDrawer(),
+      drawer: AppDrawer(
+        onPageChanged: () {
+          scrollController.jumpTo(0);
+        },
+      ),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: Container(
@@ -88,6 +93,7 @@ class _MyHomePageState extends State<HomeScreenMobile> {
         ),
       ),
       body: SingleChildScrollView(
+        controller: scrollController,
         child: Column(
           children: [
             ConstrainedBox(
@@ -108,5 +114,11 @@ class _MyHomePageState extends State<HomeScreenMobile> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
   }
 }
