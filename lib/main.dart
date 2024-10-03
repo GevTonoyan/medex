@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:medex/core/routes.dart';
 import 'package:medex/di/dependency_injection.dart';
 import 'package:medex/translations/messages.dart';
-import 'package:medex/ui/admin/admin_screen.dart';
-import 'package:medex/ui/home/home_screen_desktop.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:medex/ui/home/home_screen_mobile.dart';
 import 'package:medex/utils/configuration.dart';
 import 'firebase_options.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -25,18 +24,14 @@ class MyApp extends StatelessWidget {
     Configuration().screenSize = MediaQuery.sizeOf(context);
 
     return GetMaterialApp(
-      initialRoute: '/',
-      routes: <String, Widget Function(BuildContext context)>{
-        '/admin': (_) => const AdminScreen(),
-      },
       debugShowCheckedModeBanner: false,
       translations: Messages(),
       locale: const Locale('hy', 'AM'),
       fallbackLocale: const Locale('ru', 'Ru'),
-      home: MaterialApp(
+      home: MaterialApp.router(
+        routerConfig: router,
         title: 'title'.tr,
         theme: ThemeData(useMaterial3: true),
-        home: Configuration().isMobile ? const HomeScreenMobile() : const HomeScreenDesktop(),
       ),
     );
   }

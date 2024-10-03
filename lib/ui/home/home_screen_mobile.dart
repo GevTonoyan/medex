@@ -49,14 +49,20 @@ class _MyHomePageState extends State<HomeScreenMobile> {
           decoration: const BoxDecoration(
             color: AppColors.appWhite,
             boxShadow: [
-              BoxShadow(blurRadius: 15),
+              BoxShadow(
+                color: Color(0x0D000000),
+                offset: Offset(0, 5),
+                blurRadius: 15,
+                spreadRadius: 0,
+              ),
             ],
           ),
           child: AppBar(
             iconTheme: IconThemeData(color: AppColors.primary),
             actions: [
               Padding(
-                padding: const EdgeInsets.only(right: pageHorizontalPaddingMobile),
+                padding:
+                    const EdgeInsets.only(right: pageHorizontalPaddingMobile),
                 child: InkWell(
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
@@ -83,10 +89,14 @@ class _MyHomePageState extends State<HomeScreenMobile> {
           children: [
             ConstrainedBox(
               constraints: BoxConstraints(
-                minHeight: Configuration().screenSize.height - kToolbarHeight - footerHeightMobile - contentSeparationPaddingMobile,
+                minHeight: Configuration().screenSize.height -
+                    kToolbarHeight -
+                    footerHeightMobile -
+                    contentSeparationPaddingMobile,
               ), //TODO
               child: Obx(() {
-                return _pagesMapMobile[model.currentPage] ?? const MainScreenMobile();
+                return _pagesMapMobile[model.currentPage] ??
+                    const MainScreenMobile();
               }),
             ),
             const SizedBox(height: contentSeparationPaddingMobile),

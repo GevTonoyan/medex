@@ -3,11 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:medex/theming/app_colors.dart';
 import 'package:medex/theming/app_fonts.dart';
-import 'package:medex/ui/admin/admin_password_dialog_widget.dart';
 import 'package:medex/ui/home/app_locales.dart';
 import 'package:medex/ui/home/app_pages.dart';
 import 'package:medex/ui/home/home_view_model.dart';
-import 'package:medex/utils/constants.dart';
 import 'package:medex/utils/n_tap_check.dart';
 import 'package:medex/utils/url_helper.dart';
 import 'package:medex/widgets/ui_components/clickable_text.dart';
@@ -35,14 +33,19 @@ class _HeaderWidgetDesktopState extends State<HeaderWidgetDesktop> {
       decoration: const BoxDecoration(
         color: AppColors.appWhite,
         boxShadow: [
-          BoxShadow(blurRadius: 15),
+          BoxShadow(
+            color: Color(0x0D000000), // 0D is the opacity for #0000000D
+            offset: Offset(0, 5), // x and y offset
+            blurRadius: 15, // blur value
+            spreadRadius: 0, // spread value
+          ),
         ],
       ),
       height: 120.0,
+      width: double.maxFinite,
       child: Row(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          const SizedBox(width: pageHorizontalPaddingDesktop),
           InkWell(
             child: MouseRegion(
               cursor: SystemMouseCursors.click,
@@ -61,7 +64,6 @@ class _HeaderWidgetDesktopState extends State<HeaderWidgetDesktop> {
               }
             },
           ),
-          const Spacer(),
           Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -76,7 +78,8 @@ class _HeaderWidgetDesktopState extends State<HeaderWidgetDesktop> {
                       final isSelected = locale == homeViewModel.currentLocale;
                       return ClickableText(
                         label: locale.toString(),
-                        textStyle: isSelected ? AppFonts.bodyBold : AppFonts.body,
+                        textStyle:
+                            isSelected ? AppFonts.bodyBold : AppFonts.body,
                         color: isSelected ? AppColors.primary : null,
                         onPressed: () {
                           homeViewModel.changeLocale(locale);
@@ -97,11 +100,14 @@ class _HeaderWidgetDesktopState extends State<HeaderWidgetDesktop> {
                     Obx(() => ClickableText(
                           label: page.toString().tr,
                           textStyle: AppFonts.bodyBold,
-                          color: page == homeViewModel.currentPage ? AppColors.primary : null,
+                          color: page == homeViewModel.currentPage
+                              ? AppColors.primary
+                              : null,
                           onPressed: () {
                             if (page == AppPages.services) {
                               UrlHelper.openUrl(
-                                url: homeViewModel.currentLocale.servicesUrlPath(),
+                                url: homeViewModel.currentLocale
+                                    .servicesUrlPath(),
                               );
                             } else {
                               homeViewModel.currentPage = page;
@@ -116,7 +122,6 @@ class _HeaderWidgetDesktopState extends State<HeaderWidgetDesktop> {
               ),
             ],
           ),
-          const Spacer(),
           DefaultButton1(
             label: 'prices'.tr,
             onPressed: () {
@@ -124,17 +129,6 @@ class _HeaderWidgetDesktopState extends State<HeaderWidgetDesktop> {
                   url:
                       'https://firebasestorage.googleapis.com/v0/b/medex-9ae38.appspot.com/o/prices.pdf?alt=media&token=6b05a836-4f72-4003-a145-896bf3d51a61');
             },
-          ),
-          SizedBox(
-            width: 200,
-            child: GestureDetector(
-              onTap: () {
-                if (!tapCheck.isNTap()) {
-                  return;
-                }
-                Get.dialog(const AdminPasswordDialogWidget());
-              },
-            ),
           ),
         ],
       ),

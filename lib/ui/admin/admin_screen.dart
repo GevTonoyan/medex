@@ -68,7 +68,8 @@ class _AdminScreenState extends State<AdminScreen> {
                       ),
                       const SizedBox(width: 160),
                       Obx(() {
-                        if (model.selectedPage == AdminPages.addSales && model.salesPageState == SalesPageState.list) {
+                        if (model.selectedPage == AdminPages.addSales &&
+                            model.salesPageState == SalesPageState.list) {
                           return Expanded(child: SalesList());
                         } else {
                           return Expanded(child: AddItemWidget());

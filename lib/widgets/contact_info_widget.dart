@@ -67,7 +67,7 @@ class ContactInfoWidget extends StatelessWidget {
           onPressed: () {
             UrlHelper.openUrl(url: 'mailto:info@medex.clinic');
           },
-        )
+        ),
       ],
     );
   }
