@@ -17,9 +17,11 @@ class BlogScreen extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.fromLTRB(
-        uiOrientedSwitch(pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
+        uiOrientedSwitch(
+            pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
         uiOrientedSwitch(pageTopPaddingMobile, pageTopPaddingDesktop),
-        uiOrientedSwitch(pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
+        uiOrientedSwitch(
+            pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
         0,
       ),
       child: Column(
@@ -27,7 +29,8 @@ class BlogScreen extends StatelessWidget {
         children: [
           Text(
             'blog'.tr,
-            style: uiOrientedSwitch(AppFonts.titleMobile, AppFonts.titleDesktop),
+            style:
+                uiOrientedSwitch(AppFonts.titleMobile, AppFonts.titleDesktop),
           ),
           SizedBox(height: uiOrientedSwitch(16, 24)),
           Obx(
@@ -68,11 +71,13 @@ class _BlogsGridDesktop extends StatelessWidget {
           ),
           crossAxisSpacing: 24,
           mainAxisSpacing: 24,
-          childAspectRatio: BlogItemWidgetDesktop.blogWidth / BlogItemWidgetDesktop.blogHeight,
+          childAspectRatio: BlogItemWidgetDesktop.blogWidth /
+              BlogItemWidgetDesktop.blogHeight,
         ),
         itemCount: model.blogs.length,
         itemBuilder: (_, int index) {
-          return BlogItemWidgetDesktop(blogItemModel: model.blogs.elementAt(index));
+          return BlogItemWidgetDesktop(
+              blogItemModel: model.blogs.elementAt(index));
         },
       );
     });

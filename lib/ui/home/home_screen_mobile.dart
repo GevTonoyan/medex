@@ -42,12 +42,12 @@ class _MyHomePageState extends State<HomeScreenMobile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.appWhite,
       drawer: const AppDrawer(),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: Container(
           decoration: const BoxDecoration(
-            color: AppColors.appWhite,
             boxShadow: [
               BoxShadow(
                 color: Color(0x0D000000),
@@ -59,6 +59,9 @@ class _MyHomePageState extends State<HomeScreenMobile> {
           ),
           child: AppBar(
             iconTheme: IconThemeData(color: AppColors.primary),
+            backgroundColor: AppColors.appWhite,
+            scrolledUnderElevation: 0,
+            elevation: 0,
             actions: [
               Padding(
                 padding:

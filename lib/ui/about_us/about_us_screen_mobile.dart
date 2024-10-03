@@ -45,11 +45,10 @@ class AboutUsScreenMobile extends StatelessWidget {
             style: AppFonts.body,
           ),
           const SizedBox(height: 16),
-          SvgPicture.asset(
-            'assets/background_1.svg',
-            semanticsLabel: 'Medex',
-            width: double.maxFinite,
-            height: 274,
+          Image.asset(
+            'assets/about_us_bg_2.png',
+            width: 261,
+            height: 268,
             fit: BoxFit.contain,
           ),
           const SizedBox(height: contentSeparationPaddingMobile),
@@ -65,7 +64,8 @@ class AboutUsScreenMobile extends StatelessWidget {
             width: double.maxFinite,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => Image.asset('assets/news_item.png'),
+              itemBuilder: (context, index) =>
+                  Image.asset('assets/news_item.png'),
               separatorBuilder: (context, index) => const SizedBox(width: 24),
               itemCount: 30,
             ),

@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
       fallbackLocale: const Locale('ru', 'Ru'),
       home: MaterialApp.router(
         routerConfig: router,
+        debugShowCheckedModeBanner: false,
         title: 'title'.tr,
         theme: ThemeData(useMaterial3: true),
       ),

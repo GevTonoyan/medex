@@ -23,6 +23,8 @@ class AboutUsScreenDesktop extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Expanded(
                   flex: 5,
@@ -61,9 +63,13 @@ class AboutUsScreenDesktop extends StatelessWidget {
                   )),
               Expanded(
                 flex: 3,
-                child: SvgPicture.asset(
-                  'assets/background_1.svg',
-                  semanticsLabel: 'Medex',
+                child: SizedBox(
+                  width: 629,
+                  height: 646,
+                  child: Image.asset(
+                    'assets/about_us_bg_2.png',
+                    fit: BoxFit.fill,
+                  ),
                 ),
               )
             ],
@@ -84,7 +90,8 @@ class AboutUsScreenDesktop extends StatelessWidget {
             width: double.maxFinite,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => Image.asset('assets/news_item.png'),
+              itemBuilder: (context, index) =>
+                  Image.asset('assets/news_item.png'),
               separatorBuilder: (context, index) => const SizedBox(width: 24),
               itemCount: 30,
             ),
