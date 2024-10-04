@@ -16,12 +16,7 @@ const _headerTextRightPadding = 24.0;
 const _localeTextRightPadding = 24.0;
 
 class HeaderWidgetDesktop extends StatefulWidget {
-  final VoidCallback? onPageChanged;
-
-  const HeaderWidgetDesktop({
-    Key? key,
-    this.onPageChanged,
-  }) : super(key: key);
+  const HeaderWidgetDesktop({Key? key}) : super(key: key);
 
   @override
   State<HeaderWidgetDesktop> createState() => _HeaderWidgetDesktopState();
@@ -115,7 +110,6 @@ class _HeaderWidgetDesktopState extends State<HeaderWidgetDesktop> {
                                     .servicesUrlPath(),
                               );
                             } else {
-                              widget.onPageChanged?.call();
                               homeViewModel.currentPage = page;
                             }
                           },

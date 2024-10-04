@@ -28,14 +28,13 @@ class _MyHomePageState extends State<HomeScreenMobile> {
   final ScrollController scrollController = ScrollController();
 
   static final Map<AppPages, Widget> _pagesMapMobile = {
-    //todo add consts
     AppPages.main: const MainScreenMobile(),
-    AppPages.about: AboutUsScreenMobile(),
-    AppPages.services: ServicesScreen(),
-    AppPages.sales: SalesScreenMobile(),
-    AppPages.blog: BlogScreen(),
-    AppPages.news: NewsScreen(),
-    AppPages.contact: ContactUsScreen(),
+    AppPages.about: const AboutUsScreenMobile(),
+    AppPages.services: const ServicesScreen(),
+    AppPages.sales: const SalesScreenMobile(),
+    AppPages.blog: const BlogScreen(),
+    AppPages.news: const NewsScreen(),
+    AppPages.contact: const ContactUsScreen(),
   };
 
   final HomeViewModel homeViewModel = Get.find();
@@ -44,11 +43,7 @@ class _MyHomePageState extends State<HomeScreenMobile> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.appWhite,
-      drawer: AppDrawer(
-        onPageChanged: () {
-          scrollController.jumpTo(0);
-        },
-      ),
+      drawer: const AppDrawer(),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: Container(
@@ -104,6 +99,9 @@ class _MyHomePageState extends State<HomeScreenMobile> {
                     contentSeparationPaddingMobile,
               ), //TODO
               child: Obx(() {
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  scrollController.jumpTo(0);
+                });
                 return _pagesMapMobile[model.currentPage] ??
                     const MainScreenMobile();
               }),

@@ -38,16 +38,17 @@ class _MyHomePageState extends State<HomeScreenDesktop> {
   };
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.appWhite,
       body: Column(
         children: [
-          HeaderWidgetDesktop(
-            onPageChanged: () {
-              scrollController.jumpTo(0);
-            },
-          ),
+          const HeaderWidgetDesktop(),
           Expanded(
             child: SingleChildScrollView(
               controller: scrollController,
@@ -62,6 +63,9 @@ class _MyHomePageState extends State<HomeScreenDesktop> {
                           contentSeparationPaddingDesktop,
                     ), //TODO think better way
                     child: Obx(() {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        scrollController.jumpTo(0);
+                      });
                       return pagesMap[viewModel.currentPage] ??
                           const MainScreenDesktop();
                     }),

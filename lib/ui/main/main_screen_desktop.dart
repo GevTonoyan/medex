@@ -12,40 +12,42 @@ class MainScreenDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(
-            left: pageHorizontalPaddingDesktop,
-            top: pageTopPaddingDesktop,
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+              left: pageHorizontalPaddingDesktop,
+              top: pageTopPaddingDesktop,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Expanded(child: const MainOffersWidget()),
+                    const SizedBox(width: 24),
+                    Expanded(child: Image.asset('assets/main_picture.png'))
+                  ],
+                ),
+                const SizedBox(height: contentSeparationPaddingDesktop),
+                const MainServicesWidget(),
+                const SizedBox(height: contentSeparationPaddingDesktop),
+              ],
+            ),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Column(
             children: [
-              Row(
-                children: [
-                  Expanded(child: const MainOffersWidget()),
-                  const SizedBox(width: 24),
-                  Expanded(child: Image.asset('assets/main_picture.png'))
-                ],
-              ),
-              const SizedBox(height: contentSeparationPaddingDesktop),
-              const MainServicesWidget(),
-              const SizedBox(height: contentSeparationPaddingDesktop),
+              MainAboutWidget(),
+              SizedBox(height: contentSeparationPaddingDesktop),
+              MainBlogWidget(),
+              SizedBox(height: 166),
+              MainNewsWidget(),
             ],
-          ),
-        ),
-        Column(
-          children: [
-            MainAboutWidget(),
-            SizedBox(height: contentSeparationPaddingDesktop),
-            MainBlogWidget(),
-            SizedBox(height: 166),
-            MainNewsWidget(),
-          ],
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 }

@@ -12,12 +12,7 @@ import 'package:medex/widgets/phone_number_row_widget.dart';
 import 'package:medex/widgets/ui_components/default_button_1.dart';
 
 class AppDrawer extends StatelessWidget {
-  final VoidCallback? onPageChanged;
-
-  const AppDrawer({
-    Key? key,
-    this.onPageChanged,
-  }) : super(key: key);
+  const AppDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +67,6 @@ class AppDrawer extends StatelessWidget {
                           );
                         } else {
                           homeViewModel.currentPage = page;
-                          onPageChanged?.call();
                         }
                       },
                     )),
