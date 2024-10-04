@@ -33,6 +33,8 @@ class _AppIconState extends State<AppIcon> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
       child: MouseRegion(
         onEnter: (event) => setState(() => _isHovering = true),
         onExit: (event) => setState(() => _isHovering = false),
@@ -50,7 +52,7 @@ class _AppIconState extends State<AppIcon> {
                 )
               : Icon(
                   widget.iconData,
-                  size: 24,
+                  size: widget.size.height,
                   color: _getColor,
                 ),
         ),

@@ -84,7 +84,7 @@ class BlogItemWidgetDesktop extends StatelessWidget {
                       final HomeViewModel homeViewModel = Get.find();
                       homeViewModel.currentPage = AppPages.blog;
 
-                      Get.dialog(BlogDetailScreen(blog: blogItemModel));
+                      Get.to<void>(BlogDetailScreen(blog: blogItemModel));
                     },
                   ),
                 ],

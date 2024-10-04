@@ -3,21 +3,38 @@ import 'package:go_router/go_router.dart';
 import 'package:medex/ui/admin/admin_screen.dart';
 import 'package:medex/ui/home/home_screen_desktop.dart';
 import 'package:medex/ui/home/home_screen_mobile.dart';
+import 'package:medex/ui/news/news_detail_screen.dart';
+import 'package:medex/ui/news/news_item_model.dart';
 import 'package:medex/utils/configuration.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 
 final router = GoRouter(
-  initialLocation: '/',
+  initialLocation: '/home',
   navigatorKey: _rootNavigatorKey,
   routes: [
     GoRoute(
-      path: '/',
+      path: '/home',
       builder: (context, state) {
         return Configuration().isMobile
             ? const HomeScreenMobile()
             : const HomeScreenDesktop();
       },
+      routes: [
+        GoRoute(
+          path: 'news_detail:title',
+          builder: (context, state) {
+            return NewsDetailScreen(
+              newsItemModel: NewsItemModel(
+                title: 'title',
+                description: 'description',
+                imageUrl: 'imageUrl',
+                date: 'date',
+              ),
+            );
+          },
+        ),
+      ],
     ),
     GoRoute(
       path: '/admin',
