@@ -52,8 +52,14 @@ class AppDrawer extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 24),
-              for (final page in AppPages.values) ...[
-                Obx(() => ClickableText(
+              ListView.separated(
+                itemCount: AppPages.values.length,
+                shrinkWrap: true,
+                separatorBuilder: (_, __) => const SizedBox(height: 16),
+                itemBuilder: (_, index) {
+                  final page = AppPages.values[index];
+                  return Obx(
+                    () => ClickableText(
                       label: page.toString().tr,
                       textStyle: AppFonts.bodyBold,
                       color: page == homeViewModel.currentPage
@@ -69,11 +75,10 @@ class AppDrawer extends StatelessWidget {
                           homeViewModel.currentPage = page;
                         }
                       },
-                    )),
-                if (page != AppPages.values.last) ...[
-                  const SizedBox(height: 16),
-                ]
-              ],
+                    ),
+                  );
+                },
+              ),
               const SizedBox(height: 24),
               const PhoneNumberRowWidget(),
               const SizedBox(height: 24),
