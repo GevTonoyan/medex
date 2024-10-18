@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:medex/translations/armenian.dart';
-import 'package:medex/translations/english.dart';
-import 'package:medex/translations/russian.dart';
+import 'package:medex/core/translations/armenian.dart';
+import 'package:medex/core/translations/english.dart';
+import 'package:medex/core/translations/russian.dart';
 
 class Messages extends Translations {
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:medex/core/translations/messages.dart';
 import 'package:medex/di/dependency_injection.dart';
-import 'package:medex/translations/messages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:medex/ui/admin/admin_screen.dart';
 import 'package:medex/ui/home/home_screen_desktop.dart';
