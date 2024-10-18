@@ -1,20 +1,28 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:medex/ui/sales/sale_item_model.dart';
+import 'package:medex/ui/sales/models/sale_item_model.dart';
 
 const _salesDbName = 'sales';
+
+abstract class SalesService {
+  Future<List<SaleItemModel>> getSales();
+
+  Stream<QuerySnapshot> getSalesStream();
+
+  Future<void> addSale(SaleItemModel saleItemModel);
+
+  Future<void> deleteSale(String id);
+}
 
 class SalesServiceImpl extends SalesService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
   Future<List<SaleItemModel>> getSales() async {
-    final List<SaleItemModel> sales = [];
-    await _firestore.collection(_salesDbName).get().then((querySnapshot) {
-      for (final sale in querySnapshot.docs) {
-        sales.add(SaleItemModel.fromJson(sale.data()));
-      }
-    });
-    return sales;
+    final salesCollection = await _firestore.collection(_salesDbName).get();
+
+    return salesCollection.docs
+        .map((sale) => SaleItemModel.fromJson(sale.data()))
+        .toList();
   }
 
   @override
@@ -33,14 +41,4 @@ class SalesServiceImpl extends SalesService {
     final documentReference = _firestore.collection(_salesDbName).doc(id);
     await documentReference.delete();
   }
-}
-
-abstract class SalesService {
-  Future<List<SaleItemModel>> getSales();
-
-  Stream<QuerySnapshot> getSalesStream();
-
-  Future<void> addSale(SaleItemModel saleItemModel);
-
-  Future<void> deleteSale(String id);
 }

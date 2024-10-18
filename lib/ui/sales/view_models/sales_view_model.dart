@@ -1,13 +1,13 @@
 import 'package:get/get.dart';
-import 'package:medex/ui/sales/sale_item_model.dart';
-import 'package:medex/ui/sales/sales_service.dart';
+import 'package:medex/ui/sales/models/sale_item_model.dart';
+import 'package:medex/ui/sales/services/sales_service.dart';
 
 class SalesViewModel extends GetxController {
-  late final SalesService _salesService;
+  final SalesService _salesService;
 
   SalesViewModel({
-    SalesService? salesService,
-  }) : _salesService = salesService ?? SalesServiceImpl() {
+    required SalesService salesService,
+  }) : _salesService = salesService {
     getSales();
   }
 

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medex/core/theming/app_fonts.dart';
 import 'package:medex/core/utils/constants.dart';
-import 'package:medex/ui/sales/sale_item_widget_desktop.dart';
-import 'package:medex/ui/sales/sales_view_model.dart';
+import 'package:medex/ui/sales/views/sale_item_widget_desktop.dart';
+import 'package:medex/ui/sales/view_models/sales_view_model.dart';
 import 'package:medex/widgets/empty_list_loading_widget.dart';
 
 class SalesScreenDesktop extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medex/core/theming/app_colors.dart';
 import 'package:medex/core/theming/app_fonts.dart';
-import 'package:medex/ui/sales/sale_item_model.dart';
+import 'package:medex/ui/sales/models/sale_item_model.dart';
 
 class SalesItemWidgetMobile extends StatelessWidget {
   final SaleItemModel saleItemModel;

@@ -6,8 +6,8 @@ class NewsViewModel extends GetxController {
   late final NewsService _newsService;
 
   NewsViewModel({
-    NewsService? newsService,
-  }) : _newsService = newsService ?? NewsServiceImpl() {
+    required NewsService newsService,
+  }) : _newsService = newsService {
     getNews();
   }
 

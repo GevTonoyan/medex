@@ -10,7 +10,7 @@ import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/ui/home/app_drawer.dart';
 import 'package:medex/ui/main/main_screen_mobile.dart';
 import 'package:medex/ui/news/views/news_screen.dart';
-import 'package:medex/ui/sales/sales_screen_mobile.dart';
+import 'package:medex/ui/sales/views/sales_screen_mobile.dart';
 import 'package:medex/ui/services/services_screen.dart';
 import 'package:medex/core/utils/configuration.dart';
 import 'package:medex/widgets/ui_components/footer_widget/footer_widget_mobile.dart';
