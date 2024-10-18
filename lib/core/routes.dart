@@ -4,7 +4,7 @@ import 'package:medex/ui/admin/admin_screen.dart';
 import 'package:medex/ui/home/home_screen_desktop.dart';
 import 'package:medex/ui/home/home_screen_mobile.dart';
 import 'package:medex/ui/news/news_detail_screen.dart';
-import 'package:medex/ui/news/news_item_model.dart';
+import 'package:medex/ui/news/models/news_item_model.dart';
 import 'package:medex/core/utils/configuration.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();

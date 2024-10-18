@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:medex/ui/admin/admin_pages.dart';
 import 'package:medex/ui/blog/blog_item_model.dart';
 import 'package:medex/ui/blog/blog_service.dart';
-import 'package:medex/ui/news/news_item_model.dart';
-import 'package:medex/ui/news/news_service.dart';
+import 'package:medex/ui/news/models/news_item_model.dart';
+import 'package:medex/ui/news/services/news_service.dart';
 import 'package:medex/ui/sales/sale_item_model.dart';
 import 'package:medex/ui/sales/sales_service.dart';
 

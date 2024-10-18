@@ -7,8 +7,8 @@ import 'package:medex/core/theming/app_colors.dart';
 import 'package:medex/core/theming/app_fonts.dart';
 import 'package:medex/ui/home/app_pages.dart';
 import 'package:medex/ui/home/home_view_model.dart';
-import 'package:medex/ui/news/news_detail_screen.dart';
-import 'package:medex/ui/news/news_item_model.dart';
+import 'package:medex/ui/news/models/news_item_model.dart';
+import 'package:medex/ui/news/views/news_detail_screen.dart';
 import 'package:medex/widgets/ui_components/app_network_image.dart';
 import 'package:medex/widgets/ui_components/clickable_text.dart';
 

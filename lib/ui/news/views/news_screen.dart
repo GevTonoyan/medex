@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:medex/core/theming/app_fonts.dart';
 import 'package:medex/core/utils/constants.dart';
 import 'package:medex/core/utils/utils.dart';
-import 'package:medex/ui/news/news_item_widget_desktop.dart';
-import 'package:medex/ui/news/news_item_widget_mobile.dart';
-import 'package:medex/ui/news/news_view_model.dart';
+import 'package:medex/ui/news/views/news_item_widget_desktop.dart';
+import 'package:medex/ui/news/views/news_item_widget_mobile.dart';
+import 'package:medex/ui/news/view_models/news_view_model.dart';
 import 'package:medex/widgets/empty_list_loading_widget.dart';
 
 class NewsScreen extends StatefulWidget {
