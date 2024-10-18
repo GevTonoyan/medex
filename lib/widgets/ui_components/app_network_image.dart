@@ -7,6 +7,7 @@ class AppNetworkImage extends StatelessWidget {
   final double height;
   final double width;
   final BorderRadiusGeometry borderRadius;
+  final BoxFit fit;
 
   const AppNetworkImage({
     Key? key,
@@ -14,6 +15,7 @@ class AppNetworkImage extends StatelessWidget {
     required this.height,
     required this.width,
     this.borderRadius = const BorderRadius.all(Radius.circular(16)),
+    this.fit = BoxFit.contain,
   }) : super(key: key);
 
   @override
@@ -39,7 +41,7 @@ class AppNetworkImage extends StatelessWidget {
             'assets/item_not_found.png',
             height: height,
             width: width,
-            fit: BoxFit.contain,
+            fit: fit,
           );
         },
       ),

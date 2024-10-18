@@ -22,9 +22,11 @@ class _NewsScreenState extends State<NewsScreen> {
 
     return Padding(
       padding: EdgeInsets.fromLTRB(
-        uiOrientedSwitch(pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
+        uiOrientedSwitch(
+            pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
         uiOrientedSwitch(pageTopPaddingMobile, pageTopPaddingDesktop),
-        uiOrientedSwitch(pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
+        uiOrientedSwitch(
+            pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
         0,
       ),
       child: Column(
@@ -32,7 +34,8 @@ class _NewsScreenState extends State<NewsScreen> {
         children: [
           Text(
             'news'.tr,
-            style: uiOrientedSwitch(AppFonts.titleMobile, AppFonts.titleDesktop),
+            style:
+                uiOrientedSwitch(AppFonts.titleMobile, AppFonts.titleDesktop),
           ),
           SizedBox(height: uiOrientedSwitch(16, 24)),
           Obx(
@@ -44,7 +47,10 @@ class _NewsScreenState extends State<NewsScreen> {
                   const SizedBox(height: 40),
                   EmptyListLoadingWidget(isLoading: model.isLoading),
                 ] else ...[
-                  uiOrientedSwitch(_NewsGridMobile(), _NewsGridDesktop()),
+                  uiOrientedSwitch(
+                    const _NewsGridMobile(),
+                    const _NewsGridDesktop(),
+                  ),
                 ]
               ],
             ),
@@ -73,7 +79,8 @@ class _NewsGridDesktop extends StatelessWidget {
           ),
           crossAxisSpacing: 24,
           mainAxisSpacing: 24,
-          childAspectRatio: NewsItemWidgetDesktop.newsWidth / NewsItemWidgetDesktop.newsHeight,
+          childAspectRatio: NewsItemWidgetDesktop.newsWidth /
+              NewsItemWidgetDesktop.newsHeight,
         ),
         itemCount: model.news.length,
         itemBuilder: (BuildContext context, int index) {

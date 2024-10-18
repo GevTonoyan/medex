@@ -35,42 +35,49 @@ class NewsItemWidgetDesktop extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      child: AspectRatio(
-                        aspectRatio: 1.80,
-                        child: AppNetworkImage(
-                          imageUrl: newsModel.imageUrl,
-                          height: 204,
-                          width: 368,
-                        ),
-                      )),
-                  const SizedBox(height: 16),
-                  Text(
-                    newsModel.title,
-                    style: AppFonts.bodyBold.copyWith(),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    newsModel.description,
-                    style: AppFonts.body.copyWith(),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    newsModel.date,
-                    style: AppFonts.body.copyWith(color: AppColors.appBlack.withOpacity(0.5)),
-                  ),
-                  const SizedBox(height: 20),
-                ],
+            child: ScrollConfiguration(
+              behavior:
+                  ScrollConfiguration.of(context).copyWith(scrollbars: false),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(20)),
+                        child: AspectRatio(
+                          aspectRatio: 1.80,
+                          child: AppNetworkImage(
+                            imageUrl: newsModel.imageUrl,
+                            fit: BoxFit.fitWidth,
+                            height: 204,
+                            width: 368,
+                          ),
+                        )),
+                    const SizedBox(height: 16),
+                    Text(
+                      newsModel.title,
+                      style: AppFonts.bodyBold.copyWith(),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      newsModel.description,
+                      style: AppFonts.body.copyWith(),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      newsModel.date,
+                      style: AppFonts.body
+                          .copyWith(color: AppColors.appBlack.withOpacity(0.5)),
+                    ),
+                    const SizedBox(height: 20),
+                  ],
+                ),
               ),
             ),
           ),
@@ -86,7 +93,7 @@ class NewsItemWidgetDesktop extends StatelessWidget {
               final HomeViewModel homeViewModel = Get.find();
               homeViewModel.currentPage = AppPages.news;
 
-              Get.dialog(NewsDetailScreen(newsItemModel: newsModel));
+              Get.to<void>(NewsDetailScreen(newsItemModel: newsModel));
             },
           )
         ],

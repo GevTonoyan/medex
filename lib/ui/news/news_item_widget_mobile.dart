@@ -40,6 +40,7 @@ class NewsItemWidgetMobile extends StatelessWidget {
               borderRadius: const BorderRadius.all(Radius.circular(10)),
               child: AppNetworkImage(
                 imageUrl: newsModel.imageUrl,
+                fit: BoxFit.fitWidth,
                 height: 141,
                 width: 255,
               )),
@@ -62,7 +63,8 @@ class NewsItemWidgetMobile extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             newsModel.date,
-            style: AppFonts.body.copyWith(color: AppColors.appBlack.withOpacity(0.5)),
+            style: AppFonts.body
+                .copyWith(color: AppColors.appBlack.withOpacity(0.5)),
           ),
           const SizedBox(height: 20),
           ClickableText(
@@ -77,7 +79,7 @@ class NewsItemWidgetMobile extends StatelessWidget {
               final HomeViewModel homeViewModel = Get.find();
               homeViewModel.currentPage = AppPages.news;
 
-              Get.dialog(NewsDetailScreen(newsItemModel: newsModel));
+              Get.to<void>(NewsDetailScreen(newsItemModel: newsModel));
             },
           )
         ],
