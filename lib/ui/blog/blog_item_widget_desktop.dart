@@ -4,7 +4,6 @@ import 'package:medex/theming/app_colors.dart';
 import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/blog/blog_detail_screen.dart';
 import 'package:medex/ui/blog/blog_item_model.dart';
-import 'package:medex/ui/home/app_pages.dart';
 import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/widgets/ui_components/app_network_image.dart';
 import 'package:medex/widgets/ui_components/clickable_text.dart';
@@ -82,7 +81,7 @@ class BlogItemWidgetDesktop extends StatelessWidget {
                     isUnderline: true,
                     onPressed: () {
                       final HomeViewModel homeViewModel = Get.find();
-                      homeViewModel.currentPage = AppPages.blog;
+                      //homeViewModel.currentPage = AppPages.blog;
 
                       Get.to<void>(BlogDetailScreen(blog: blogItemModel));
                     },

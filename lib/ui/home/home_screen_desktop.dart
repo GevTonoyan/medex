@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medex/theming/app_colors.dart';
 import 'package:medex/ui/about_us/about_us_screen_desktop.dart';
-import 'package:medex/ui/blog/blog_screen.dart';
 import 'package:medex/ui/contact_us/contact_us_screen.dart';
 import 'package:medex/ui/home/app_pages.dart';
 import 'package:medex/ui/home/home_view_model.dart';
@@ -32,7 +31,7 @@ class _MyHomePageState extends State<HomeScreenDesktop> {
     AppPages.about: AboutUsScreenDesktop(),
     AppPages.services: ServicesScreen(),
     AppPages.sales: SalesScreenDesktop(),
-    AppPages.blog: BlogScreen(),
+    //AppPages.blog: BlogScreen(),
     AppPages.news: NewsScreen(),
     AppPages.contact: ContactUsScreen(),
   };

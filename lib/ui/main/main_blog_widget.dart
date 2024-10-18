@@ -5,7 +5,6 @@ import 'package:medex/theming/app_fonts.dart';
 import 'package:medex/ui/blog/blog_item_widget_desktop.dart';
 import 'package:medex/ui/blog/blog_item_widget_mobile.dart';
 import 'package:medex/ui/blog/blog_view_model.dart';
-import 'package:medex/ui/home/app_pages.dart';
 import 'package:medex/ui/home/home_view_model.dart';
 import 'package:medex/utils/configuration.dart';
 import 'package:medex/utils/constants.dart';
@@ -54,7 +53,7 @@ class _MainBlogWidgetState extends State<MainBlogWidget> {
                 isUnderline: true,
                 onPressed: () {
                   final HomeViewModel viewModel = Get.find();
-                  viewModel.currentPage = AppPages.blog;
+                  //viewModel.currentPage = AppPages.blog;
                 },
               ),
               SizedBox(width: uiOrientedSwitch(30, 190)),

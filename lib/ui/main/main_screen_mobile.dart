@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:medex/ui/main/main_about_widget.dart';
-import 'package:medex/ui/main/main_blog_widget.dart';
 import 'package:medex/ui/main/main_news_widget.dart';
 import 'package:medex/ui/main/main_offers_widget.dart';
 import 'package:medex/ui/main/main_services_widget.dart';
@@ -15,7 +14,8 @@ class MainScreenMobile extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-            padding: EdgeInsets.symmetric(horizontal: pageHorizontalPaddingMobile),
+            padding:
+                EdgeInsets.symmetric(horizontal: pageHorizontalPaddingMobile),
             child: Column(
               children: [
                 Center(
@@ -35,8 +35,8 @@ class MainScreenMobile extends StatelessWidget {
             )),
         const MainAboutWidget(),
         const SizedBox(height: contentSeparationPaddingMobile),
-        const MainBlogWidget(),
-        const SizedBox(height: contentSeparationPaddingMobile),
+        // const MainBlogWidget(),
+        // const SizedBox(height: contentSeparationPaddingMobile),
         const MainNewsWidget(),
       ],
     );

@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:medex/theming/app_colors.dart';
 import 'package:medex/ui/about_us/about_us_screen_mobile.dart';
-import 'package:medex/ui/blog/blog_screen.dart';
 import 'package:medex/ui/contact_us/contact_us_screen.dart';
 import 'package:medex/ui/home/app_pages.dart';
 import 'package:medex/ui/home/home_view_model.dart';
@@ -32,7 +31,7 @@ class _MyHomePageState extends State<HomeScreenMobile> {
     AppPages.about: const AboutUsScreenMobile(),
     AppPages.services: const ServicesScreen(),
     AppPages.sales: const SalesScreenMobile(),
-    AppPages.blog: const BlogScreen(),
+    //AppPages.blog: const BlogScreen(),
     AppPages.news: const NewsScreen(),
     AppPages.contact: const ContactUsScreen(),
   };

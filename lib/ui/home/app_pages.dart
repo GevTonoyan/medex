@@ -3,7 +3,7 @@ enum AppPages {
   about('about'),
   services('services'),
   sales('sales'),
-  blog('blog'),
+  //blog('blog'),
   news('news'),
   contact('contact');
 

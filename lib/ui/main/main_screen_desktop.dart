@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:medex/ui/main/main_about_widget.dart';
-import 'package:medex/ui/main/main_blog_widget.dart';
 import 'package:medex/ui/main/main_news_widget.dart';
 import 'package:medex/ui/main/main_services_widget.dart';
 import 'package:medex/utils/constants.dart';
@@ -41,8 +40,8 @@ class MainScreenDesktop extends StatelessWidget {
             children: [
               MainAboutWidget(),
               SizedBox(height: contentSeparationPaddingDesktop),
-              MainBlogWidget(),
-              SizedBox(height: 166),
+              // MainBlogWidget(),
+              // SizedBox(height: 166),
               MainNewsWidget(),
             ],
           )
