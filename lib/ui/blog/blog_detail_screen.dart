@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/app_colors.dart';
-import 'package:medex/theming/app_fonts.dart';
+import 'package:medex/core/theming/app_colors.dart';
+import 'package:medex/core/theming/app_fonts.dart';
+import 'package:medex/core/utils/constants.dart';
+import 'package:medex/core/utils/extensions/string_extensions.dart';
+import 'package:medex/core/utils/utils.dart';
 import 'package:medex/ui/blog/blog_item_model.dart';
-import 'package:medex/utils/configuration.dart';
-import 'package:medex/utils/constants.dart';
-import 'package:medex/utils/extensions/string_extensions.dart';
-import 'package:medex/utils/utils.dart';
+import 'package:medex/core/utils/configuration.dart';
 import 'package:medex/widgets/ui_components/app_icon.dart';
 import 'package:medex/widgets/ui_components/app_network_image.dart';
 
@@ -37,7 +37,6 @@ class BlogDetailScreen extends StatelessWidget {
         ),
         child: Stack(
           children: [
-
             SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

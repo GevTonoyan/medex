@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/app_fonts.dart';
+import 'package:medex/core/theming/app_fonts.dart';
+import 'package:medex/core/utils/constants.dart';
+import 'package:medex/core/utils/utils.dart';
 import 'package:medex/ui/news/news_item_model.dart';
-import 'package:medex/utils/configuration.dart';
-import 'package:medex/utils/constants.dart';
-import 'package:medex/utils/utils.dart';
+import 'package:medex/core/utils/configuration.dart';
 import 'package:medex/widgets/ui_components/app_network_image.dart';
 
 class NewsDetailScreen extends StatelessWidget {
@@ -21,9 +21,11 @@ class NewsDetailScreen extends StatelessWidget {
     return Material(
       child: Padding(
         padding: EdgeInsets.fromLTRB(
-          uiOrientedSwitch(pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
+          uiOrientedSwitch(
+              pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
           uiOrientedSwitch(pageTopPaddingMobile, pageTopPaddingDesktop),
-          uiOrientedSwitch(pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
+          uiOrientedSwitch(
+              pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
           0,
         ),
         child: SingleChildScrollView(
@@ -32,7 +34,8 @@ class NewsDetailScreen extends StatelessWidget {
             children: [
               Text(
                 'news'.tr,
-                style: uiOrientedSwitch(AppFonts.titleMobile, AppFonts.titleDesktop),
+                style: uiOrientedSwitch(
+                    AppFonts.titleMobile, AppFonts.titleDesktop),
               ),
               SizedBox(height: uiOrientedSwitch(16, 24)),
               Row(

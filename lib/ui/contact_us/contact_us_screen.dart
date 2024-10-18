@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/app_fonts.dart';
-import 'package:medex/utils/configuration.dart';
-import 'package:medex/utils/constants.dart';
-import 'package:medex/utils/utils.dart';
+import 'package:medex/core/theming/app_fonts.dart';
+import 'package:medex/core/utils/configuration.dart';
+import 'package:medex/core/utils/constants.dart';
+import 'package:medex/core/utils/utils.dart';
 import 'package:medex/widgets/contact_info_widget.dart';
 
 const _backgroundAssetPath = 'assets/contact_us_picture.png';
@@ -15,8 +15,10 @@ class ContactUsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        left: uiOrientedSwitch(pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
-        right: uiOrientedSwitch(pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
+        left: uiOrientedSwitch(
+            pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
+        right: uiOrientedSwitch(
+            pageHorizontalPaddingMobile, pageHorizontalPaddingDesktop),
         top: uiOrientedSwitch(pageTopPaddingMobile, pageTopPaddingDesktop),
         bottom: 0,
       ),
@@ -29,7 +31,8 @@ class ContactUsScreen extends StatelessWidget {
               children: [
                 Text(
                   'contact'.tr,
-                  style: uiOrientedSwitch(AppFonts.titleMobile, AppFonts.titleDesktop),
+                  style: uiOrientedSwitch(
+                      AppFonts.titleMobile, AppFonts.titleDesktop),
                 ),
                 SizedBox(height: uiOrientedSwitch(16, 24)),
                 const ContactInfoWidget(),

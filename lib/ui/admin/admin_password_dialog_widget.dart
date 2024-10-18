@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/app_fonts.dart';
+import 'package:medex/core/theming/app_fonts.dart';
 import 'package:medex/ui/admin/admin_password_view_model.dart';
 import 'package:medex/ui/admin/admin_screen.dart';
 import 'package:medex/widgets/ui_components/app_loading.dart';

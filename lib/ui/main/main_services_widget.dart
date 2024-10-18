@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/app_fonts.dart';
+import 'package:medex/core/theming/app_fonts.dart';
+import 'package:medex/core/utils/constants.dart';
+import 'package:medex/core/utils/url_helper.dart';
+import 'package:medex/core/utils/utils.dart';
 import 'package:medex/ui/home/home_view_model.dart';
-import 'package:medex/utils/constants.dart';
-import 'package:medex/utils/url_helper.dart';
-import 'package:medex/utils/utils.dart';
 import 'package:medex/widgets/ui_components/default_button_1.dart';
 
 const _serviceIcon1Path = 'assets/service_icon_1.svg';
@@ -34,7 +34,8 @@ class MainServicesWidget extends StatelessWidget {
           const SizedBox(height: 12),
           Text('main_services_description'.tr, style: AppFonts.body),
           SizedBox(height: uiOrientedSwitch(16, 24)),
-          uiOrientedSwitch(const _ServicesIconsMobile(), const _ServicesIconsDesktop()),
+          uiOrientedSwitch(
+              const _ServicesIconsMobile(), const _ServicesIconsDesktop()),
           const SizedBox(height: 30),
           DefaultButton1(
               label: 'see_all1'.tr,
@@ -58,10 +59,14 @@ class _ServicesIconsDesktop extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _ServiceIconText(assetPath: _serviceIcon1Path, label: 'service1_description'.tr),
-        _ServiceIconText(assetPath: _serviceIcon2Path, label: 'service2_description'.tr),
-        _ServiceIconText(assetPath: _serviceIcon3Path, label: 'service3_description'.tr),
-        _ServiceIconText(assetPath: _serviceIcon4Path, label: 'service4_description'.tr),
+        _ServiceIconText(
+            assetPath: _serviceIcon1Path, label: 'service1_description'.tr),
+        _ServiceIconText(
+            assetPath: _serviceIcon2Path, label: 'service2_description'.tr),
+        _ServiceIconText(
+            assetPath: _serviceIcon3Path, label: 'service3_description'.tr),
+        _ServiceIconText(
+            assetPath: _serviceIcon4Path, label: 'service4_description'.tr),
       ],
     );
   }
@@ -75,13 +80,17 @@ class _ServicesIconsMobile extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _ServiceIconText(assetPath: _serviceIcon1Path, label: 'service1_description'.tr),
+        _ServiceIconText(
+            assetPath: _serviceIcon1Path, label: 'service1_description'.tr),
         const SizedBox(height: 20),
-        _ServiceIconText(assetPath: _serviceIcon2Path, label: 'service2_description'.tr),
+        _ServiceIconText(
+            assetPath: _serviceIcon2Path, label: 'service2_description'.tr),
         const SizedBox(height: 20),
-        _ServiceIconText(assetPath: _serviceIcon3Path, label: 'service3_description'.tr),
+        _ServiceIconText(
+            assetPath: _serviceIcon3Path, label: 'service3_description'.tr),
         const SizedBox(height: 20),
-        _ServiceIconText(assetPath: _serviceIcon4Path, label: 'service4_description'.tr),
+        _ServiceIconText(
+            assetPath: _serviceIcon4Path, label: 'service4_description'.tr),
       ],
     );
   }

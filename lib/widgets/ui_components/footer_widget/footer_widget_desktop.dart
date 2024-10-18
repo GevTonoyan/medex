@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/app_colors.dart';
-import 'package:medex/theming/app_fonts.dart';
+import 'package:medex/core/theming/app_colors.dart';
+import 'package:medex/core/theming/app_fonts.dart';
+import 'package:medex/core/utils/n_tap_check.dart';
+import 'package:medex/core/utils/url_helper.dart';
 import 'package:medex/ui/admin/admin_password_dialog_widget.dart';
 import 'package:medex/ui/home/app_pages.dart';
 import 'package:medex/ui/home/footer_icons.dart';
 import 'package:medex/ui/home/home_view_model.dart';
-import 'package:medex/utils/n_tap_check.dart';
-import 'package:medex/utils/url_helper.dart';
 import 'package:medex/widgets/ui_components/app_icon.dart';
 import 'package:medex/widgets/ui_components/clickable_text.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:medex/theming/app_colors.dart';
-import 'package:medex/theming/app_fonts.dart';
+import 'package:medex/core/theming/app_colors.dart';
+import 'package:medex/core/theming/app_fonts.dart';
 
 class DefaultButton1 extends StatelessWidget {
   final String label;

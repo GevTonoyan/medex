@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:medex/theming/app_colors.dart';
+import 'package:medex/core/theming/app_colors.dart';
 
 class AppIcon extends StatefulWidget {
   final String? assetPath;

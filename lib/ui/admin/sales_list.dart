@@ -7,8 +7,8 @@ import 'package:medex/ui/sales/sale_item_model.dart';
 import 'package:medex/widgets/ui_components/app_icon.dart';
 import 'package:medex/widgets/ui_components/default_button_1.dart';
 import 'package:medex/widgets/empty_list_loading_widget.dart';
-import '../../theming/app_colors.dart';
-import '../../theming/app_fonts.dart';
+import '../../core/theming/app_colors.dart';
+import '../../core/theming/app_fonts.dart';
 
 class SalesList extends StatefulWidget {
   const SalesList({Key? key}) : super(key: key);

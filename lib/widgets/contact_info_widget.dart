@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/app_fonts.dart';
-import 'package:medex/utils/url_helper.dart';
-import 'package:medex/utils/utils.dart';
+import 'package:medex/core/theming/app_fonts.dart';
+import 'package:medex/core/utils/url_helper.dart';
+import 'package:medex/core/utils/utils.dart';
 import 'package:medex/widgets/ui_components/clickable_text.dart';
 
 class ContactInfoWidget extends StatelessWidget {

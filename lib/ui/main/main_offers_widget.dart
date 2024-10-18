@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:medex/theming/app_colors.dart';
-import 'package:medex/theming/app_fonts.dart';
+import 'package:medex/core/theming/app_colors.dart';
+import 'package:medex/core/theming/app_fonts.dart';
 import 'package:medex/ui/main/main_offers_view_model.dart';
-import 'package:medex/utils/configuration.dart';
-import 'package:medex/utils/utils.dart';
+import 'package:medex/core/utils/configuration.dart';
+import 'package:medex/core/utils/utils.dart';
 import 'package:medex/widgets/ui_components/default_button_2.dart';
 
 ///Main offers widget(from Server) used both for desktop and mobile

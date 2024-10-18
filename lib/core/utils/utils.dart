@@ -1,4 +1,4 @@
-import 'package:medex/utils/configuration.dart';
+import 'package:medex/core/utils/configuration.dart';
 
 /// This determines how many items can fit in the width,
 /// rounded down to ensure full items without clipping.

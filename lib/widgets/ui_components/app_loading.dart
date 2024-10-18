@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:medex/theming/app_colors.dart';
+import 'package:medex/core/theming/app_colors.dart';
 
 class AppLoading extends StatelessWidget {
   final double size;
