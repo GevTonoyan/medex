@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import 'package:medex/ui/admin/admin_pages.dart';
+import 'package:medex/ui/admin/views/admin_pages.dart';
 import 'package:medex/ui/blog/blog_item_model.dart';
 import 'package:medex/ui/blog/blog_service.dart';
 import 'package:medex/ui/news/models/news_item_model.dart';

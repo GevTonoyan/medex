@@ -3,7 +3,7 @@ import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
 import 'package:medex/core/theming/app_fonts.dart';
 import 'package:medex/core/utils/constants.dart';
-import 'package:medex/ui/main/main_about_widget.dart';
+import 'package:medex/ui/main/views/main_about_widget.dart';
 import 'package:medex/widgets/contact_info_widget.dart';
 
 class AboutUsScreenMobile extends StatelessWidget {

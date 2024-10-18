@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:medex/ui/admin/admin_pages.dart';
-import 'package:medex/ui/admin/admin_view_model.dart';
+import 'package:medex/ui/admin/views/admin_pages.dart';
+import 'package:medex/ui/admin/view_models/admin_view_model.dart';
 import 'package:medex/ui/sales/models/sale_item_model.dart';
 import 'package:medex/widgets/ui_components/app_icon.dart';
 import 'package:medex/widgets/ui_components/default_button_1.dart';
 import 'package:medex/widgets/empty_list_loading_widget.dart';
-import '../../core/theming/app_colors.dart';
-import '../../core/theming/app_fonts.dart';
+import '../../../core/theming/app_colors.dart';
+import '../../../core/theming/app_fonts.dart';
 
 class SalesList extends StatefulWidget {
   const SalesList({Key? key}) : super(key: key);

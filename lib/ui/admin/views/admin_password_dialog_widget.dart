@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medex/core/theming/app_fonts.dart';
-import 'package:medex/ui/admin/admin_password_view_model.dart';
-import 'package:medex/ui/admin/admin_screen.dart';
+import 'package:medex/ui/admin/view_models/admin_password_view_model.dart';
+import 'package:medex/ui/admin/views/admin_screen.dart';
 import 'package:medex/widgets/ui_components/app_loading.dart';
 import 'package:medex/widgets/ui_components/app_text_field/app_text_field.dart';
 import 'package:medex/widgets/ui_components/app_text_field/text_field_params.dart';

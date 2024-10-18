@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:medex/ui/admin/admin_screen.dart';
+import 'package:medex/ui/admin/views/admin_screen.dart';
 import 'package:medex/ui/home/home_screen_desktop.dart';
 import 'package:medex/ui/home/home_screen_mobile.dart';
 import 'package:medex/ui/news/models/news_item_model.dart';

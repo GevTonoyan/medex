@@ -1,14 +1,14 @@
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
 import 'package:get/get.dart';
-import 'package:medex/ui/admin/admin_service.dart';
+import 'package:medex/ui/admin/services/admin_service.dart';
 
 class AdminPasswordViewModel extends GetxController {
-  late final AdminService _adminService;
+  final AdminService _adminService;
 
   AdminPasswordViewModel({
-    AdminService? adminService,
-  }) : _adminService = adminService ?? AdminServiceImpl();
+    required AdminService adminService,
+  }) : _adminService = adminService;
 
   final _isLoading = false.obs;
 

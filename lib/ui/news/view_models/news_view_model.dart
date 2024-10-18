@@ -3,7 +3,7 @@ import 'package:medex/ui/news/models/news_item_model.dart';
 import 'package:medex/ui/news/services/news_service.dart';
 
 class NewsViewModel extends GetxController {
-  late final NewsService _newsService;
+  final NewsService _newsService;
 
   NewsViewModel({
     required NewsService newsService,

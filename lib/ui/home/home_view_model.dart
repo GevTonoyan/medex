@@ -23,7 +23,7 @@ class HomeViewModel extends GetxController {
   void changeLocale(AppLocales locale) {
     _currentLocale.value = locale;
     _currentLogoAssetPath.value = locale.toLogoAssetPath();
-
+    print('Current locale: ${Get.locale?.countryCode ?? 'axxxx'}');
     switch (locale) {
       case AppLocales.arm:
         Get.updateLocale(const Locale('hy', 'AM'));

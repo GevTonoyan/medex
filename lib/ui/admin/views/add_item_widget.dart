@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medex/core/theming/app_fonts.dart';
 import 'package:medex/core/utils/extensions/string_extensions.dart';
-import 'package:medex/ui/admin/admin_view_model.dart';
+import 'package:medex/ui/admin/view_models/admin_view_model.dart';
 import 'package:medex/widgets/ui_components/app_loading.dart';
 import 'package:medex/widgets/ui_components/app_text_field/text_field_params.dart';
 import 'package:medex/widgets/ui_components/default_button_1.dart';

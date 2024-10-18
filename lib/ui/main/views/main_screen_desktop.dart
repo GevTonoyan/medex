@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:medex/core/utils/constants.dart';
-import 'package:medex/ui/main/main_about_widget.dart';
-import 'package:medex/ui/main/main_news_widget.dart';
-import 'package:medex/ui/main/main_services_widget.dart';
+import 'package:medex/ui/main/views/main_about_widget.dart';
+import 'package:medex/ui/main/views/main_news_widget.dart';
+import 'package:medex/ui/main/views/main_services_widget.dart';
 
 import 'main_offers_widget.dart';
 

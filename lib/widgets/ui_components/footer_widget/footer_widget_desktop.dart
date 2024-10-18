@@ -4,7 +4,7 @@ import 'package:medex/core/theming/app_colors.dart';
 import 'package:medex/core/theming/app_fonts.dart';
 import 'package:medex/core/utils/n_tap_check.dart';
 import 'package:medex/core/utils/url_helper.dart';
-import 'package:medex/ui/admin/admin_password_dialog_widget.dart';
+import 'package:medex/ui/admin/views/admin_password_dialog_widget.dart';
 import 'package:medex/ui/home/app_pages.dart';
 import 'package:medex/ui/home/footer_icons.dart';
 import 'package:medex/ui/home/home_view_model.dart';
@@ -90,7 +90,10 @@ class _FooterWidgetDesktopState extends State<FooterWidgetDesktop> {
                   if (!tapCheck.isNTap()) {
                     return;
                   }
-                  Get.dialog<void>(const AdminPasswordDialogWidget());
+                  Get.dialog<void>(
+                    const AdminPasswordDialogWidget(),
+                    barrierDismissible: false,
+                  );
                 },
                 child: Text(
                   'footer_all_rights_reserved'.tr,
