@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
       translations: Messages(),
       locale: const Locale('hy', 'AM'),
       fallbackLocale: const Locale('ru', 'Ru'),
+      theme: ThemeData(fontFamily: 'Mardoto'),
       home: MaterialApp(
         title: 'title'.tr,
         theme: ThemeData(useMaterial3: true),
