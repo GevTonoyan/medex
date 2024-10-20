@@ -20,26 +20,28 @@ class DefaultButton1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.resolveWith<Color>(
-          (Set<MaterialState> states) {
+        backgroundColor: WidgetStateProperty.resolveWith<Color>(
+          (Set<WidgetState> states) {
             return isDisabled ? AppColors.disabled : AppColors.primary;
           },
         ),
-        elevation: MaterialStateProperty.resolveWith<double>(
-          (Set<MaterialState> states) {
+        elevation: WidgetStateProperty.resolveWith<double>(
+          (Set<WidgetState> states) {
             //When button is hovered and not disabled we need to show additional shadow
-            if (states.contains(MaterialState.hovered) && !isDisabled) {
+            if (states.contains(WidgetState.hovered) && !isDisabled) {
               return 20.0;
             }
 
             return 0;
           },
         ),
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        )),
-        padding: MaterialStateProperty.resolveWith<EdgeInsets>(
-          (Set<MaterialState> states) {
+        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+        padding: WidgetStateProperty.resolveWith<EdgeInsets>(
+          (Set<WidgetState> states) {
             return EdgeInsets.zero; // No padding
           },
         ),
