@@ -12,7 +12,8 @@ class AdminPasswordDialogWidget extends StatefulWidget {
   const AdminPasswordDialogWidget({Key? key}) : super(key: key);
 
   @override
-  State<AdminPasswordDialogWidget> createState() => _AdminPasswordDialogWidgetState();
+  State<AdminPasswordDialogWidget> createState() =>
+      _AdminPasswordDialogWidgetState();
 }
 
 class _AdminPasswordDialogWidgetState extends State<AdminPasswordDialogWidget> {
@@ -27,46 +28,62 @@ class _AdminPasswordDialogWidgetState extends State<AdminPasswordDialogWidget> {
       insetPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 400),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+        child: Stack(
           children: [
-            Text(
-              'enter_admin_code'.tr,
-              style: AppFonts.subTitleDesktop,
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'enter_admin_code'.tr,
+                  style: AppFonts.subTitleDesktop,
+                ),
+                SizedBox(height: 10),
+                Form(
+                  key: _formKey,
+                  child: AppTextField(
+                    params: TextFieldParams(
+                      controller: controller,
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return 'wrong_password'.tr;
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                ),
+                SizedBox(height: 10),
+                Obx(() {
+                  if (model.isLoading) {
+                    return const AppLoading();
+                  }
+                  return DefaultButton1(
+                      label: 'continue'.tr,
+                      onPressed: () async {
+                        if (_formKey.currentState?.validate() ?? false) {
+                          if (await model.isPasswordCorrect(controller.text)) {
+                            Get.off(() => const AdminScreen());
+                          } else {
+                            //TODO show snack bar
+                            print('wrong password');
+                          }
+                        }
+                      });
+                }),
+              ],
             ),
-            SizedBox(height: 10),
-            Form(
-              key: _formKey,
-              child: AppTextField(
-                params: TextFieldParams(
-                  controller: controller,
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return 'wrong_password'.tr;
-                    }
-                    return null;
-                  },
+            Positioned(
+              right: 0,
+              child: InkWell(
+                onTap: () {
+                  Get.back<void>();
+                },
+                child: Icon(
+                  Icons.close,
+                  size: 32,
                 ),
               ),
             ),
-            SizedBox(height: 10),
-            Obx(() {
-              if (model.isLoading) {
-                return const AppLoading();
-              }
-              return DefaultButton1(
-                  label: 'continue'.tr,
-                  onPressed: () async {
-                    if (_formKey.currentState?.validate() ?? false) {
-                      if (await model.isPasswordCorrect(controller.text)) {
-                        Get.off(() => const AdminScreen());
-                      } else {
-                        //TODO show snack bar
-                        print('wrong password');
-                      }
-                    }
-                  });
-            }),
           ],
         ),
       ),
