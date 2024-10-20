@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       fallbackLocale: const Locale('ru', 'Ru'),
       theme: ThemeData(fontFamily: 'Mardoto'),
       home: MaterialApp(
-        title: 'title'.tr,
+        title: 'Medex',
         theme: ThemeData(useMaterial3: true),
         home: Configuration().isMobile
             ? const HomeScreenMobile()
