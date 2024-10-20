@@ -46,7 +46,7 @@ class NewsItemWidgetMobile extends StatelessWidget {
               )),
           const SizedBox(height: 16),
           Text(
-            newsModel.title,
+            newsModel.translatedTitle(),
             style: AppFonts.bodyBold.copyWith(),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
@@ -54,7 +54,7 @@ class NewsItemWidgetMobile extends StatelessWidget {
           const SizedBox(height: 12),
           Expanded(
             child: Text(
-              newsModel.description,
+              newsModel.translatedDescription(),
               style: AppFonts.body.copyWith(),
               maxLines: 8,
               overflow: TextOverflow.ellipsis,

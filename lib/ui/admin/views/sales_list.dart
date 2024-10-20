@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:medex/core/theming/app_colors.dart';
+import 'package:medex/core/theming/app_fonts.dart';
 import 'package:medex/ui/admin/views/admin_pages.dart';
 import 'package:medex/ui/admin/view_models/admin_view_model.dart';
 import 'package:medex/ui/sales/models/sale_item_model.dart';
 import 'package:medex/widgets/ui_components/app_icon.dart';
 import 'package:medex/widgets/ui_components/default_button_1.dart';
 import 'package:medex/widgets/empty_list_loading_widget.dart';
-import '../../../core/theming/app_colors.dart';
-import '../../../core/theming/app_fonts.dart';
 
 class SalesList extends StatefulWidget {
   const SalesList({Key? key}) : super(key: key);
@@ -26,7 +26,9 @@ class _SalesListState extends State<SalesList> {
         stream: model.getSalesStream(),
         builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
           final isWaiting = snapshot.connectionState == ConnectionState.waiting;
-          final snapshotErrorWaitingEmptyState = snapshot.hasError || isWaiting || (snapshot.data?.docs.isEmpty ?? true);
+          final snapshotErrorWaitingEmptyState = snapshot.hasError ||
+              isWaiting ||
+              (snapshot.data?.docs.isEmpty ?? true);
 
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,15 +54,18 @@ class _SalesListState extends State<SalesList> {
                           scrollDirection: Axis.vertical,
                           itemBuilder: (context, index) {
                             final docs = snapshot.data!.docs;
-                            final saleItemMap = docs[index].data() as Map<String, dynamic>;
-                            final saleItem = SaleItemModel.fromJson(saleItemMap);
+                            final saleItemMap =
+                                docs[index].data() as Map<String, dynamic>;
+                            final saleItem =
+                                SaleItemModel.fromJson(saleItemMap);
                             return _SaleItemWidget(
                               saleItemModel: saleItem,
                               id: docs[index].id,
                               index: index,
                             );
                           },
-                          separatorBuilder: (context, index) => const SizedBox(height: 24.0),
+                          separatorBuilder: (context, index) =>
+                              const SizedBox(height: 24.0),
                           itemCount: snapshot.data!.docs.length,
                         ),
                       ),
@@ -110,13 +115,14 @@ class _SaleItemWidget extends StatelessWidget {
           const SizedBox(width: 16),
           Expanded(
             child: Text(
-              saleItemModel.title,
+              saleItemModel.translatedTitle(),
               style: AppFonts.body,
               overflow: TextOverflow.ellipsis,
             ),
           ),
           const SizedBox(width: 40),
-          Text(saleItemModel.enabled ? 'on'.tr : 'off'.tr, style: AppFonts.body),
+          Text(saleItemModel.enabled ? 'on'.tr : 'off'.tr,
+              style: AppFonts.body),
           Switch(
             value: saleItemModel.enabled,
             activeColor: AppColors.appWhite,
@@ -124,7 +130,8 @@ class _SaleItemWidget extends StatelessWidget {
             activeTrackColor: AppColors.primary,
             inactiveTrackColor: AppColors.disabled,
             onChanged: (bool value) {
-              final documentReference = FirebaseFirestore.instance.collection('sales').doc(id);
+              final documentReference =
+                  FirebaseFirestore.instance.collection('sales').doc(id);
               documentReference.update({
                 SaleItemModel.enableKey: value,
               });

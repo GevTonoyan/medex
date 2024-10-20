@@ -50,12 +50,12 @@ class NewsDetailScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              newsItemModel.title,
+                              newsItemModel.translatedTitle(),
                               style: AppFonts.subTitleDesktop,
                             ),
                             const SizedBox(height: 12),
                             Text(
-                              newsItemModel.description,
+                              newsItemModel.translatedDescription(),
                               style: AppFonts.body,
                             ),
                             const SizedBox(height: 24),

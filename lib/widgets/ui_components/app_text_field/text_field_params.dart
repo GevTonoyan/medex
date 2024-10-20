@@ -7,6 +7,7 @@ class TextFieldParams {
   final FormFieldValidator<String>? _validator;
   final int? _maxLines;
   final String? _label;
+  final String? _hintText;
 
   TextFieldParams({
     required TextEditingController controller,
@@ -15,12 +16,14 @@ class TextFieldParams {
     FormFieldValidator<String>? validator,
     int? maxLines,
     String? label,
+    String? hintText,
   })  : _controller = controller,
         _onChanged = onChanged,
         _onSubmitted = onSubmitted,
         _validator = validator,
         _maxLines = maxLines,
-        _label = label;
+        _label = label,
+        _hintText = hintText;
 
   TextEditingController get controller => _controller;
 
@@ -33,4 +36,6 @@ class TextFieldParams {
   int? get maxLines => _maxLines;
 
   String? get label => _label;
+
+  String? get hintText => _hintText;
 }

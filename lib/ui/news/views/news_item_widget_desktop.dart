@@ -57,14 +57,14 @@ class NewsItemWidgetDesktop extends StatelessWidget {
                         )),
                     const SizedBox(height: 16),
                     Text(
-                      newsModel.title,
+                      newsModel.translatedTitle(),
                       style: AppFonts.bodyBold.copyWith(),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      newsModel.description,
+                      newsModel.translatedDescription(),
                       style: AppFonts.body.copyWith(),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:medex/common/models/content_document.dart';
 import 'package:medex/core/theming/app_fonts.dart';
 import 'package:medex/core/utils/extensions/string_extensions.dart';
 import 'package:medex/ui/admin/view_models/admin_view_model.dart';
+import 'package:medex/widgets/app_snackbar.dart';
 import 'package:medex/widgets/ui_components/app_loading.dart';
 import 'package:medex/widgets/ui_components/app_text_field/text_field_params.dart';
 import 'package:medex/widgets/ui_components/default_button_1.dart';
@@ -16,9 +18,15 @@ class AddItemWidget extends StatefulWidget {
 }
 
 class _AddItemWidgetState extends State<AddItemWidget> {
-  final _titleController = TextEditingController();
+  final _titleControllerAm = TextEditingController();
+  final _titleControllerRu = TextEditingController();
+  final _titleControllerEn = TextEditingController();
+
   final _imageUrlController = TextEditingController();
-  final _descriptionController = TextEditingController();
+
+  final _descriptionControllerAm = TextEditingController();
+  final _descriptionControllerRu = TextEditingController();
+  final _descriptionControllerEn = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -37,20 +45,45 @@ class _AddItemWidgetState extends State<AddItemWidget> {
           ),
           const SizedBox(height: 40),
           TextFieldContainer(
-            params: TextFieldParams(
-              controller: _titleController,
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'title_error'.tr;
-                }
-                return null;
-              },
-              label: 'add_title'.tr,
-            ),
+            label: 'add_title'.tr,
+            params: [
+              TextFieldParams(
+                controller: _titleControllerAm,
+                label: 'add_title_am'.tr,
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return 'title_error'.tr;
+                  }
+                  return null;
+                },
+              ),
+              TextFieldParams(
+                controller: _titleControllerRu,
+                label: 'add_title_ru'.tr,
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return 'title_error'.tr;
+                  }
+                  return null;
+                },
+              ),
+              TextFieldParams(
+                controller: _titleControllerEn,
+                label: 'add_title_en'.tr,
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return 'title_error'.tr;
+                  }
+                  return null;
+                },
+              ),
+            ],
           ),
           const SizedBox(height: 40),
           TextFieldContainer(
-            params: TextFieldParams(
+            label: 'add_image'.tr,
+            params: [
+              TextFieldParams(
                 controller: _imageUrlController,
                 validator: (String? value) {
                   if (value == null || !value.isUrlValid()) {
@@ -58,21 +91,47 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                   }
                   return null;
                 },
-                label: 'add_image'.tr),
+              ),
+            ],
           ),
           const SizedBox(height: 40),
           TextFieldContainer(
-            params: TextFieldParams(
-              controller: _descriptionController,
-              label: 'add_description'.tr,
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'description_error'.tr;
-                }
-                return null;
-              },
-              maxLines: 4,
-            ),
+            label: 'add_description'.tr,
+            params: [
+              TextFieldParams(
+                controller: _descriptionControllerAm,
+                label: 'add_description_am'.tr,
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return 'description_error'.tr;
+                  }
+                  return null;
+                },
+                maxLines: 4,
+              ),
+              TextFieldParams(
+                controller: _descriptionControllerRu,
+                label: 'add_description_ru'.tr,
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return 'description_error'.tr;
+                  }
+                  return null;
+                },
+                maxLines: 4,
+              ),
+              TextFieldParams(
+                controller: _descriptionControllerEn,
+                label: 'add_description_en'.tr,
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return 'description_error'.tr;
+                  }
+                  return null;
+                },
+                maxLines: 4,
+              ),
+            ],
           ),
           const SizedBox(height: 40),
           Obx(
@@ -82,15 +141,34 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                   ? const AppLoading()
                   : DefaultButton1(
                       label: 'save'.tr,
-                      onPressed: () {
+                      onPressed: () async {
                         if (_formKey.currentState?.validate() ?? false) {
-                          viewModel.addItemToFirestore(
-                            title: _titleController.text,
+                          final success = await viewModel.addItemToFirestore(
+                            amContent: ContentDocument(
+                              title: _titleControllerAm.text,
+                              description: _descriptionControllerAm.text,
+                            ),
+                            ruContent: ContentDocument(
+                              title: _titleControllerRu.text,
+                              description: _descriptionControllerRu.text,
+                            ),
+                            enContent: ContentDocument(
+                              title: _titleControllerEn.text,
+                              description: _descriptionControllerEn.text,
+                            ),
                             imageUrl: _imageUrlController.text,
-                            description: _descriptionController.text,
                           );
+                          if (success) {
+                            _resetAllFields();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              AppSnackBar(
+                                message: 'success_upload'.tr,
+                              ),
+                            );
+                          }
                         }
-                      }),
+                      },
+                    ),
             ),
           ),
         ],
@@ -100,9 +178,24 @@ class _AddItemWidgetState extends State<AddItemWidget> {
 
   @override
   void dispose() {
-    _titleController.dispose();
+    _titleControllerAm.dispose();
+    _titleControllerRu.dispose();
+    _titleControllerEn.dispose();
+
     _imageUrlController.dispose();
-    _descriptionController.dispose();
+    _descriptionControllerAm.dispose();
     super.dispose();
+  }
+
+  void _resetAllFields() {
+    _titleControllerAm.clear();
+    _titleControllerRu.clear();
+    _titleControllerEn.clear();
+
+    _imageUrlController.clear();
+
+    _descriptionControllerAm.clear();
+    _descriptionControllerRu.clear();
+    _descriptionControllerEn.clear();
   }
 }

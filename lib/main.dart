@@ -4,9 +4,9 @@ import 'package:medex/core/translations/messages.dart';
 import 'package:medex/core/di/dependency_injection.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:medex/ui/admin/views/admin_screen.dart';
+import 'package:medex/core/utils/configuration.dart';
 import 'package:medex/ui/home/home_screen_desktop.dart';
 import 'package:medex/ui/home/home_screen_mobile.dart';
-import 'package:medex/core/utils/configuration.dart';
 import 'firebase_options.dart';
 
 void main() async {

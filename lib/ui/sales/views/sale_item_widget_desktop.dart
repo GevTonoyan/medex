@@ -56,15 +56,16 @@ class SaleItemWidgetDesktop extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    saleItemModel.title,
-                    style: AppFonts.subTitleDesktop.copyWith(color: AppColors.appWhite),
+                    saleItemModel.translatedTitle(),
+                    style: AppFonts.subTitleDesktop
+                        .copyWith(color: AppColors.appWhite),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 8),
                   Flexible(
                     child: Text(
-                      saleItemModel.description,
+                      saleItemModel.translatedDescription(),
                       style: AppFonts.body.copyWith(color: AppColors.appWhite),
                       overflow: TextOverflow.ellipsis,
                       maxLines: 10,

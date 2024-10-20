@@ -5,10 +5,15 @@ import 'package:medex/widgets/ui_components/app_text_field/app_text_field.dart';
 import 'package:medex/widgets/ui_components/app_text_field/text_field_params.dart';
 
 class TextFieldContainer extends StatelessWidget {
-  final TextFieldParams params;
+  /// The label of the container
+  final String label;
+
+  /// Multiple text fields can be added to the container
+  final List<TextFieldParams> params;
 
   const TextFieldContainer({
     Key? key,
+    required this.label,
     required this.params,
   }) : super(key: key);
 
@@ -23,9 +28,20 @@ class TextFieldContainer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(params.label ?? '', style: AppFonts.subTitleDesktop),
+          Text(label ?? '', style: AppFonts.subTitleDesktop),
           const SizedBox(height: 16),
-          AppTextField(params: params),
+          ...params.map(
+            (param) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AppTextField(params: param),
+                  const SizedBox(height: 16),
+                ],
+              );
+            },
+          ),
+          //AppTextField(params: params),
         ],
       ),
     );

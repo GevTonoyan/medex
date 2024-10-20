@@ -18,13 +18,13 @@ class SalesItemWidgetMobile extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
-          saleItemModel.title,
+          saleItemModel.translatedTitle(),
           style: AppFonts.body.copyWith(color: AppColors.primary),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
         Text(
-          saleItemModel.description,
+          saleItemModel.translatedDescription(),
           style: AppFonts.body,
         ),
       ],

@@ -21,9 +21,9 @@ class _AdminScreenState extends State<AdminScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: AppColors.disabled,
-      child: Column(
+    return Scaffold(
+      backgroundColor: AppColors.disabled,
+      body: Column(
         children: [
           Container(
             height: 110,
@@ -43,7 +43,7 @@ class _AdminScreenState extends State<AdminScreen> {
                 padding: const EdgeInsets.only(
                   top: 40,
                   left: contentSeparationPaddingDesktop,
-                  right: 404,
+                  right: contentSeparationPaddingDesktop,
                   bottom: contentSeparationPaddingDesktop,
                 ),
                 child: SizedBox(

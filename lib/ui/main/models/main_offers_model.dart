@@ -21,7 +21,7 @@ class MainOffersModel {
   }
 
   String translatedTitle() {
-    final locale = Get.locale?.languageCode ?? 'arm';
+    final locale = Get.locale?.languageCode ?? 'am';
     switch (locale) {
       case 'en':
         return en;
